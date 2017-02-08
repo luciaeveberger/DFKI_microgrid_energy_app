@@ -2454,3 +2454,37 @@ Processing by SessionsController#new as HTML
 Completed 200 OK in 44ms (Views: 39.3ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/users/new" for 127.0.0.1 at 2017-02-08 19:30:00 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (64.3ms)
+Completed 200 OK in 480ms (Views: 463.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-02-08 19:30:04 +0100
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Fiq2iOfWY7Txsyssp3yLt7olpqhMhH6ttj4fBL8WnMIuj6u0t1pL37RFwK/wRy5A/66wq9rPhne8/aY1zgpzMQ==", "user"=>{"email"=>"fdafsa", "password"=>"[FILTERED]"}, "commit"=>"Save User"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "fdafsa"], ["password", "dasfaf"], ["created_at", 2017-02-08 18:30:04 UTC], ["updated_at", 2017-02-08 18:30:04 UTC]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/9
+Completed 302 Found in 40ms (ActiveRecord: 5.1ms)
+
+
+Started GET "/users/9" for 127.0.0.1 at 2017-02-08 19:30:04 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 39ms (Views: 29.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2017-02-08 19:30:36 +0100
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 36ms (Views: 31.7ms | ActiveRecord: 0.0ms)
+
+
