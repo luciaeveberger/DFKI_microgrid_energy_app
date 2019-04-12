@@ -44,8 +44,6 @@ To run both ruby projects, you need to specify the port.
 ### For Data Schema sheet 
 https://my.vertabelo.com/model/sXp8V6wCfxWg5nwE6RlWmrOEvRr80fXZ
 
-## For API key 
-587ae6fbee24ed2c30b392bf3700fc56
 
 ### For Java-Spring (matlab simulator connection)
 
