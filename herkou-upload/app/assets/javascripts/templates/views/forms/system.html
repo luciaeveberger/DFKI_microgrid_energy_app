@@ -1,0 +1,91 @@
+<md-card>
+    <md-toolbar class="md-tabs-fill">
+        <div class="md-toolbar-tools">
+            <div ng-if="!toggleForms.createNewSystem"> Modify  System Nodes </div>
+            <div ng-if="toggleForms.createNewSystem" > Add New System domain </div>
+            <span flex></span>
+            <md-button ng-if="!toggleForms.createNewSystem" class="md-raised"  style="" ng-click="saveDetails()">
+                save
+            </md-button>
+            <md-button  ng-if="!toggleForms.createNewSystem" style="background: #aec7e8;" class="md-raised" ng-click="toggleNewDomain(2)" > add new energy domain</md-button>
+            <md-button  ng-if="toggleForms.createNewSystem"  style="background: #aec7e8;" class="md-raised" ng-click="saveNewDomain(2)"> add new energy domain</md-button>
+            <md-button  ng-if="!toggleForms.createNewSystem && subVarSYDict.myIndex >= 1" style="background: darkred;" class="md-raised" ng-click="deleteElement(itemHolder, 2)" > delete </md-button>
+            <md-button  ng-if="toggleForms.createNewSystem"  class="md-raised" ng-click="hideNewDomain(2)()" > hide</md-button>
+        </div>
+    </md-toolbar>
+    <md-card-content>
+        <div ng-if="!toggleForms.createNewSystem">
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block">
+                    <label> select node </label>
+                    <md-select ng-model="subVarSYDict.myIndex" ng-change="changedInput(subVarSYDict.myIndex)">
+                        <md-option ng-repeat="subVar in project.system.systemNodes.nodes" value="{{subVar.id}}"> node: {{subVar.id + 1}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label> node name</label>
+                    <input ng-model="project.system.systemNodes.nodes[subVarSYDict.myIndex].name">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label> node description</label>
+                    <input ng-model='project.system.systemNodes.nodes[subVarSYDict.myIndex].description'>
+                </md-input-container>
+            </div >
+            <md-content class="md-padding">
+                <p> Position </p>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label> Distance to Reference Node (Default)</label>
+                        <input ng-model="project.system.systemNodes.nodes[subVarSYDict.myIndex].position.distanceToSelf">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label> In South-to-North Direction</label>
+                        <input ng-model="project.system.systemNodes.nodes[subVarSYDict.myIndex].position.distanceToDefault.eastWest">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label> In West-to-East Direction</label>
+                        <input ng-model="project.system.systemNodes.nodes[subVarSYDict.myIndex].position.distanceToDefault.northSouth">
+                    </md-input-container>
+                </div>
+            </md-content>
+        </div>
+        <div ng-if="toggleForms.createNewSystem">
+            <div layout-gt-sm="row">
+                <!--<md-input-container class="md-block" flex-gt-sm>-->
+                    <!--<label>Select Node</label>-->
+                    <!--<md-select ng-model="">-->
+                        <!--<md-option ng-repeat="value in systemAttachmentOptions track by $index" ng-value="value.name"> {{value.id}}:{{value.name}}</md-option>-->
+                    <!--</md-select>-->
+                <!--</md-input-container>-->
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label> node name</label>
+                    <input ng-model="systemAttachmentOptions.name">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label> node description</label>
+                    <input ng-model="systemAttachmentOptions.description">
+                </md-input-container>
+            </div >
+            <md-content class="md-padding">
+                <p> Position </p>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label> Distance to Reference Node (Default)</label>
+                        <input ng-model="systemAttachmentOptions.position.distanceToSelf">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label> In South-to-North Direction</label>
+                        <input ng-model="systemAttachmentOptions.position.distanceToDefault.eastWest">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label> In West-to-East Direction</label>
+                        <input ng-model="project.system.systemNodes.nodes[0].position.distanceToDefault.northSouth">
+                    </md-input-container>
+                </div>
+
+            </md-content>
+        </div>
+
+    </md-card-content>
+</md-card>
+

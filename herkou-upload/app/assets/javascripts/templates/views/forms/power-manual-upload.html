@@ -1,0 +1,45 @@
+<div flex="100">
+    <md-card>
+        <md-card-container>
+            <div layout="row">
+                <md-card-content>
+                    <div layout="row">
+                        <div flex="100">
+                                <div flex>
+                                    <h3> Custom load power </h3>
+                                    <md-input-container  class="sm-block" flex-gt-sm>
+                                        <label>range </label>
+                                        <input ng-model="project.loads[selectedItem.id][selected_parameter].manual_power.range.val">
+                                    </md-input-container>
+                                    <md-input-container  class="sm-block" flex-gt-sm>
+                                        <label>Name </label>
+                                        <input ng-model="project.loads[selectedItem.id][selected_parameter].manual_power.name">
+                                    </md-input-container>
+                                    <md-input-container  class="sm-block" flex-gt-sm>
+                                        <label>description </label>
+                                        <input ng-model="project.loads[selectedItem.id][selected_parameter].manual_power.description">
+                                    </md-input-container>
+                                </div>
+                        </div>
+                    </div>
+                    <div layout="row">
+                        <div flex="100">
+                                        <md-input-container  class="sm-block" flex-gt-sm>
+                                            <label>Power </label>
+                                            <input ng-model="project.loads[selectedItem.id][selected_parameter].manual_power.power.val">
+                                        </md-input-container>
+                                        <md-input-container  class="sm-block" flex-gt-sm>
+                                            <label> Base cost {{project.loads.manual_power.price.base_price.uom}}</label>
+                                            <input ng-model="project.loads[selectedItem.id][selected_parameter].manual_power.price.base_price.val">
+                                        </md-input-container>
+                                        <md-input-container  class="sm-block" flex-gt-sm>
+                                            <label> operational cost {{project.loads.manual_power.price.operation_cost.uom}} </label>
+                                            <input ng-model="project.loads[selectedItem.id][selected_parameter].manual_power.price.operation_cost.val">
+                                        </md-input-container>
+                                    </div>
+                                </div>
+                </md-card-content>
+            </div>
+        </md-card-container>
+    </md-card>
+</div>

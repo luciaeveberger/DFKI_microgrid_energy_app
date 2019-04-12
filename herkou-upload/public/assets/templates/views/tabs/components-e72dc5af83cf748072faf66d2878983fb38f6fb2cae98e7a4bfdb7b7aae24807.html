@@ -1,0 +1,563 @@
+<div id="components-tab">
+
+    <!-- Sidebar -->
+    <div class="sidebar project-sidebar" ng-init="primarySidebar=true" >
+
+        <div ng-show="primarySidebar" class="primary-sidebar">
+
+            <div class="sidebar-content container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Components</h3>
+
+                        <div class="domain-menu top-20" >
+                            <div ng-repeat="d in domains" class="domain">
+
+                                <div class="btn-group btn-group-justified sidebar-menu" role="group">
+                                    <div class="btn-group" role="group">
+                                        <button class="btn"
+                                                ng-click="selectDomain(d)"
+                                                ng-class="{active:isDomainSelected(d.id)}"
+                                                ng-style="{'background-color': d.color}">
+                                            {{d.label}}
+                                        </button>
+                                    </div>
+                                    <div class="btn-group"
+                                         role="group"
+                                         ng-show="d.showItem"
+                                         style="width: .18%">
+                                        <button class="btn"
+                                                ng-click="hideDomainItem(d)"
+                                                ng-class="{active:isDomainSelected(d.id)}"
+                                                ng-style="{'background-color': d.color}">
+                                            <span class="glyphicon glyphicon-triangle-top"></span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div ng-show="d.showItem" class="items">
+                                    <ul>
+                                        <li ng-repeat="i in d.items"
+                                            ng-class="{selected:isItemSelected(i.id)}"
+                                            class="{{i.cssClass}}">
+
+                                            <a href ng-click="showComponentDetails(i.id, d)">
+                                                <div ng-include="i.icon"
+                                                     class="component-type-icon"></div>
+                                                {{i.label}}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+                <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+            </div>
+
+        </div>
+
+        <div ng-hide="primarySidebar" class="secondary-sidebar">
+
+            <div hidden-sidebar></div>
+
+            <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+                <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Page -->
+    <div class="page-wrapper">
+        <div class="container-fluid">
+            <div imode-project-tab></div>
+
+            <div class="project-container">
+
+                    <div ng-show="showSchematicView()" class="row top-30">
+                        <div class="col-md-12">
+                            <div class="domain-schematics"
+                                 ng-class="getDomainClass()">
+
+                                <div class="schematic-title">{{getDomainLabel()}} Domain</div>
+
+                                <div class="scheme">
+                                    <div class="bus"></div>
+
+                                    <div class="cross-domain-line"></div>
+
+                                    <div class="components">
+                                        <div ng-repeat="c in getSchematicsComponents()" class="{{c.cssClass}}"></div>
+                                    </div>
+
+                                    <div class="schematic-label top-label">
+                                        <div>External connection</div>
+                                        <div>Domain-related &nbsp&lt</div>
+                                        <div>Loads</div>
+                                        <div>&gt&nbsp Cross-domain</div>
+                                    </div>
+
+                                    <div class="schematic-label bottom-label">
+                                        <div>&nbsp</div>
+                                        <div>Domain-related &nbsp&lt</div>
+                                        <div>Generation, conversion & storage</div>
+                                        <div>&gt&nbsp Cross-domain</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-show="showItemView()">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>{{currentComponent.label}}</h1>
+                            </div>
+                        </div>
+
+                        <div class="row top-10">
+                            <div class="col-md-2">
+                                <form>
+                                    <div class="form-group">
+                                        <label>Manufacturer</label>
+                                        <input type="text"
+                                               class="form-control input-sm"
+                                               ng-model="currentComponent.manufacturer">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Model</label>
+                                        <input type="text"
+                                               class="form-control input-sm"
+                                               ng-model="currentComponent.model">
+                                    </div>
+                                </form>
+
+                                <div class="top-50">
+                                    <form ng-show="nodes.length>1">
+                                        <div class="form-group">
+                                            <label>Node</label>
+                                            <select class="form-control input-sm"
+                                                    ng-model="currentComponent.node"
+                                                    ng-options="ns.id as ns.name for ns in getAvailableNodes(currentComponent)">
+                                            </select>
+                                        </div>
+                                    </form>
+
+                                    <div>
+                                        <button class="btn btn-default btn-block top-5"
+                                                ng-click="addItem()">Add Component</button>
+                                        <button class="btn btn-default btn-block"
+                                                ng-click="removeItem()">Remove Component</button>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-md-10">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Type</label>
+                                        <div>
+                                            {{currentComponent.type}}
+                                        </div>
+                                        <br>
+
+                                        <label>Subtype</label>
+                                        <div>
+                                            {{currentComponent.subtype}}
+                                        </div>
+                                        <br>
+
+                                        <label>Short description</label>
+                                        <textarea class="form-control"
+                                                  rows="4"
+                                                  ng-model="currentComponent.description">
+                                        </textarea>
+
+                                        <ul class="nav nav-tabs top-30">
+                                            <li ng-class="{active:showComponentTab('economics')}">
+                                                <a href ng-click="selectComponentTab('economics')">Economic</a>
+                                            </li>
+                                            <li ng-class="{active:showComponentTab('physical')}">
+                                                <a href ng-click="selectComponentTab('physical')">Physical</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="row top-20">
+
+                                    <div class="tab-content components-details col-md-12">
+
+                                        <div role="tabpanel"
+                                             ng-class="{active:showComponentTab('economics')}"
+                                             class="tab-pane">
+
+                                            <div class="row">
+                                                <form>
+                                                    <h3 class="col-md-12"> CAPEX</h3>
+                                                    <div class="form-group col-md-6">
+                                                        <label>Initial Specific</label>
+                                                        <div class="input-group">
+                                                            <input type="text"
+                                                                   class="form-control input-sm"
+                                                                   ng-model="currentComponent.economic.capex.initialSpecific">
+                                                            <span class="input-group-addon">€/kW</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group col-md-6">
+                                                        <label>Initial Offset</label>
+                                                        <div class="input-group">
+                                                            <input type="text"
+                                                                   class="form-control input-sm"
+                                                                   ng-model="currentComponent.economic.capex.initialOffset">
+                                                            <span class="input-group-addon">€</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group col-md-6">
+                                                        <label>Replacement Specific</label>
+                                                        <div class="input-group">
+                                                            <input type="text"
+                                                                   class="form-control input-sm"
+                                                                   ng-model="currentComponent.economic.capex.replacementSpecific">
+                                                            <span class="input-group-addon">€/kW</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group col-md-6">
+                                                        <label>Replacement Offset</label>
+                                                        <div class="input-group">
+                                                            <input type="text"
+                                                                   class="form-control input-sm"
+                                                                   ng-model="currentComponent.economic.capex.replacementOffset">
+                                                            <span class="input-group-addon">€</span>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                            <div class="row">
+                                                <form>
+                                                <h3 class="col-md-12">Life</h3>
+                                                <div class="form-group col-md-6">
+                                                    <label>Lifetime</label>
+                                                    <div class="input-group">
+                                                        <input type="text"
+                                                               class="form-control input-sm"
+                                                               ng-model="currentComponent.economic.life.lifetime">
+                                                        <span class="input-group-addon">years</span>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            </div>
+
+                                            <div class="row">
+                                                <form>
+                                                <h3 class="col-md-12">OPEX</h3>
+                                                <div class="form-group col-md-6">
+                                                    <label>Reletive to CAPEX</label>
+                                                    <div class="input-group">
+                                                        <input type="text"
+                                                               class="form-control input-sm"
+                                                               ng-model="currentComponent.economic.opex.reletiveToCapex">
+                                                        <span class="input-group-addon">%/kW_cap/a</span>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            </div>
+
+                                        </div>
+
+                                        <div role="tabpanel"
+                                             ng-class="{active:showComponentTab('physical')}"
+                                             class="tab-pane">
+
+                                            <div class="row">
+                                                <form>
+                                                <h3 class="col-md-12">Capacities Boundaries</h3>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>First Definition - Min Or Fixed</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.capacitiesBoundaries.firstDefinition.minOrFixed">
+                                                        <span class="input-group-addon">kW</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>First Definition - Max Strict</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.capacitiesBoundaries.firstDefinition.maxStrict">
+                                                        <span class="input-group-addon">kW</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>Second Definition - Min Or Fixed</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.capacitiesBoundaries.secondDefinition.minOrFixed">
+                                                        <span class="input-group-addon">m3</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>Second Definition - Max Strict</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.capacitiesBoundaries.secondDefinition.maxStrict">
+                                                        <span class="input-group-addon">m3</span>
+                                                    </div>
+                                                </div>
+
+                                                </form>
+                                            </div>
+
+                                            <div class="row">
+                                                <form>
+                                                <h3 class="col-md-12">Boundaries</h3>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>First Output Type - Min Specific</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.boundaries.firstOutputType.minSpecific">
+                                                        <span class="input-group-addon">kW_out/kW_cap</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>First Output Type - Min Offset</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.boundaries.firstOutputType.minOffset">
+                                                        <span class="input-group-addon">kW_out</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>First Output Type - Max Specific</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.boundaries.firstOutputType.maxSpecific">
+                                                        <span class="input-group-addon">kW_out/kW_cap</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>First Output Type - Max Offset</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.boundaries.firstOutputType.maxOffset">
+                                                        <span class="input-group-addon">kW_out</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>Second Output Type - Min Specific</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.boundaries.secondOutputType.minSpecific">
+                                                        <span class="input-group-addon">kW_out/kW_cap</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>Second Output Type - Min Offset</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.boundaries.secondOutputType.minOffset">
+                                                        <span class="input-group-addon">kW_out</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>Second Output Type - Max Specific</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.boundaries.secondOutputType.maxSpecific">
+                                                        <span class="input-group-addon">kW_out/kW_cap</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>Second Output Type - Max Offset</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.boundaries.secondOutputType.maxOffset">
+                                                        <span class="input-group-addon">kW_out</span>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            </div>
+
+                                            <div class="row">
+                                                <form>
+                                                <h3 class="col-md-12">Efficiency</h3>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>First Output Type - Direct</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.efficiency.firstOutputType.direct">
+                                                        <span class="input-group-addon">kW_out/kW_inp</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>First Output Type - Gain Specific</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.efficiency.firstOutputType.gainSpecific">
+                                                        <span class="input-group-addon">kW_out/kW_cap</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>First Output Type - Loss Offset</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.efficiency.firstOutputType.lossOffset">
+                                                        <span class="input-group-addon">kW_out</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>Second Output Type - Relative To Output 1</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.efficiency.secondOutputType.relativeToOutput1">
+                                                        <span class="input-group-addon">kW_out/kW_out1</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>Second Output Type - Direct</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.efficiency.secondOutputType.direct">
+                                                        <span class="input-group-addon">kW_out/kW_inp</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>Second Output Type - Gain Specific</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.efficiency.secondOutputType.gainSpecific">
+                                                        <span class="input-group-addon">kW_out/kW_cap</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>Second Output Type - Loss Offset</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.efficiency.secondOutputType.lossOffset">
+                                                        <span class="input-group-addon">kW_out</span>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            </div>
+
+                                            <div class="row">
+                                                <form>
+                                                <h3 class="col-md-12">Gradients</h3>
+                                                <div class="form-group col-md-6">
+                                                    <label>Upwards</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.gradients.upwards">
+                                                        <span class="input-group-addon">1/hour</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>Downwards</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.gradients.downwards">
+                                                        <span class="input-group-addon">1/hour</span>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            </div>
+
+                                            <div class="row">
+                                                <form>
+                                                <h3 class="col-md-12">Continuous Runtime</h3>
+                                                <div class="form-group col-md-6">
+                                                    <label>Min</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.continuousRuntime.min">
+                                                        <span class="input-group-addon">hour</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label>Max</label>
+                                                    <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control input-sm"
+                                                           ng-model="currentComponent.physical.continuousRuntime.max">
+                                                        <span class="input-group-addon">hour</span>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<br>
+<br>

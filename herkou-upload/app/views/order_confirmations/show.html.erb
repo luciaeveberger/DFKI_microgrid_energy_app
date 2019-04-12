@@ -1,0 +1,50 @@
+<div class="container">
+
+  <div class="well">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <% if !@order_item.nil? && @order_item.errors.any? %>
+            <div class="alert alert-danger">
+              <ul>
+                <% @order_item.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+        <% if @order_items.size == 0 %>
+            <p class="text-center">
+              There are no items in your shopping cart. Please <%= link_to "go back", licenses_path %> and add some
+              items to
+              your cart.
+            </p>
+        <% elsif current_user.profile_incomplete? %>
+            <p class="text-center">
+              Profile information are not complete. Please <%= link_to "go back", edit_user_path(current_user) %> to
+              your profile and
+              complete your information to proceed.
+            </p>
+        <% else %>
+            <%= render 'order_confirmations/user_summary' %>
+
+            <hr>
+            <% @order_items.each do |order_item| %>
+                <%= render 'carts/cart_row', license: order_item.license, order_item: order_item, show_total: true, cart_view: false %>
+            <% end %>
+
+            <hr>
+            <div class="col-xs-6 offset-xs-6 pull-right">
+              <h4 class="pull-right">
+                Total Price: <span style="color: green"><%= number_to_currency current_order.subtotal %></span>
+              </h4>
+            </div>
+
+
+            <%= form_tag('/order_confirmations', method: :post, controller: 'order_confirmations') do %>
+                <%= submit_tag 'Buy', class: 'btn btn-lg btn-primary' %>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

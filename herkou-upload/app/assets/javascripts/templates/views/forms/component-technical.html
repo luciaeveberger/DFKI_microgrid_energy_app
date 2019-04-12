@@ -1,0 +1,284 @@
+<h6> {{project.component[selectedItem.id][selected_parameter].type_selected}} > {{selectedItem.label}} >
+    {{componentSelection[selectedItem.label][selected_parameter.id].label}} > {{selected_specific_item}}</h6>
+    <!--OUTPUTS -->
+    <div layout-gt-sm="row">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Output</span>
+                <span class="md-subhead">Definition of component’s energy output ports</span>
+            </md-card-title-text>
+        <span flex></span>
+        <md-button ng-class="{true: '', false: ''}[!outputs.archived]"  ng-click="outputs.archived = !outputs.archived">
+        {{!outputs.archived && 'Show' || 'Hide'}}
+        </md-button>
+        </md-card-title>
+    </div>
+    <div flex-xs class="foldableColumn" layout="column" ng-if="outputs.archived">
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>energy domain link</label>
+                <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Minimum power
+                    (size-independent) <span class="md-caption uom"> (kW) </span></label>
+                <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+            </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Minimum power
+                    (size-dependent)<span class="md-caption uom"> (kW / kW*) </span></label>
+                <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Maximum power
+                    (size-independent) <span class="md-caption uom">(kW)</span></label>
+                <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+            </md-input-container>
+
+        </div>
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Maximum power
+                    (size-dependent) <span class="md-caption uom">(kW / kW*)</span></label>
+                <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Downward gradient
+                    (size-independent) <span class="md-caption uom">(kW / h)</span></label>
+                <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Downward gradient
+                    (size-dependent) <span class="md-caption uom">((kW / h)/kW*)</span></label>
+                <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+            </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Upward gradient
+                    (size-independent) <span class="md-caption uom">(kW/h)</span></label>
+                <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Upward gradient
+                    (size-dependent) <span class="md-caption uom">((kW/h)/kW*) </span></label>
+                <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+            </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Power offset
+                    (size-independent)<span class="md-caption uom">(kW)</span></label>
+                <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Power offset
+                    (size-dependent) <span class="md-caption uom">(kW/kW*)</span></label>
+                <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Relative power (main capacity) <span class="md-caption uom">(kW/kW*)</span></label>
+                <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+            </md-input-container>
+        </div>
+    </div>
+<md-divider ></md-divider>
+    <!--INPUTS -->
+<div layout-gt-sm="row">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Inputs</span>
+            <span class="md-subhead">Definition of component’s energy input ports.</span>
+        </md-card-title-text>
+        <span flex></span>
+        <md-button ng-class="{true: '', false: ''}[!inputs.archived]"  ng-click="inputs.archived = !inputs.archived">
+            {{!inputs.archived && 'Show' || 'Hide'}}
+        </md-button>
+    </md-card-title>
+</div>
+<div flex-xs class="foldableColumn" layout="column" ng-if="inputs.archived">
+    <div layout-gt-sm="row">
+    <md-input-container class="md-block" flex-gt-sm>
+            <label> energy domain link </label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Power offset
+                (size-independent)<span class="md-caption uom">(kW)</span></label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label> Power offset
+                (size-dependent)<span class="md-caption uom">(kW/kW*)</span></label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+    </div >
+    <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label> Relative power (main capacity)<span class="md-caption uom"> (kW/kW*)</span></label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+    </div>
+</div>
+<md-divider ></md-divider>
+<!-- STORAGE-->
+<div layout-gt-sm="row">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Storage (state-of-charge)</span>
+            <span class="md-subhead">Definition of storage component (if available).</span>
+        </md-card-title-text>
+        <span flex></span>
+        <md-button ng-class="{true: '', false: ''}[!storage.archived]"  ng-click="storage.archived = !storage.archived">
+            {{!storage.archived && 'Show' || 'Hide'}}
+        </md-button>
+    </md-card-title>
+</div>
+<div flex-xs class="foldableColumn" layout="column" ng-if="storage.archived">
+    <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>energy domain link <span class="md-caption uom">(kWh)</span></label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Minimum energy
+                (size-independent)<span class="md-caption uom">(kW)</span></label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+    </div>
+    <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Minimum energy
+                (size-dependent)<span class="md-caption uom">(kWh/kWh)</span></label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Maximum energy
+                (size-independent)<span class="md-caption uom">(kWh)</span></label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+    </div>
+    <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Maximum energy
+                (size-dependent)<span class="md-caption uom">(kWh/kWh)</span></label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Downward gradient
+                (size-independent)<span class="md-caption uom">(kWh/h)</span></label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+    </div>
+    <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Downward gradient
+                (size-dependent)<span class="md-caption uom">((kWh/h)/kWh) </span></label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Upward gradient
+                (size-independent) <span class="md-caption uom">(kWh/h)</span></label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+    </div>
+    <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Upward gradient
+                (size-dependent) <span class="md-caption uom">(kW/h)/kWh)</span> </label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+    </div>
+</div>
+<md-divider ></md-divider>
+<!-- RUNTIME-->
+<div layout-gt-sm="row">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Runtime</span>
+            <span class="md-subhead">Definition of component’s runtime restrictions (if applicable).</span>
+        </md-card-title-text>
+        <span flex></span>
+        <md-button ng-class="{true: '', false: ''}[!runtime.archived]"  ng-click="runtime.archived = !runtime.archived">
+            {{!runtime.archived && 'Show' || 'Hide'}}
+        </md-button>
+    </md-card-title>
+</div>
+<div flex-xs class="foldableColumn" layout="column" ng-if="runtime.archived">
+    <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label> Minimum stand-still time
+                (size-independent)</label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Maximum run-time
+                (size-independent)<span class="md-caption uom">(h)</span></label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+    </div>
+    <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label> Maximum run-time
+                (size-dependent)<span class="md-caption uom">(h/kW*)</span>
+            </label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm>
+        <label> Maximum run-time
+            (size-independent)<span class="md-caption uom">(h)</span>
+        </label>
+        <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+    </md-input-container>
+    </div>
+    <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label> Maximum run-time
+                (size-dependent)<span class="md-caption uom">(h/kW*)</span>
+            </label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+    </div>
+</div>
+<md-divider ></md-divider>
+<div layout-gt-sm="row">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Standstill time</span>
+            <span class="md-subhead"> Definition of component’s stand-still time restrictions (if applicable).</span>
+        </md-card-title-text>
+        <span flex></span>
+        <md-button ng-class="{true: '', false: ''}[!standstill.archived]"  ng-click="standstill.archived = !standstill.archived">
+            {{!standstill.archived && 'Show' || 'Hide'}}
+        </md-button>
+    </md-card-title>
+</div>
+<div flex-xs class="foldableColumn" layout="column" ng-if="standstill.archived">
+    <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label> Minimum stand-still time
+                (size-independent)<span class="md-caption uom">(h)</span></label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Minimum stand-still time
+                (size-dependent)<span class="md-caption uom">(h/kW*)</span></label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+    </div>
+    <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label> Maximum stand-still time
+                (size-independent)<span class="md-caption uom">(h)</span></label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Maximum stand-still time
+                (size-dependent) <span class="md-caption uom">(h/kW*)</span></label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+    </div>
+</div>
+

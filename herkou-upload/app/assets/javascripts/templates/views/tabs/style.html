@@ -1,0 +1,104 @@
+<!-- Sidebar guide -->
+<div class="sidebar project-sidebar" ng-init="primarySidebar=true" >
+    <div ng-show="primarySidebar" class="primary-sidebar">
+        <div class="sidebar-content container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Loads</h1>
+                    <p> Select a node to add the respective loads </p>
+                    <div class="top-20">
+                        <div ng-repeat="r in loadsTabs" class="sidebar-menu">
+                            <button class="btn btn-block"
+                                    ng-click="sidebarTabToggle(r)"
+                                    ng-style="{'background-color': r.color}">
+                                {{r.label}}
+                                <span class="pull-left">
+                     <span ng-show="!r.showCategories" class="glyphicon glyphicon-triangle-top"></span>
+                     <span ng-show="r.showCategories" class="glyphicon glyphicon-triangle-bottom"></span>
+                     </span>
+                            </button>
+                            <div ng-show="r.showCategories" class="sidebar-submenu-area">
+                                <div ng-repeat="c in r.categories" class="sidebar-submenu">
+                                    <button class="btn btn-block"
+                                            ng-click="sidebarComponentToggle(c)"
+                                            ng-style="{'background-color': c.color}">
+                                        {{c.label}}
+                                        <span class="pull-left">
+                           <span ng-show="!c.showItems" class="glyphicon glyphicon-triangle-top"></span>
+                           <span ng-show="c.showItems" class="glyphicon glyphicon-triangle-bottom"></span>
+                           </span>
+                                    </button>
+                                    <div ng-show="c.showItems" class="sidebar-items">
+                                        <ul>
+                                            <li ng-repeat="i in c.items"
+                                                ng-class="{selected:isItemSelected(i)}"
+                                                class="{{i.cssClass}}">
+                                                <a href
+                                                   ng-click="selectItem(i)"
+                                                   ng-show="i.enabled">
+                                                    <div ng-include="i.icon"
+                                                         class="component-type-icon"></div>
+                                                    {{i.label}}
+                                                </a>
+                                                <s ng-hide="i.enabled">{{i.label}}</s>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <md-button ng-click="primarySidebar=!primarySidebar"> See Project Canvas</md-button>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+            <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+        </div>
+    </div>
+    <div ng-hide="primarySidebar" class="secondary-sidebar">
+        <div hidden-sidebar></div>
+        <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+            <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+        </div>
+    </div>
+</div>
+<!-- Page -->
+<div class="page-wrapper">
+    <div imode-project-tab></div>
+    <md-content class="md-padding" layout-xs="column" layout="row">
+        <div flex="15" layout="column">
+            <div class="row" style="padding-right:10px; padding-left:10px;">
+                <md-card>
+                    Input fields go here
+                </md-card>
+            </div>
+            <div class="row" style="padding-right:10px; padding-left:10px;">
+                <md-card>
+                    <md-toolbar md-scroll-shrink ng-if="true" style="background-color: #7b94b5 !important;">
+                        <div class="md-toolbar-tools">
+                            <h3>
+                                <span> Title for action</span>
+                            </h3>
+                        </div>
+                    </md-toolbar>
+                    <md-input-container>
+                        details detials
+                    </md-input-container>
+                    <md-button class="md-primary"> go to button </md-button>
+                    <md-button class="md-warn"> clear actions </md-button>
+                    <md-button class="md-accent"> Accent </md-button>
+                </md-card>
+            </div>
+
+        </div>
+        <div flex="80" layout="column">
+            <md-card>
+                <div class="tab-content components-details col-md-12">
+                    Main input should go here
+                </div>
+            </md-card>
+        </div>
+    </md-content>
+
+</div>

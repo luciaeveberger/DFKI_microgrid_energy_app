@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  subtype: MyString
+  short_description: MyString
+  manufacturer: MyString
+  model: MyString
+
+two:
+  type: 
+  subtype: MyString
+  short_description: MyString
+  manufacturer: MyString
+  model: MyString

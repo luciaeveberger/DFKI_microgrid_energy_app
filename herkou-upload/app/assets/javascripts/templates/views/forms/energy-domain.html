@@ -1,0 +1,90 @@
+<md-card>
+    <md-toolbar class="md-tabs-fill">
+        <div class="md-toolbar-tools">
+            <div ng-if="!toggleForms.createNewEnergy"> Modify Energy domain </div>
+            <div ng-if="toggleForms.createNewEnergy"> Add New Energy domain </div>
+            <span flex></span>
+            <md-button ng-if="!toggleForms.createNewEnergy" class="md-raised"  style="" ng-click="saveDetails()">
+                save
+            </md-button>
+            <md-button  ng-if="!toggleForms.createNewEnergy" style="background: #aec7e8;" class="md-raised" ng-click="toggleNewDomain(1)" > add new energy domain</md-button>
+            <md-button  ng-if="!toggleForms.createNewEnergy && subVarDict.myIndex >= 1" style="background: darkred;" class="md-raised" ng-click="deleteElement(itemHolder, 1)" > delete </md-button>
+            <md-button  ng-if="toggleForms.createNewEnergy"  style="background: #aec7e8;" class="md-raised" ng-click="saveNewDomain(1)"> add new energy domain</md-button>
+            <md-button  ng-if="toggleForms.createNewEnergy"  class="md-raised" ng-click="hideNewDomain(1)" > hide</md-button>
+        </div>
+    </md-toolbar>
+    <md-card-content>
+        <div ng-if="!toggleForms.createNewEnergy">
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label> select energy domain </label>
+                    <md-select ng-model="subVarDict.myIndex" ng-change="changedInput(subVarDict.myIndex)">
+                        <md-option ng-repeat="subVarEN in project.system.energyDomain" value="{{subVarEN.id}}"> energy domain: {{subVarEN.id + 1}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>select domain type</label>
+                    <md-select ng-model="project.system.energyDomain[subVarDict.myIndex].domain.type_name">
+                        <md-option ng-repeat="value in nodesAttachmentOptions track by $index" ng-value="value"> {{value}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label> domain name</label>
+                    <input ng-model="project.system.energyDomain[subVarDict.myIndex].domain.domain_name">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label> description</label>
+                    <input ng-model="project.system.energyDomain[subVarDict.myIndex].domain.description">
+                </md-input-container>
+            </div>
+            <md-content class="md-padding">
+                <p> Rated Potential </p>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label> Electricity (Voltage Level) {{unitLookup[project.system.energyDomain[0].domain.type_name]}}</label>
+                        <input ng-model="project.system.energyDomain[subVarDict.myIndex].domain.rated_potential.electricity_voltage.val">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label> Allowed deviation {{project.system.energyDomain[0].allowed_deviation.uom}}</label>
+                        <input ng-model="project.system.energyDomain[subVarDict.myIndex].domain.allowed_deviation.val">
+                    </md-input-container>
+                </div>
+            </md-content>
+            <div ng-if="subVarEn = 0">
+                add delete button
+            </div>
+        </div>
+        <div ng-if="toggleForms.createNewEnergy">
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Select Domain Type</label>
+                    <md-select ng-model="emptyNew.domain.type_name">
+                        <md-option ng-repeat="value in nodesAttachmentOptions track by $index" ng-value="value"> {{value}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label> description</label>
+                    <input ng-model="emptyNew.domain.description">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label> domain name</label>
+                    <input ng-model="emptyNew.domain.domain_name">
+                </md-input-container>
+            </div>
+            <md-content class="md-padding">
+                <p> Rated Potential </p>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label> Electricity (Voltage Level) </label>
+                        <input ng-model="emptyNew.domain.rated_potential.electricity_voltage.val">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label> Allowed deviation {{project.system.energyDomain[emptyNew.domain.type_name].allowed_deviation.uom}}</label>
+                        <input ng-model="emptyNew.domain.allowed_deviation.val">
+                    </md-input-container>
+                </div>
+            </md-content>
+        </div>
+    </md-card-content>
+</md-card>
+

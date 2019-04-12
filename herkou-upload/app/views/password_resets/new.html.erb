@@ -1,0 +1,13 @@
+<% provide(:title, 'Forgot password') %>
+
+<div class="row">
+  <div class="small-8 column small-centered">
+    <h1>Forgot password</h1>
+    <%= form_for(:password_reset, url: password_resets_path) do |f| %>
+        <%= f.label :email %>
+        <%= f.email_field :email, placeholder: 'Enter your email-address' %>
+
+        <%= f.submit 'Submit', data: { disable_with: 'Please wait...' }, class: 'right radius success button' %>
+    <% end %>
+  </div>
+</div>

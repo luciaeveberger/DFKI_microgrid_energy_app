@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project: MyString
+  system: MyString
+  resources: MyString
+  loads: MyString
+  components: MyString
+  settings: MyString
+
+two:
+  project: MyString
+  system: MyString
+  resources: MyString
+  loads: MyString
+  components: MyString
+  settings: MyString

@@ -1,0 +1,2 @@
+class ComponentOperationParameter < ApplicationRecord
+end

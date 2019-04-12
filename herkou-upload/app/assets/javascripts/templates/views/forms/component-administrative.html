@@ -1,0 +1,40 @@
+<h6> {{project.component[selectedItem.id][selected_parameter].type_selected}} > {{selectedItem.label}} >
+    {{componentSelection[selectedItem.label][selected_parameter.id].label}} > {{selected_specific_item}}</h6>
+
+<md-button style="background: #aec7e8;" ng-click="saveDetails()"> Save</md-button>
+<div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label> name</label>
+            <input ng-model="project.components[selectedItem.label][componentSelection[selectedItem.label][selected_parameter.id].saving_label][selected_specific_item].administrative.name">
+        </md-input-container>
+         <md-input-container class="md-block" flex-gt-sm>
+             <label> description</label>
+             <input ng-model="project.components[selectedItem.label][componentSelection[selectedItem.label][selected_parameter.id].saving_label][selected_specific_item].administrative.description">
+         </md-input-container>
+         <md-input-container class="md-block" flex-gt-sm>
+             <label> component type</label>
+             <input ng-model="project.components[selectedItem.label][componentSelection[selectedItem.label][selected_parameter.id].saving_label][selected_specific_item].administrative.component_type">
+         </md-input-container>
+ </div>
+ <div layout-gt-sm="row">
+     <md-input-container class="md-block" flex-gt-sm>
+         <label> manufacturer </label>
+         <input ng-model="project.components[selectedItem.label][componentSelection[selectedItem.label][selected_parameter.id].saving_label][selected_specific_item].administrative.manufacturer">
+     </md-input-container>
+     <md-input-container class="md-block" flex-gt-sm>
+         <label> manufacturer name</label>
+         <input ng-model="project.components[selectedItem.label][componentSelection[selectedItem.label][selected_parameter.id].saving_label][selected_specific_item].administrative.manufacturer_name">
+     </md-input-container>
+     <md-input-container class="md-block" flex-gt-sm>
+         <label> manufacturer description</label>
+         <input ng-model="project.components[selectedItem.label][componentSelection[selectedItem.label][selected_parameter.id].saving_label][selected_specific_item].administrative.manufacturer_description">
+     </md-input-container>
+ </div>
+<div layout-gt-sm="row">
+    <md-input-container class="md-block" flex-gt-sm>
+    <md-radio-group ng-model="project.components[selectedItem.label][componentSelection[selectedItem.label][selected_parameter.id].saving_label][selected_specific_item].administrative.discrete_technology" class="md-primary">
+        <md-radio-button value="discrete" class="green">discrete technology</md-radio-button>
+        <md-radio-button value="continuous" class="green"> continuous technology </md-radio-button>
+    </md-radio-group>
+</md-input-container>
+</div>

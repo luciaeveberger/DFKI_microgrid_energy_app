@@ -1,0 +1,72 @@
+<div id="hidden-sidebar"
+     class="sidebar-content container-fluid"
+     ng-controller="hiddenSidebarCtrl">
+
+    <div class="row">
+        <!--<h1 style="color:white"> Project Canvas </h1>-->
+            <div ng-repeat="t in sidebarTabs" class="sidebar-tab">
+
+
+                <md-button ng-click="sidebarTabToggle(t)" style="font-size:12px; width:90%;">
+                    {{t.label}}
+                    <span class="pull-right">
+                                    <span ng-show="!t.isOpen" class="glyphicon glyphicon-triangle-top"></span>
+                                    <span ng-show="t.isOpen" class="glyphicon glyphicon-triangle-bottom"></span>
+                                </span>
+                </md-button>
+                <div ng-if="t.isOpen && t.id=='nodeSchematic'"> </div>
+                
+                <div ng-if="t.isOpen && t.id=='nodeSchematic'"
+                     id="node-schematic"
+                     class="sidebar-tab-content">
+
+                    <div class="nodes">
+                         <div ng-controller="systemSchematic">
+                            <bars-chart chart-data="myData"></bars-chart>
+                        <div id="hierachy">
+                        </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div ng-if="t.isOpen && t.id=='domainSchematic'"
+                     id="domain-schematic"
+                     class="sidebar-tab-content">
+
+                    <div id="electric">
+                        <div class="bus"></div>
+                        <div class="domain-title">Electric Domain</div>
+                    </div>
+
+                    <div id="heating">
+                        <div class="bus"></div>
+                        <div class="domain-title">Heating Domain</div>
+                    </div>
+
+                    <div id="cooling">
+                        <div class="bus"></div>
+                        <div class="domain-title">Cooling Domain </div>
+
+                    <div class="components">
+                        <div ng-repeat="c in project.components" class="{{c.cssClass}}"> </div>
+                    </div>
+                    </div>
+                </div>
+
+
+                <!--<div ng-if="t.isOpen && t.id=='suggestions'"-->
+                     <!--id="suggestion"-->
+                     <!--class="sidebar-tab-content">-->
+    <!---->
+                <!--</div>-->
+                <!--<div ng-if="t.isOpen && t.id=='optimization'"-->
+                     <!--id="suggestion"-->
+                     <!--class="sidebar-tab-content">-->
+                     <!--Run the simulation to see the results-->
+    <!---->
+                <!--</div>-->
+
+            </div>
+        </div>
+    </div>
+    <br>

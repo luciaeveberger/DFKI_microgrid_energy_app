@@ -1,0 +1,387 @@
+<!-- Sidebar -->
+<div class="sidebar project-sidebar" ng-init="primarySidebar=true" >
+
+    <div ng-show="primarySidebar" class="primary-sidebar">
+        <div class="sidebar-content container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Loads</h3>
+
+                    <div class="top-20">
+                        <div ng-repeat="t in loadsTabs" class="sidebar-menu">
+
+                            <button class="btn btn-block"
+                                    ng-click="sidebarTabToggle(t)"
+                                    ng-style="{'background-color': t.color}">
+                                {{t.label}}
+                                <span class="pull-left">
+                                    <span ng-show="!t.showItems" class="glyphicon glyphicon-triangle-top"></span>
+                                    <span ng-show="t.showItems" class="glyphicon glyphicon-triangle-bottom"></span>
+                                </span>
+                            </button>
+
+                            <div ng-show="t.showItems" class="sidebar-items">
+                                <ul>
+                                    <li ng-repeat="i in t.items"
+                                        ng-class="{selected:isItemSelected(i)}"
+                                        class="{{i.cssClass}}">
+
+                                        <a href
+                                           ng-click="selectItem(i)"
+                                           ng-show="i.enabled">
+                                            <div ng-include="i.icon"
+                                                 class="component-type-icon"></div>
+                                            {{i.label}}
+                                        </a>
+                                        <s ng-hide="i.enabled">{{i.label}}</s>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+            <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+        </div>
+    </div>
+
+    <div ng-hide="primarySidebar" class="secondary-sidebar">
+
+        <div hidden-sidebar></div>
+
+        <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+            <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+        </div>
+    </div>
+
+</div>
+
+<!-- Page -->
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div imode-project-tab></div>
+
+        <div class="project-container top-10">
+
+            <div class="row">
+                <!-- LEFT PAGE -->
+                <div class="col-md-3">
+                    <label>
+                        Options:
+                    </label>
+
+                    <!-- IMPORT -->
+                    <div>
+                        <label class="top-5">(1) Available time-series</label>
+                        <label class="btn btn-default btn-file btn-block">
+                            Import <input type="file"
+                                          file-select="text"
+                                          file-loaded="onLoad($file)"
+                                          style="display: none;">
+                        </label>
+                    </div>
+
+                    <!-- BASED LOAD -->
+                    <div>
+                        <label class="top-30"><s>(2) Create profile based load</s></label>
+                        <select class="form-control input-sm"></select>
+                        <div class="btn btn-default btn-block disabled top-5">OK</div>
+                    </div>
+
+                    <!-- LOAD SIMULATION -->
+                    <div ng-if="!selectedItem.loadSimulationEnabled">
+                        <label class="top-30">
+                            <s>(3) Load simulation</s>
+                            <span ng-if="selectedItem.loadSimulationEnabled">(3) Load simulation</span>
+                        </label>
+
+                        <select class="form-control input-sm"></select>
+
+                        <div class="btn btn-default btn-block disabled top-5">OK</div>
+                    </div>
+
+                    <div ng-if="selectedItem.loadSimulationEnabled">
+                        <label class="top-30">
+                            <span>(3) Load simulation</span>
+                        </label>
+
+                        <select ng-model="selectedLoadSimulation.data"
+                                ng-options="o.label for o in loadSimulationOption"
+                                class="form-control input-sm">
+                            <option value=""></option>
+                        </select>
+
+                        <button class="btn btn-default btn-block top-5"
+                                ng-class="{disabled:loadSimulationBtnDisabled()}"
+                                ng-click="showLoadSimulation()">OK</button>
+
+                    </div>
+                    <md-button class="md-raised md-primary" ng-click="submitProject(project)"> Next</md-button>
+
+                </div>
+
+                <!-- RIGHT PAGE -->
+                <div class="col-md-8">
+
+                    <!-- NAME AND DESCRIPTION -->
+                    <div class="row">
+
+                        <form class="col-md-6">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text"
+                                       class="form-control input-sm"
+                                       ng-model="project.loads[selectedItemId].name">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Description / notes</label>
+                                <textarea class="form-control"
+                                          rows="2"
+                                          ng-model="project.loads[selectedItemId].description">
+                                </textarea>
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <!-- CHART -->
+                    <div ng-if="optionToShow =='import'" class="row">
+                        <div class="col-md-12">
+                            <label>Loads curve</label>
+                            <nvd3 api="rc.api" options="chartOptions" data="chartData"></nvd3>
+                        </div>
+                    </div>
+
+                    <!-- Load Simulation -->
+                    <div ng-if="optionToShow =='loadSimulation'">
+
+                        <!-- NAV TAB -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href >Parameters</a>
+                                    </li>
+                                    <li class="disabled">
+                                        <a href >Resulting graph</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- TAB CONTENT -->
+
+                        <div class="row top-20">
+                            <div class="tab-content col-md-12">
+
+                                <!-- TAB PARAMETERS -->
+                                <div role="tabpanel" class="tab-pane active">
+
+                                    <div ng-if="selectedItem.id =='buildingHeatingLoad' || selectedItem.id =='buildingCoolingLoad'">
+                                        <h3>{{selectedItem.loadSimulationtext}}</h3>
+
+                                        <form class="form-horizontal">
+                                            <h4>General</h4>
+
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label class="col-md-5 control-label">Number of buildings</label>
+                                                    <div class="col-md-5">
+                                                        <input type="text"
+                                                               class="form-control">
+                                                    </div>
+                                                    <span class="help-block col-md-2"></span>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label class="col-md-5 control-label">Floor area per building</label>
+                                                    <div class="col-md-5">
+                                                        <input type="text"
+                                                               class="form-control">
+                                                    </div>
+                                                    <span class="help-block col-md-2"></span>
+                                                </div>
+                                            </div>
+
+                                        </form>
+
+                                        <form class="form-horizontal">
+                                            <h4>Wall parameters</h4>
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label class="col-md-5 control-label">Material of structure</label>
+                                                    <div class="col-md-5">
+                                                        <input type="text"
+                                                               class="form-control">
+                                                    </div>
+                                                    <span class="help-block col-md-2"></span>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label class="col-md-5 control-label">Thickness of structure</label>
+                                                    <div class="col-md-5">
+                                                        <input type="text"
+                                                               class="form-control">
+                                                    </div>
+                                                    <span class="help-block col-md-2">m</span>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label class="col-md-5 control-label">Material of insulation</label>
+                                                    <div class="col-md-5">
+                                                        <input type="text"
+                                                               class="form-control">
+                                                    </div>
+                                                    <span class="help-block col-md-2"></span>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label class="col-md-5 control-label">Thickness of insulation</label>
+                                                    <div class="col-md-5">
+                                                        <input type="text"
+                                                               class="form-control">
+                                                    </div>
+                                                    <span class="help-block col-md-2">m</span>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                        <form class="form-horizontal">
+                                            <h4>Window parameters</h4>
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label class="col-md-5 control-label">u-value glass</label>
+                                                    <div class="col-md-5">
+                                                        <input type="text"
+                                                               class="form-control">
+                                                    </div>
+                                                    <span class="help-block col-md-2">W/m2K</span>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label class="col-md-5 control-label">u-value frame</label>
+                                                    <div class="col-md-5">
+                                                        <input type="text"
+                                                               class="form-control">
+                                                    </div>
+                                                    <span class="help-block col-md-2">W/m2K</span>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label class="col-md-5 control-label">g-value</label>
+                                                    <div class="col-md-5">
+                                                        <input type="text"
+                                                               class="form-control">
+                                                    </div>
+                                                    <span class="help-block col-md-2"></span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div ng-if="selectedItem.id =='hotWaterLoad'">
+                                        <h3>{{selectedItem.loadSimulationtext}}</h3>
+
+                                        <form class="form-horizontal">
+                                            <h4>Quantity of consumption</h4>
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label class="col-md-7 control-label">Number of consumers</label>
+                                                    <div class="col-md-5">
+                                                        <input type="text"
+                                                               class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label class="col-md-7 control-label">Minimum number of persons per consumer</label>
+                                                    <div class="col-md-5">
+                                                        <input type="text"
+                                                               class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label class="col-md-7 control-label">Maximum number of persons per consumer</label>
+                                                    <div class="col-md-5">
+                                                        <input type="text"
+                                                               class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label class="col-md-7 control-label">Minimum floor area per consumer</label>
+                                                    <div class="col-md-5">
+                                                        <input type="text"
+                                                               class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label class="col-md-7 control-label">Maximum floor area per consumer</label>
+                                                    <div class="col-md-5">
+                                                        <input type="text"
+                                                               class="form-control">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </form>
+
+                                        <form class="form-horizontal">
+                                            <h4>Presence of appliances</h4>
+                                            <div class="row top-10">
+                                                <div class="form-group col-md-3">
+                                                    <label class="col-md-10 col-md-offset-2">
+                                                        <input type="checkbox" value="">
+                                                        Showers
+                                                    </label>
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label class="col-md-10 col-md-offset-2">
+                                                        <input type="checkbox" value="">
+                                                        Bath tubes
+                                                    </label>
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label class="col-md-10 col-md-offset-2">
+                                                        <input type="checkbox" value="">
+                                                        Basins
+                                                    </label>
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label class="col-md-10 col-md-offset-2">
+                                                        <input type="checkbox" value="">
+                                                        Bidets
+                                                    </label>
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label class="col-md-10 col-md-offset-2">
+                                                        <input type="checkbox" value="">
+                                                        Dish washing
+                                                    </label>
+                                                </div>
+                                                <div class="form-group col-md-3">
+                                                    <label class="col-md-10 col-md-offset-2">
+                                                        <input type="checkbox" value="">
+                                                        Cleaning
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>

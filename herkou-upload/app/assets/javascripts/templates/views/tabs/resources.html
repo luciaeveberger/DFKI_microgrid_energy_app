@@ -1,0 +1,70 @@
+<!-- Sidebar -->
+<div class="sidebar project-sidebar" ng-init="primarySidebar=true" >
+    <div ng-show="primarySidebar" class="primary-sidebar">
+        <div class="sidebar-content container-fluid">
+            <div class="row">
+                <div ng-repeat="t in resourcesTab">
+                    <div ng-repeat="values in t.categories">
+                        <span class="pull-left">
+                             <md-button
+                                     ng-click="sidebarTabToggle(t)"
+                                     ng-style="" style="width:100%;">
+                                    {{values.label}}
+                             </md-button>
+                           </span>
+                        <span class="pull-left">
+                         <div flex="100">
+                            <ul style="list-style: none; width:100%;">
+                               <li ng-repeat="i in values.items"
+                                   ng-class="{selected:isItemSelected(i)}">
+                                  <a href
+                                     ng-click="selectItem(i)"
+                                     ng-show="i.enabled">
+                                     <div ng-include="i.icon"
+                                          class="component-type-icon"></div>
+                                        {{i.label}}
+                                  </a>
+                                  <s ng-hide="i.enabled">{{i.label}}</s>
+                               </li>
+                                 </ul>
+                         </div>
+                        </span>
+                    </div>
+                </div>
+
+                <!--<md-button ng-click="primarySidebar=!primarySidebar"> See Project Canvas</md-button>-->
+            </div>
+        </div>
+        <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+            <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+        </div>
+    </div>
+    <div ng-hide="primarySidebar" class="secondary-sidebar">
+        <div hidden-sidebar></div>
+        <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+            <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+        </div>
+    </div>
+</div>
+<!-- Page -->
+<div class="page-wrapper">
+    <div imode-project-tab></div>
+        <div ng-if="selectedItem.id =='solar'">
+            <div weather-inputs> </div>
+        </div>
+        <div ng-if="selectedItem.id =='temperature'">
+            <div weather-inputs> </div>
+        </div>
+        <div ng-if="selectedItem.id =='wind'">
+            <div weather-inputs> </div>
+        </div>
+        <div ng-if="selectedItem.id =='electricity'">
+            <div secondary-inputs> </div>
+        </div>
+        <div ng-if="selectedItem.id =='fuels'">
+            <div secondary-inputs> </div>
+        </div>
+        <div ng-if="selectedItem.id =='income'">
+          <div secondary-inputs> </div>
+        </div>
+</div>

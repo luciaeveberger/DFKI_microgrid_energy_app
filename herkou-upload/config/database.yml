@@ -1,0 +1,26 @@
+default: &default
+  adapter: sqlite3
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 15
+
+development:
+  adapter: sqlite3
+  encoding: unicode
+  database: db/dev1.sqlite3
+  pool: 5
+
+
+test:
+  adapter: sqlite3
+  encoding: unicode
+  database: myapp_test
+  pool: 5
+
+
+production:
+  adapter: sqlite3
+  encoding: unicode
+  database: myapp_test
+  pool: 5

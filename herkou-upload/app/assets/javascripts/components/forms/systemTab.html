@@ -1,0 +1,118 @@
+<div class="row" style="padding-right:10px; padding-left:10px;">
+    <md-card>
+        <md-toolbar class="md-tabs-fill">
+            <div class="md-toolbar-tools">
+                Add {{selectedItem.id}} Parameters
+                <span flex></span>
+                <md-button class="md-raised"  ng-click="showForm()">
+                    Hide Form
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-card-content>
+            <!-- system energy -->
+            <div ng-if="selectedItem.id =='energy'">
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>type name </label>
+                        <input ng-model="project.system.energyDomain.type_name">
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label> description</label>
+                        <input ng-model="project.system.energyDomain.description">
+                    </md-input-container>
+                </div>
+                <md-content class="md-padding">
+                    <p> Rated Potential </p>
+                    <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label> Electricity (Voltage Level) </label>
+                            <input ng-model="project.system.energyDomain.rated_potential.electricity_voltage">
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Heat (Temperature Level)</label>
+                            <input ng-model="project.system.energyDomain.rated_potential.heat_temperature_level">
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label> Cooling (Temperature Level)</label>
+                            <input ng-model="project.system.energyDomain.rated_potential.cooling_temperature_level">
+                        </md-input-container>
+                    </div>
+                </md-content>
+                <span class="pull-right">
+                    <md-button style="background: #aec7e8;" class="md-raised"> add energy</md-button>
+                </span>
+            </div>
+            <!-- system -->
+            <div ng-if="selectedItem.id =='system'">
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>node name </label>
+                        <input ng-model="n.name" required>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>node description</label>
+                        <input ng-model="n.description" required>
+                    </md-input-container>
+                </div>
+                <span style="text-align:center; color:red; font-size:11px;" ng-show="(!n.description && formSubmitted) || (!n.name && formSubmitted)"> Field(s) required</span>
+                <md-tabs md-dynamic-height md-border-bottom style="padding-top:10px;">
+                    <md-tab label="1. position" style="color:black !important">
+                        <md-content class="md-padding">
+                            <p> Distance to Reference Node </p>
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>East West </label>
+                                    <input ng-model="n.position.distanceToDefault.eastWest">
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label>North South</label>
+                                    <input ng-model="n.position.distanceToDefault.eastWest">
+                                </md-input-container>
+                            </div>
+                            <p> Length of Connections </p>
+                            <div layout-gt-sm="row">
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label> to Node </label>
+                                    <input ng-model="n.position.distanceToDefault.eastWest">
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label> drop</label>
+                                    <input ng-model="n.position.distanceToDefault.eastWest">
+                                </md-input-container>
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <label> Factor </label>
+                                    <input ng-model="n.factor">
+                                </md-input-container>
+                            </div>
+                        </md-content>
+                    </md-tab>
+                    <md-tab label="2. busses">
+                        <md-content class="md-padding">
+                            <fieldset class="standard">
+                                <legend>Select available busses</legend>
+                                <div layout-wrap layout-gt-sm="row" >
+                                    <div flex-gt-sm="50">
+                                        <md-checkbox ng-model="project.system.nodes[0].buses.electric" aria-label="Checkbox 1"  class="green">
+                                            Electric Bus
+                                        </md-checkbox>
+                                        <md-checkbox ng-model="project.system.nodes[0].buses.heat" aria-label="Checkbox 1"  class="green">
+                                            Heating Bus
+                                        </md-checkbox>
+                                        <md-checkbox ng-model="project.system.nodes[0].buses.cooling" aria-label="Checkbox 1"  class="green">
+                                            Cooling bus
+                                        </md-checkbox>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                        </md-content>
+                    </md-tab>
+                </md-tabs>
+                <span class="pull-right">
+                    <md-button style="background: #aec7e8;" class="md-raised" ng-click="saveNode()"> add node</md-button>
+                </span>
+            </div>
+        </md-card-content>
+    </md-card>
+</div>

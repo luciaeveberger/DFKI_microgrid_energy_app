@@ -1,0 +1,114 @@
+<div class="sidebar project-sidebar" ng-init="primarySidebar=true" >
+    <div ng-show="primarySidebar" class="primary-sidebar">
+        <div class="sidebar-content container-fluid">
+            <div class="row">
+                <div ng-repeat="t in loadsTabs">
+                    <div ng-repeat="values in t.categories">
+                        <span class="pull-left">
+                            <md-button
+                                    ng-click="sidebarTabToggle(t)"
+                                    ng-style="" style="width:100%;">
+                                {{values.label}}
+                            </md-button>
+                        </span>
+                        <span class="pull-left">
+                            <div flex="100">
+                                <ul style="list-style: none; width:100%;">
+                                    <li ng-repeat="i in values.items"
+                                        ng-class="{selected:isItemSelected(i)}">
+                                        <a href
+                                           ng-click="selectItem(i)"
+                                           ng-show="i.enabled">
+                                            <div ng-include="i.icon"
+                                                 class="component-type-icon"></div>
+                                            {{i.label}}
+                                        </a>
+                                        <s ng-hide="i.enabled">{{i.label}}</s>
+                                    </li>
+                                </ul>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                <!--<md-button ng-click="primarySidebar=!primarySidebar"> See Project Canvas</md-button>-->
+            </div>
+        </div>
+        <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+            <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+        </div>
+    </div>
+    <div ng-hide="primarySidebar" class="secondary-sidebar">
+        <div hidden-sidebar></div>
+        <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+            <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+        </div>
+    </div>
+</div>
+<div class="page-wrapper">
+    <div imode-project-tab></div>
+    <md-content class="md-padding" layout-xs="column" layout="row">
+    <div layout="column" flex="30">
+        <md-card>
+            <md-toolbar class="md-tabs-fill">
+                <div class="md-toolbar-tools">
+                    <div> {{selectedItem.label}} </div>
+                    <span flex></span>
+                </div>
+            </md-toolbar>
+            <md-card-content>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>select input type</label>
+                    <md-select ng-model="selected_parameter.id">
+                        <md-option ng-repeat="val in componentSelection[selectedItem.label]" value="{{val.id}}" ng-selected="true"> {{val.label}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm style="padding-top:10px;">
+                    <md-select ng-model="selected_specific_item">
+                        <md-option ng-repeat="val in  componentSelection[selectedItem.label][selected_parameter.id].elements" value="{{val.id}}" ng-selected="true"> {{val.label}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <div flex-gt-sm>
+                    <p> Edit characteristics: </p>
+                    <div layout-gt-sm="row" style="padding:10px;">
+                        <md-radio-group ng-init="project.component[selectedItem.id][selected_parameter].type_selected='administrative'"  ng-model="project.component[selectedItem.id][selected_parameter].type_selected" class="md-primary">
+                            <md-radio-button value="administrative" class="green" > administrative </md-radio-button>
+                            <md-radio-button value="economic"  class="green"> economic </md-radio-button>
+                            <md-radio-button value="environmental"  class="green"> environmental </md-radio-button>
+                            <md-radio-button value="technical"  class="green"> technical operation </md-radio-button>
+                        </md-radio-group>
+                    </div>
+                </div>
+                <div flex-gt-sm>
+                    <p> Define source </p>
+                    <div layout-gt-sm="row" style="padding:10px;">
+                    <md-radio-group ng-init="project.component[selectedItem.id][selected_parameter].library='manual'"  ng-model="project.component[selectedItem.id][selected_parameter].library" class="md-primary">
+                        <md-radio-button value="library" class="green" > library </md-radio-button>
+                        <md-radio-button value="manual"  class="green"> manual define </md-radio-button>
+                    </md-radio-group>
+                    </div>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+    <div layout="column" flex="70">
+        <md-card>
+            <md-card-content>
+                <div>
+                    <div ng-if="project.component[selectedItem.id][selected_parameter].type_selected == 'administrative'">
+                        <div component-administrative> </div>
+                    </div>
+                    <div ng-if="project.component[selectedItem.id][selected_parameter].type_selected == 'economic'">
+                        <div component-economic> </div>
+                    </div>
+                    <div ng-if="project.component[selectedItem.id][selected_parameter].type_selected == 'environmental'">
+                        <div component-environmental=""> </div>
+                    </div>
+                    <div ng-if="project.component[selectedItem.id][selected_parameter].type_selected == 'technical'">
+                        <div component-technical> </div>
+                    </div>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+</md-content>

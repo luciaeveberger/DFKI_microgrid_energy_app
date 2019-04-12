@@ -1,0 +1,89 @@
+<div flex="100">
+   <md-card>
+      <md-card-container>
+      <div layout="row">
+          <md-card-content>
+              <div layout="row">
+                  <div flex="30">
+                      <div layout="row">
+                          <div flex>
+                              <md-input-container  class="sm-block" flex-gt-sm>
+                                  <label>name</label>
+                                  <input ng-model="chart.name">
+                              </md-input-container>
+                          </div>
+                          <div flex>
+                              <md-input-container  class="sm-block" flex-gt-sm>
+                                  <label>description</label>
+                                  <input ng-model="chart.description">
+                              </md-input-container>
+                          </div>
+                      </div>
+                      <div layout="row">
+                          <div flex>
+                              <md-input-container  class="sm-block" flex-gt-sm>
+                                  <label>load type</label>
+                                  <input ng-model="chart.description">
+                              </md-input-container>
+                              <md-input-container  class="sm-block" flex-gt-sm>
+                                  <label>period length</label>
+                                  <md-select ng-model="project.resources.physical.primary.manual_definition.single_element.period_length">
+                                      <md-optgroup label="interval">
+                                          <md-option ng-repeat="period in possibleTimeIntervals" value="{{period.min}}">{{period.val}}</md-option>
+                                      </md-optgroup>
+                                  </md-select>
+                              </md-input-container>
+                              </md-input-container>
+                          </div>
+                          <div flex>
+                              <md-input-container  class="sm-block" flex-gt-sm>
+                                  <label>time interval</label>
+                                  <md-select ng-model="chart.chartInterval">
+                                      <md-optgroup label="interval">
+                                          <md-option ng-repeat="chartInterval in possibleIntervals" value="{{chartInterval}}">{{chartInterval}} minutes</md-option>
+                                      </md-optgroup>
+                                  </md-select>
+                              </md-input-container>
+                          </div>
+                      </div>
+                      <div flex="30">
+                          <div>
+                              <md-button style="background: #aec7e8;" ng-click="updateTotalLoadInterval()"> Update single element filters </md-button>
+                              <md-button ng-click="saveManualData()">add to total resources</md-button>
+                          </div>
+                      </div>
+                  </div>
+                  <div flex="100">
+                      <md-tabs md-dynamic-height md-border-bottom>
+                          <md-tab label="chart">
+                              <div ng-controller="manualDef">
+                                  <div id="container" style="height: 400px"></div>
+                                  <div id="drag"></div>
+                                  <div id="drop"></div>
+                                  <!--<nvd3 data="manualDefSingleElementData" options="manualchartOptions" style="width:100%;"></nvd3>-->
+                              </div>
+                          </md-tab>
+                          <md-tab label='table'>
+                              <div flex="70">
+                                  <md-subheader class="md-no-sticky">Update values ({{chart.chartInterval}} minutes) (1 day)</md-subheader>
+                                  <md-card-content style="height: 300px; overflow-y: auto">
+                                      <md-list-item class="secondary-button-padding" ng-repeat="val in manualDefData[0]['values'] | orderBy: val[0] ">
+                                          <input ng-value="val[0]| date: 'h:mm:ss'"></p>
+                                          <span> <input ng-model="val[1]"> </span>
+                                      </md-list-item>
+                                  </md-card-content>
+                              </div>
+                          </md-tab>
+
+                          <md-tab label="saved data">
+                              <div flex="100">
+                                  <nvd3 data="project.loads.manual_power.time_series.values" options="manualchartOptions" style="width:100%;"></nvd3>
+                              </div>
+                          </md-tab>
+                      </md-tabs>
+                  </div>
+              </div>
+          </md-card-content>
+      </md-card-container>
+   </md-card>
+</div>

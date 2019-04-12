@@ -1,0 +1,107 @@
+<md-content class="md-padding" layout-xs="column" layout="row" style="background-color:white !important;">
+   <div flex="20" layout="column">
+      <div class="row" style="margin-right:10px;margin-left:10px;">
+         <md-card>
+            <md-toolbar class="md-tabs-fill">
+               <div class="md-toolbar-tools">
+                  <div> {{selectedItem.label}} </div>
+                  <span flex></span>
+               </div>
+            </md-toolbar>
+            <md-card-content>
+               <md-input-container class="md-block" flex-gt-sm>
+                  <label>select input type</label>
+                  <md-select ng-model="dummy">
+                     <div ng-repeat="val in selectionOptions">
+                        <div ng-repeat="little in val">
+                           <div ng-repeat="other in little" ng-if="other.label == selectedItem.label">
+                              <md-option ng-repeat="o in other.items" value="{{o.id}}" ng-selected="true"> {{o.item}}</md-option>
+                           </div>
+                        </div>
+                     </div>
+                  </md-select>
+               </md-input-container>
+
+            </md-card-content>
+         </md-card>
+      </div>
+   </div>
+   <span ng-controller="secondaryResource" flex="70">
+      <div layout="row">
+         <div flex>
+            <md-card>
+               <md-card-content>
+                <div layout-gt-sm="row">
+                  <h3>
+                     Specific types:
+                  </h3>
+                     <span flex></span>
+                      <md-button  style="height:20px;" class="md-raised" ng-click="saveSecondaryComponents()" >Save</md-button>
+                      <md-button  style="height:20px;" class="md-raised delete-button" ng-click="deleteSecondaryComponents()" >delete</md-button>
+
+                   </div>
+                  <div>
+                     <div layout-gt-sm="row">
+                        <md-input-container class="sm-block" flex-gt-sm>
+                           <label>capacity ({{project.resources.physical.secondary[selectedItem.label][dummy].restriction.capacity.uom}})</label>
+                           <input ng-model="project.resources.physical.secondary[selectedItem.label][dummy].restriction.capacity.val">
+                        </md-input-container>
+                        <md-input-container class="sm-block" flex-gt-sm>
+                           <label>volume  ({{project.resources.physical.secondary[selectedItem.label][dummy].restriction.volume.uom}}) </label>
+                           <input ng-model="project.resources.physical.secondary[selectedItem.label][dummy].restriction.volume.val">
+                        </md-input-container>
+                     </div>
+                     <div layout-gt-sm="row">
+                        <md-input-container class="sm-block" flex-gt-sm>
+                           <label> base price  ({{project.resources.physical.secondary[selectedItem.label][dummy].price.base_price.uom}})</label>
+                           <input ng-model="project.resources.physical.secondary[selectedItem.label][dummy].price.base_price.val">
+                        </md-input-container>
+                        </md-input-container>
+                        <md-input-container class="sm-block" flex-gt-sm>
+                           <label> operation price ({{project.resources.physical.secondary[selectedItem.label][dummy].price.operation_price.uom}})</label>
+                           <input ng-model="project.resources.physical.secondary[selectedItem.label][dummy].price.operation_price.val">
+                           </md-select>
+                        </md-input-container>
+                        <md-input-container class="sm-block" flex-gt-sm ng-if="(dummy == 'natural_gas' || dummy == 'fuel_oil')">
+                           <label>conversion factor  ({{project.resources.physical.secondary[selectedItem.label][dummy].conversion_factor.uom}}) </label>
+                           <input ng-model="project.resources.physical.secondary[selectedItem.label][dummy].conversion_factor.val">
+                        </md-input-container>
+                     </div>
+                  </div>
+               </md-card-content>
+                <md-card-content>
+                                 <h3> Global Tariff Types: </h3>
+                                 <div layout-gt-sm="row">
+                                    <md-input-container>
+                                       <label>tariff types</label>
+                                       <md-select ng-model="project.resources.physical.secondary[selectedItem.label][dummy].global_tariff_type.tariff_type">
+                                          <md-option ng-repeat="val in tariffTypeOptions" value="{{val.name}}">{{val.name}}</md-option>
+                                       </md-select>
+                                    </md-input-container>
+                                 </div>
+                                 <div layout-gt-sm="row">
+                                    <md-input-container class="sm-block" flex-gt-sm>
+                                       <label>upper peak boundary ({{project.resources.physical.secondary[selectedItem.label][dummy].global_tariff_type.upper_peak_power_boundary.uom}})</label>
+                                       <input ng-model="project.resources.physical.secondary[selectedItem.label][dummy].global_tariff_type.upper_peak_power_boundary.val">
+                                    </md-input-container>
+                                    <md-input-container class="sm-block" flex-gt-sm>
+                                       <label>upper boundary cummulated energy ({{project.resources.physical.secondary[selectedItem.label][dummy].global_tariff_type.upper_boundary_cummulated_energy.uom}})</label>
+                                       <input ng-model="project.resources.physical.secondary[selectedItem.label][dummy].global_tariff_type.upper_boundary_cummulated_energy.val">
+                                    </md-input-container>
+                                 </div>
+                                 <div layout-gt-sm="row">
+                                    <md-input-container class="sm-block" flex-gt-sm>
+                                       <label>Base cost ({{project.resources.physical.secondary[selectedItem.label][dummy].global_tariff_type.base_cost.uom}})</label>
+                                       <input ng-model="project.resources.physical.secondary[selectedItem.label][dummy].global_tariff_type.base_cost.val">
+                                    </md-input-container>
+                                    <md-input-container class="sm-block" flex-gt-sm>
+                                       <label>Operational cost ({{project.resources.physical.secondary[selectedItem.label][dummy].global_tariff_type.operational_cost.uom}})</label>
+                                       <input ng-model="project.resources.physical.secondary[selectedItem.label][dummy].global_tariff_type.operational_cost.val">
+                                    </md-input-container>
+                                 </div>
+                              </md-card-content>
+            </md-card>
+         </div>
+      </div>
+   </span>
+</md-content>

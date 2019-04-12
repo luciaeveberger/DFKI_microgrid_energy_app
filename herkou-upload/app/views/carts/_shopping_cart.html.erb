@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-10 offset-md-1">
+    <% if !@order_item.nil? && @order_item.errors.any? %>
+        <div class="alert alert-danger">
+          <ul>
+            <% @order_item.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <% if @order_items.size == 0 %>
+        <p class="text-center">
+          There are no items in your shopping cart. Please <%= link_to "go back", licenses_path %> and add some items to
+          your cart.
+        </p>
+    <% else %>
+        <% @order_items.each do |order_item| %>
+            <%= render 'carts/cart_row', license: order_item.license, order_item: order_item, show_total: true, cart_view: true %>
+        <% end %>
+        <div class="col-xs-12">
+          <%= link_to "Continue", order_confirmations_show_path, class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+  </div>
+</div>

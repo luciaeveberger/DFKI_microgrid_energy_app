@@ -1,0 +1,181 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+
+      <h3>User information</h3>
+      <div class="row">
+
+        <div class="col-md-4">
+          <b>Name</b>
+        </div>
+        <div class="col-md-8">
+          <%= @user.full_name %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <b>Email</b>
+        </div>
+        <div class="col-md-8">
+          <%= @user.email %>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-4">
+          <b>Address</b>
+        </div>
+        <div class="col-md-8">
+          <%= @user.address %>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-4">
+          <b>country</b>
+        </div>
+        <div class="col-md-8">
+          <%= @user.country %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <b>Postal Code</b>
+        </div>
+        <div class="col-md-8">
+          <%= @user.zip %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <b>City</b>
+        </div>
+        <div class="col-md-8">
+          <%= @user.city %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <b>Phone</b>
+        </div>
+        <div class="col-md-8">
+          <%= @user.phone %>
+        </div>
+      </div>
+
+    </div>
+
+    <% if @user.organization.present? %>
+        <div class="col-md-6">
+          <h3>Organization information</h3>
+          <div class="row">
+
+            <div class="col-md-4">
+              <b>Org. name</b>
+            </div>
+            <div class="col-md-8">
+              <%= @user.organization.name %>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-4">
+              <b>Address</b>
+            </div>
+            <div class="col-md-8">
+              <%= @user.organization.address %>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-4">
+              <b>Country</b>
+            </div>
+            <div class="col-md-8">
+              <%= @user.organization.country %>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-4">
+              <b>City</b>
+            </div>
+            <div class="col-md-8">
+              <%= @user.organization.city %>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-4">
+              <b>Postal Code</b>
+            </div>
+            <div class="col-md-8">
+              <%= @user.organization.zip %>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-md-4">
+              <b>Phone</b>
+            </div>
+            <div class="col-md-8">
+              <%= @user.organization.phone %>
+            </div>
+          </div>
+
+        </div>
+    <% else %>
+
+        <div class="col-md-6">
+          <h3>Organization information</h3>
+          <div class="row">
+            <div class="col-md-12">
+
+              -
+            </div>
+          </div>
+        </div>
+    <% end %>
+
+
+    <div class="col-md-6 offset-md-6">
+      <h3>Payment information</h3>
+      <div class="row">
+        <div class="col-md-4">
+          <b>Depositor</b>
+        </div>
+        <div class="col-md-8">
+          <%= @user.depositor %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <b>IBAN</b>
+        </div>
+        <div class="col-md-8">
+          <%= @user.iban %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <b>BIC</b>
+        </div>
+        <div class="col-md-8">
+          <%= @user.bic %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

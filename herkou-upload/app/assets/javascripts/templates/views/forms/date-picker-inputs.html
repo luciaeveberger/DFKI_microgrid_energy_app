@@ -1,0 +1,245 @@
+<md-card-content>
+<md-tabs md-dynamic-height md-border-bottom>
+   <md-tab label="single element">
+      <md-card-content>
+         <div layout="row">
+            <div flex="30">
+               <div layout="row">
+                  <div flex>
+                     <md-input-container  class="sm-block" flex-gt-sm>
+                        <label>name</label>
+                        <input ng-model="chart.name">
+                     </md-input-container>
+                  </div>
+                  <div flex>
+                     <md-input-container  class="sm-block" flex-gt-sm>
+                        <label>description</label>
+                        <input ng-model="chart.description">
+                     </md-input-container>
+                  </div>
+               </div>
+               <div layout="row">
+                  <div flex>
+                     <md-input-container  class="sm-block" flex-gt-sm>
+                        <label>period length</label>
+                        <md-select ng-model="project.resources.physical.primary.manual_definition.single_element.period_length">
+                           <md-optgroup label="interval">
+                              <md-option ng-repeat="period in possibleTimeIntervals" value="{{period}}">{{period}}</md-option>
+                           </md-optgroup>
+                        </md-select>
+                     </md-input-container>
+                     </md-input-container>
+                  </div>
+                  <div flex>
+                     <md-input-container  class="sm-block" flex-gt-sm>
+                        <label>time interval</label>
+                        <md-select ng-model="chart.chartInterval">
+                           <md-optgroup label="interval">
+                              <md-option ng-repeat="chartInterval in possibleIntervals" value="{{chartInterval}}">{{chartInterval}} minutes</md-option>
+                           </md-optgroup>
+                        </md-select>
+                     </md-input-container>
+                  </div>
+               </div>
+               <p> Template </p>
+               <div flex>
+                  <md-input-container  class="sm-block" flex-gt-sm>
+                     <label>time interval</label>
+                     <md-select ng-model="chart.chartInterval">
+                        <md-optgroup label="interval">
+                           <md-option ng-repeat="chartInterval in possibleIntervals" value="{{chartInterval}}">{{chartInterval}} minutes</md-option>
+                        </md-optgroup>
+                     </md-select>
+                  </md-input-container>
+               </div>
+               <div layout="row">
+                  <div flex>
+                     <md-input-container  class="sm-block" flex-gt-sm>
+                        <label>Scaling factor</label>
+                        <input ng-model="chart.scaling_factor">
+                     </md-input-container>
+                  </div>
+                  <div flex>
+                     <md-input-container  class="sm-block" flex-gt-sm>
+                        <label>Scaling offset</label>
+                        <input ng-model="chart.scaling_offset">
+                     </md-input-container>
+                  </div>
+               </div>
+                <div flex>
+                  <div>
+                     <md-button style="background: #aec7e8;" ng-click="updateSingleElementData(chart.chartInterval)"> Update single element filters </md-button>
+                     <md-button ng-click="addSingleResourcesToTotalResources(chart, manualDefSingleElementData[0], dummy)">add to total resources</md-button>
+                  </div>
+                </div>
+            </div>
+            <div flex="70">
+               <md-tabs md-dynamic-height md-border-bottom>
+                  <md-tab label="chart">
+                     <div flex="100">
+                         <div flex="100" ng-controller="manualDef">
+                             <div id="container"></div>
+                             <div id="drag"></div>
+                             <div id="drop"></div>
+                             <!--<nvd3 data="manualDefSingleElementData" options="manualchartOptions" style="width:100%;"></nvd3>-->
+                         </div>
+                     </div>
+                  </md-tab>
+                   <md-tab label='table'>
+                       <div flex="70">
+                           <md-subheader class="md-no-sticky">Update values ({{chart.chartInterval}} minutes) ({{manualDefSingleElementData[0]['values'][0][0] | date:'medium'}})</md-subheader>
+                           <md-card-content style="height: 300px; overflow-y: auto">
+                               <md-list-item class="secondary-button-padding" ng-repeat="val in manualDefSingleElementData[0]['values'] | orderBy: val[0] ">
+                                   <input ng-value="val[0]| date: 'h:mm:ss'"></p>
+                                   <span> <input ng-model="val[1]"> </span>
+                               </md-list-item>
+                           </md-card-content>
+                       </div>
+                   </md-tab>
+               </md-tabs>
+            </div>
+         </div>
+      </md-card-content>
+   </md-tab>
+   <md-tab label="total resources">
+         <md-card-content>
+            <h6 ng-if="project.resources.physical.primary.manual_definition.total_resources.length == 0 "> define single items to aggregate </h6>
+            <div layout="row" ng-if="project.resources.physical.primary.manual_definition.total_resources.length > 0"> <!--{{project.resources.physical.primary.manual_definition.total_resources}}-->
+              <div flex="50">
+                  <div flex>
+                         <div layout="row">
+                             <md-button style="background: #aec7e8;"> 3 days </md-button>
+                             <md-button style="background: #aec7e8;"> week </md-button>
+                            <md-button style="background: #aec7e8;"> month </md-button>
+                             <md-button ng-click="createMultipleItemsBody(example)"> plot </md-button>
+                        </div>
+
+                  </div>
+              </div>
+            </div>
+             <h1>  drag to set the points </h1>
+             <!--<div flex="100" ng-controller="manualDef">-->
+                 <!--<div id="container"</div>-->
+                 <!--<div id="drag"></div>-->
+                 <!--<div id="drop"></div>-->
+                 <!--&lt;!&ndash;<nvd3 data="manualDefSingleElementData" options="manualchartOptions" style="width:100%;"></nvd3>&ndash;&gt;-->
+             <!--</div>-->
+
+             <!--<div layout="row" flex="100" ng-if="project.resources.physical.primary.manual_definition.total_resources.length > 0">-->
+                    <!--<div class="col-xs-8">-->
+                        <!--<h3> defined options: </h3>-->
+                        <!--<md-list>-->
+                            <!--<md-list-item class="md-2-line" ui-on-Drop="onDrop($event,$data,men)">-->
+                                <!--<ul>-->
+                                    <!--<li ui-draggable="true" drag="man"-->
+                                        <!--on-drop-success="dropSuccessHandler($event,$index,men)"-->
+                                        <!--ng-repeat="man in men track by $index">-->
+                                        <!--{{man}}-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            <!--</md-list-item>-->
+                        <!--</md-list>-->
+                    <!--</div>-->
+                    <!--<div class="col-xs-8">-->
+                        <!--<h3> active options: </h3>-->
+                        <!--<ul ui-on-Drop="onDrop($event,$data,women)" style="height:200px;">-->
+                            <!--<li ui-draggable="true" drag="woman"-->
+                                <!--on-drop-success="dropSuccessHandler($event,$index,women)"-->
+                                <!--ng-repeat="woman in women track by $index">-->
+                                <!--{{woman}}-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+             <!--</div>-->
+
+             <div flex="100" ng-if="showMultiple">
+                 <nvd3 data="plottedMultiples" options="manualchartOptions" style="width:100%;"></nvd3>
+             </div>
+             <!--<div class="row">-->
+                 <!--<div class="col-xs-6">-->
+                     <!--<ul ui-on-Drop="onDrop($event,$data,men)">-->
+                         <!--<li ui-draggable="true" drag="man"-->
+                             <!--on-drop-success="dropSuccessHandler($event,$index,men)"-->
+                             <!--ng-repeat="man in men track by $index">-->
+                             <!--{{man}}-->
+                         <!--</li>-->
+                     <!--</ul>-->
+                 <!--</div>-->
+                 <!--<div class="col-xs-6"> {{women}}-->
+                     <!--<ul ui-on-Drop="onDrop($event,$data,women)">-->
+                         <!--<li ui-draggable="true" drag="woman"-->
+                             <!--on-drop-success="dropSuccessHandler($event,$index,women)"-->
+                             <!--ng-repeat="woman in women track by $index">-->
+                             <!--{{woman}}-->
+                         <!--</li>-->
+                     <!--</ul>-->
+                 <!--</div>-->
+             <!--</div>-->
+
+             <!--<div class="row">-->
+                 <!--<div class="col-xs-6">aaa {{men}}-->
+                     <!--<ul ui-on-Drop="onDrop($event,$data,men)">-->
+                         <!--<li ui-draggable="true" drag="example"-->
+                             <!--on-drop-success="dropSuccessHandler($event,$index,men)"-->
+                             <!--ng-repeat="example in project.resources.physical.primary.manual_definition.total_resources track by $index">-->
+                             <!--{{example.name}} {{$index}}-->
+                         <!--</li>-->
+                     <!--</ul>-->
+                 <!--</div>-->
+                 <!--<div class="col-xs-6">-->
+                     <!--<ul ui-on-Drop="onDrop($event,$data,women)">-->
+                         <!--<li ui-draggable="true" drag="woman"-->
+                             <!--on-drop-success="dropSuccessHandler($event,$index,women)"-->
+                             <!--ng-repeat="example in project.resources.physical.primary.manual_definition.total_resources track by $index">-->
+                             <!--{{example.name}} {{$index}}-->
+                         <!--</li>-->
+                     <!--</ul>-->
+                 <!--</div>-->
+             <!--</div>-->
+                  <!--<div flex>-->
+                     <!--<md-input-container>-->
+                        <!--<label>chart element</label>-->
+                        <!--<md-select ng-model="chart.chartElement">-->
+                           <!--<md-optgroup label="label">-->
+                              <!--<md-option ng-repeat="value in project.resources.physical.primary.manual_definition.total_resources track by $index" value="{{value}}">{{value.id}} {{value.name}}</md-option>-->
+                           <!--</md-optgroup>-->
+                        <!--</md-select>-->
+                     <!--</md-input-container>-->
+                  <!--</div>-->
+                  <!--<div flex>-->
+                     <!--<md-input-container>-->
+                        <!--<label>select start</label>-->
+                        <!--<md-datepicker  md-hide-icons="calendar" ng-model="chart.startDate" md-placeholder="Enter date"></md-datepicker>-->
+                     <!--</md-input-container>-->
+                  <!--</div>-->
+                  <!--<div flex>-->
+                     <!--<div>-->
+                        <!--<md-button  flex style="background: #aec7e8;" ng-click="updateFilters(chart.chartInterval)"> Update filters </md-button>-->
+                     <!--</div>-->
+                   <!--</div>-->
+               <!--</div>-->
+               <!--<div flex="70">-->
+
+                  <!--<md-tabs md-dynamic-height md-border-bottom>-->
+                     <!--<md-tab label='table'>-->
+                        <!--<div flex="70">-->
+                           <!--<md-subheader class="md-no-sticky">Update values ({{chart.chartInterval}} minutes) ({{manualDefData[0]['values'][0][0] | date:'medium'}})</md-subheader>-->
+                           <!--<md-card-content style="height: 300px; overflow-y: auto">-->
+                              <!--<md-list-item class="secondary-button-padding" ng-repeat="val in manualDefData[0]['values'] | orderBy: val[0] ">-->
+                                 <!--<input ng-value="val[0]| date: 'h:mm:ss'"></p>-->
+                                 <!--<span> <input ng-model="val[1]"> </span>-->
+                              <!--</md-list-item>-->
+                           <!--</md-card-content>-->
+                        <!--</div>-->
+                     <!--</md-tab>-->
+                     <!--<md-tab label="chart">-->
+                        <!--<div flex="60">-->
+                           <!--<nvd3 data="manualDefData" options="manualchartOptions" style="width:80%;"></nvd3>-->
+                        <!--</div>-->
+                     <!--</md-tab>-->
+                  <!--</md-tabs>-->
+               <!--</div>-->
+         </md-card-content>
+      </md-tab>
+</md-tabs>
+</md-card-content>

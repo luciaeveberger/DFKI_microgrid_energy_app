@@ -1,0 +1,120 @@
+<!-- Sidebar -->
+<div class="sidebar project-sidebar" ng-init="primarySidebar=true" >
+   <div ng-show="primarySidebar" class="primary-sidebar">
+      <div class="sidebar-content container-fluid">
+         <div class="row">
+            <div class="col-md-12">
+                <div class ="navbar-brand"> </div>
+               <h1><md-button ng-click="primarySidebar=!primarySidebar"> See Project Canvas</md-button></h1>
+            </div>
+         </div>
+      </div>
+      <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+         <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+      </div>
+   </div>
+   <div ng-hide="primarySidebar" class="secondary-sidebar">
+      <div hidden-sidebar></div>
+      <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+         <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+      </div>
+   </div>
+</div>
+<!-- Page -->
+<div class="page-wrapper">
+      <div imode-project-tab></div>
+      <div class="project-container project-overview">
+         <md-content class="md-padding" layout-xs="column" layout="row" style="background-color:white;" >
+            <div flex="70" layout="column">
+               <md-card>
+                   <md-toolbar class="md-tabs-fill">
+                       <div class="md-toolbar-tools">
+                          Add Project
+                           <span flex></span>
+                           <md-button class="md-raised"  style="" ng-click="saveDetails()">
+                               save
+                           </md-button>
+                       </div>
+                   </md-toolbar>
+                       <md-tabs md-dynamic-height md-border-bottom>
+                           <md-tab label="search by location">
+                               <md-content class="md-padding inner-md-padding">
+                                   <md-input-container class="md-block" flex-gt-sm style="margin:0px;">
+                                       <input places-auto-complete types="['geocode']" on-place-changed="placeMarker()" />
+                                   </md-input-container>
+                               </md-content>
+                           </md-tab>
+                           <md-tab label="search by coordinates">
+                               <md-content class="md-padding inner-md-padding">
+                                   <div layout-gt-sm="row">
+                                       <md-input-container class="md-block" flex-gt-sm style="margin:0px;">
+                                           <input ng-model="coordinates" placeholder="enter coordinates" style="font-weight:100px;"/>
+                                       </md-input-container>
+                                       <div flex-gt-sm>
+                                           <md-button ng-click="geoMarker()">
+                                               search
+                                           </md-button>
+                                       </div>
+                                   </div>
+                               </md-content>
+                           </md-tab>
+                       </md-tabs>
+                   <ng-map id="mapa" center="{{center}}" zoom="5" on-click="getpos($event)" style='width: 100% !important;height:250px;'>
+                       <marker position="{{latlng}}" on-dragend="getpos($event)" animation="DROP" draggable="true"></marker>
+                   </ng-map>
+                   <md-card-content>
+                     <div layout-gt-sm="row">
+                        <md-input-container class="md-block" flex-gt-sm>
+                           <label>Project Author</label>
+                           <input ng-model="project.author">
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                           <label>Project Title</label>
+                           <input ng-model="project.title">
+                        </md-input-container>
+                     </div>
+                      <div layout-gt-sm="row">
+                         <md-input-container class="md-block"  flex-gt-sm>
+                            <label>Project Description</label>
+                            <input ng-model="project.description">
+                         </md-input-container>
+
+                      </div>
+                  </md-card-content>
+               </md-card>
+            </div>
+            <div flex-xs flex-gt-xs="25" layout="column">
+               <md-card>
+                  <md-card-content>
+                      <h4 style="text-align: center; text-transform: uppercase;"> my settings </h4>
+                      <md-content class="md-padding inner-md-padding">
+                          <md-input-container class="md-block" flex-gt-sm>
+                              <label>Project Life Time <strong> [ {{project.system.generalEconomicFigures.project_lifetime.uom}} ] </strong> </label>
+                              <input type="text" ng-model="project.system.generalEconomicFigures.project_lifetime.val"  ng-pattern="onlyNumbers">
+                          </md-input-container>
+
+                      <md-input-container class="md-block" flex-gt-sm>
+                          <label>Main Energy Domain </label>
+                          <md-select ng-model="project.system.energyDomain[0].domain.type_name">
+                              <md-option ng-repeat="value in nodesAttachmentOptions track by $index" value="{{value}}"> {{value}}</md-option>
+                          </md-select>
+                      </md-input-container>
+                      <md-input-container class="md-block" flex-gt-sm>
+                          <label>Inflation Rate in <strong> [{{project.system.generalEconomicFigures.rates.inflation_rate.uom}} ] </strong></label>
+                          <input ng-model="project.system.generalEconomicFigures.rates.inflation_rate.val" ng-pattern="onlyNumbers">
+                      </md-input-container>
+                      <md-input-container class="md-block" flex-gt-sm>
+                          <label>Discount Rate in <strong> [ {{project.system.generalEconomicFigures.rates.real_discount_rate.uom}}] </strong></label>
+                          <input ng-model="project.system.generalEconomicFigures.rates.real_discount_rate.val" ng-pattern="onlyNumbers">
+                      </md-input-container>
+                  </md-card-content>
+                  <md-card-actions layout="row" layout-align="end center">
+                     <md-button class="button-red"> Reset to defaults</md-button>
+                  </md-card-actions>
+               </md-content>
+
+               </md-card>
+            </div>
+         </md-content>
+      </div>
+   </div>

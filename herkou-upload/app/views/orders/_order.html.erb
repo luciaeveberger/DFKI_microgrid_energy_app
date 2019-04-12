@@ -1,0 +1,39 @@
+<h4>Order from <%= order.updated_at.localtime.to_formatted_s(:long) %></h4>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="btn-group pull-right" role="group" aria-label="">
+      <% if current_user.admin? && !order.active? %>
+          <%= link_to 'Confirm account transaction', admin_orders_confirm_account_transaction_path(order_id: order.id), method: :post, class: 'btn btn-success' %>
+      <% end %>
+      <%= link_to 'Show PDF', order_path(order, format: :pdf), class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>
+<div>
+  Order Status: <strong><i><%= order.status %></i></strong>
+</div>
+<table class="table table-hover">
+  <thead class="thead-inverse">
+  <tr>
+    <th>License ID</th>
+    <th>License Title</th>
+    <th>Price</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% order.order_items.each do |order_item| %>
+      <tr>
+        <th scope="row"><%= order_item.license_id %></th>
+        <td><%= order_item.license_title %></td>
+        <td><%= number_to_currency  order_item.total_price %></td>
+      </tr>
+  <% end %>
+  <tr>
+    <th scope="row"><strong>Total price</strong></th>
+    <td></td>
+    <td><strong><%= number_to_currency order.subtotal %></strong></td>
+  </tr>
+  </tbody>
+</table>
+<hr>

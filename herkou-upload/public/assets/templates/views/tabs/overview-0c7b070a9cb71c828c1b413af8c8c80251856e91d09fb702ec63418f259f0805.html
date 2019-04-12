@@ -1,0 +1,81 @@
+<!-- Sidebar -->
+<div class="sidebar project-sidebar" ng-init="primarySidebar=true" >
+
+    <div ng-show="primarySidebar" class="primary-sidebar">
+
+        <div class="sidebar-content container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>New project</h1>
+                    <p style="color:white"> Add project details in the form</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+            <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+        </div>
+
+    </div>
+
+    <div ng-hide="primarySidebar" class="secondary-sidebar">
+
+        <div hidden-sidebar></div>
+
+        <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+            <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+        </div>
+    </div>
+
+</div>
+
+<!-- Page -->
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div imode-project-tab></div>
+
+        <div class="project-container project-overview">
+
+            <div class="row top-15">
+                <div class="col-md-5">
+                    <form>
+                        <div class="form-group">
+                            <label>Project Name</label> 
+                            <input type="input"
+                                   class="form-control"
+                                   ng-model="project.title">
+                        </div>
+
+                        <div class="form-group"> 
+                            <label>Author</label>
+                            <input type="input"
+                                   class="form-control"
+                                   ng-model="project.author">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control"
+                                      rows="5"
+                                      ng-model="project.description">
+                            </textarea>
+                        </div>
+                        <md-button class="md-raised md-primary" ng-click="submitProject(project)"> Next</md-button>
+                    </form>
+
+                </div>
+                <div class="col-md-7">
+                    <label>Location</label>
+                    <ng-map center="{{project.coordinates}}" zoom="5">
+                        <marker position="{{project.coordinates}}" draggable="true" on-dragend="getCurrentLocation()"></marker>
+                    </ng-map>
+                    <p>Position: {{project.coordinates}}</p>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,247 @@
+<div id="system-tab">
+    <!-- Sidebar -->
+    <div class="sidebar project-sidebar" ng-init="primarySidebar=true" >
+
+        <div ng-show="primarySidebar" class="primary-sidebar">
+
+            <div class="sidebar-content container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>System</h3>
+                        <p> Select variables for system </p>
+
+                       <div class="top-20">
+                            <div ng-repeat="t in systemTabs" class="sidebar-menu">
+
+                                <button class="btn btn-block"
+                                        ng-click="sidebarTabToggle(t)"
+                                        ng-style="{'background-color': t.color}">
+                                    {{t.label}}
+                                    <span class="pull-left">
+                                    <span ng-show="!t.showItems" class="glyphicon glyphicon-triangle-top"></span>
+                                    <span ng-show="t.showItems" class="glyphicon glyphicon-triangle-bottom"></span>
+                                </span>
+                                </button>
+
+                                <div ng-show="!t.showItems" class="sidebar-items">
+                                    <ul>
+                                        <li ng-repeat="i in t.items"
+                                            ng-class="{selected:isItemSelected(i)}"
+                                            class="{{i.cssClass}}">
+
+                                            <a href
+                                               ng-click="selectItem(i)"
+                                               ng-show="i.enabled">
+                                                <div ng-include="i.icon"
+                                                     class="component-type-icon"></div>
+                                                {{i.label}}
+                                            </a>
+                                            <s ng-hide="i.enabled">{{i.label}}</s>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+                <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+            </div>
+
+        </div>
+
+        <div ng-hide="primarySidebar" class="secondary-sidebar">
+
+            <div hidden-sidebar></div>
+
+            <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+                <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Page -->
+    <div class="page-wrapper">
+        <div class="container-fluid">
+            <div imode-project-tab></div>
+
+            <div class="project-container top-10">
+                <div ng-if="selectedItem.id == 'systemNodes'" class="row">
+                    <!-- LEFT PAGE -->
+                    <div class="col-md-3">
+
+                        <!-- NEW NODES -->
+                        <div>
+                            <label>
+                                Define system nodes
+                            </label>
+                            <button class="btn btn-default btn-block turquoise"
+                                    ng-click="createNode()">
+                                Create new node
+                            </button>
+                        </div>
+
+                        <!-- EDIT NODES -->
+                        <div  class="top-30 nodes-list">
+                            <label>
+                                Edit existing nodes
+                            </label>
+                            <ul>
+                                <li ng-repeat="n in nodes"
+                                    ng-class="{selected:n.id == selectedNode.id}">
+                                    <a href ng-click="selectNode(n)">{{n.name}}</a>
+                                </li>
+                            </ul>
+                            <md-button class="md-raised md-primary" ng-click="submitProject(project)"> Next</md-button>
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT PAGE -->
+                    <div ng-repeat="n in nodes"
+                         ng-if="n.id==selectedNode.id"
+                         class="col-md-8 system-node-details">
+
+                        <!-- NAME AND DESCRIPTION -->
+                        <div class="row">
+
+                            <form class="col-md-6">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text"
+                                           class="form-control input-sm"
+                                           ng-model="n.name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Description / notes</label>
+                                    <textarea class="form-control"
+                                              rows="2"
+                                              ng-model="n.description">
+                                </textarea>
+                                </div>
+                            </form>
+
+                            <div ng-if="!n.defaultNode"class="col-md-6 text-right top-15">
+                                <button class="btn btn-danger" ng-click="deleteNode(n)">
+                                    Delete this node <span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- NAV TAB -->
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <ul class="nav nav-tabs">
+                                    <li ng-repeat="t in systemNodesTabs"
+                                        ng-class="{active:showSystemNodesTab(t.id)}">
+                                        <a href ng-click="selectSystemNodesTab(t)">
+                                            {{t.label}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- TAB CONTENT -->
+                        <div class="row top-20">
+                            <div class="tab-content col-md-12">
+
+                                <!-- TAB POSITION -->
+                                <div role="tabpanel"
+                                     ng-class="{active:showSystemNodesTab('position')}"
+                                     class="tab-pane">
+
+                                    <!-- Distance to reference node -->
+                                    <form class="form-horizontal">
+                                        <h4>Distance to reference node</h4>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">East - west</label>
+                                            <div class="col-md-3">
+                                                <input type="text"
+                                                       class="form-control"
+                                                       ng-model="n.position.distanceToDefault.eastWest">
+                                            </div>
+                                            <span class="help-block">m</span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">North - south</label>
+                                            <div class="col-md-3">
+                                                <input type="text"
+                                                       class="form-control"
+                                                       ng-model="n.position.distanceToDefault.northSouth">
+                                            </div>
+                                            <span class="help-block">m</span>
+                                        </div>
+                                    </form>
+
+                                    <!-- Length of connections -->
+                                    <form class="form-horizontal">
+                                        <h4>Length of connections</h4>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">To node</label>
+                                            <div class="col-md-3">
+                                                <select class="form-control"
+                                                        ng-model="lengthToNode"
+                                                        ng-options="ns.name for ns in getOthersNodes()">
+                                                </select>
+                                            </div>
+                                            <span class="help-block"></span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Factor</label>
+                                            <div class="col-md-3">
+                                                <input type="text"
+                                                       class="form-control"
+                                                       ng-model="n.lengthOfConnections[lengthToNode.id]"
+                                                       ng-change="lengthToNode.lengthOfConnections[n.id]=n.lengthOfConnections[lengthToNode.id]">
+                                            </div>
+                                            <span class="help-block">times the length of linear distance</span>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <!-- TAB BUSES -->
+                                <div role="tabpanel"
+                                     ng-class="{active:showSystemNodesTab('buses')}"
+                                     class="tab-pane">
+
+                                    <!-- Buses -->
+                                    <form class="form-horizontal">
+                                        <h4>Select available buses (Domains)</h4>
+                                        <div class="form-group  top-20">
+                                            <label class="col-md-10">
+                                                <input type="checkbox"
+                                                       ng-model="n.buses.electric">
+                                                Electrical
+                                            </label>
+                                            <label class="col-md-10">
+                                                <input type="checkbox"
+                                                       ng-model="n.buses.heat">
+                                                Heat
+                                            </label>
+                                            <label class="col-md-10">
+                                                <input type="checkbox"
+                                                       ng-model="n.buses.cooling">
+                                                Cooling
+                                            </label>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

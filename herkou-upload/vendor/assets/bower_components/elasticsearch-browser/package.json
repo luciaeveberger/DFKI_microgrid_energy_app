@@ -1,0 +1,92 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "elasticsearch-browser@^12.0.0-rc2",
+        "scope": null,
+        "escapedName": "elasticsearch-browser",
+        "name": "elasticsearch-browser",
+        "rawSpec": "^12.0.0-rc2",
+        "spec": ">=12.0.0-rc2 <13.0.0",
+        "type": "range"
+      },
+      "/Users/luciaeve/dev/elasticsearch-angular-example"
+    ]
+  ],
+  "_from": "elasticsearch-browser@>=12.0.0-rc2 <13.0.0",
+  "_id": "elasticsearch-browser@12.1.3",
+  "_inCache": true,
+  "_location": "/elasticsearch-browser",
+  "_nodeVersion": "6.9.1",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/elasticsearch-browser-12.1.3.tgz_1481745325789_0.06430548708885908"
+  },
+  "_npmUser": {
+    "name": "spalger",
+    "email": "email@spalger.com"
+  },
+  "_npmVersion": "3.10.8",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "elasticsearch-browser@^12.0.0-rc2",
+    "scope": null,
+    "escapedName": "elasticsearch-browser",
+    "name": "elasticsearch-browser",
+    "rawSpec": "^12.0.0-rc2",
+    "spec": ">=12.0.0-rc2 <13.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/elasticsearch-browser/-/elasticsearch-browser-12.1.3.tgz",
+  "_shasum": "fb3ba8d3c2ce54bfd6042e7a462ceeade733f30b",
+  "_shrinkwrap": null,
+  "_spec": "elasticsearch-browser@^12.0.0-rc2",
+  "_where": "/Users/luciaeve/dev/elasticsearch-angular-example",
+  "author": {
+    "name": "Spencer Alger",
+    "email": "spencer@spenceralger.com"
+  },
+  "bugs": {
+    "url": "https://github.com/elasticsearch/bower-elasticsearch-js/issues"
+  },
+  "dependencies": {},
+  "description": "The official low-level Elasticsearch client, for use in the browser.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "fb3ba8d3c2ce54bfd6042e7a462ceeade733f30b",
+    "tarball": "https://registry.npmjs.org/elasticsearch-browser/-/elasticsearch-browser-12.1.3.tgz"
+  },
+  "gitHead": "6ffce208e91b4db65cdf84524e8086e868cd98fc",
+  "homepage": "https://github.com/elasticsearch/bower-elasticsearch-js",
+  "license": "Apache 2.0",
+  "main": "elasticsearch.js",
+  "maintainers": [
+    {
+      "name": "lukasolson",
+      "email": "olson.lukas@gmail.com"
+    },
+    {
+      "name": "spalger",
+      "email": "email@spalger.com"
+    },
+    {
+      "name": "tylersmalley",
+      "email": "tylersmalley@me.com"
+    }
+  ],
+  "name": "elasticsearch-browser",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/elasticsearch/bower-elasticsearch-js.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "12.1.3"
+}

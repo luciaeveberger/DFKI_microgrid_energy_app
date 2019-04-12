@@ -1,0 +1,7 @@
+<% @user.license_codes.each do |license_code| %>
+    <tr>
+      <th scope="row"><%= license_code.title %></th>
+      <td><%= license_code.code %></td>
+      <td><%= license_code.expiration_date.nil? ? '-' : license_code.expiration_date.localtime.to_formatted_s(:long) %></td>
+    </tr>
+<% end %>

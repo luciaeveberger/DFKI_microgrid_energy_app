@@ -1,0 +1,14 @@
+<%= simple_form_for(@projects) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :user_id, as: :hidden, value: current_user.id %>
+    <%= f.input :name %>
+    <%= f.input :author %>
+    <%= f.input :description %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

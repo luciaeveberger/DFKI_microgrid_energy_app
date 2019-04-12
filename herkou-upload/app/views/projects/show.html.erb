@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @project.title %>
+</p>
+<p>
+  <strong>Author:</strong>
+  <%= @project.author %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @project.description %>
+</p>
+<p>
+  <strong>Coordinates</strong>
+  <%= @project.coordinates %>
+</p>
+<p>
+  <strong>User id </strong>
+  <%= @project.user_id %>
+</p>
+
+
+
+<%= link_to 'Back', projects_path %>

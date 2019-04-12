@@ -1,0 +1,123 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+
+      <h2><%= @user.full_name %></h2>
+    </div>
+    <div class="col-md-6">
+      <%= link_to 'Edit', edit_user_path(@user), class: 'pull-right btn btn-primary' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-6">
+        <h4>User information</h4>
+        <table>
+          <div class="col-md-12">
+            <tr>
+              <td><b>Email</b></td>
+              <td><%= @user.email %></td>
+            </tr>
+            <tr>
+              <td><b>Address</b></td>
+              <td><%= @user.address %></td>
+            </tr>
+            <tr>
+              <td><b>Country</b></td>
+              <td><%= @user.country %></td>
+            </tr>
+            <tr>
+              <td><b>City</b></td>
+              <td><%= @user.city %></td>
+            </tr>
+            <tr>
+              <td><b>Postal Code</b></td>
+              <td><%= @user.zip %></td>
+            </tr>
+            <tr>
+              <td><b>Phone</b></td>
+              <td><%= @user.phone %></td>
+            </tr>
+            <tr>
+              <td><b>Depositor</b></td>
+              <td><%= @user.depositor %></td>
+            </tr>
+            <tr>
+              <td><b>IBAN</b></td>
+              <td><%= @user.iban %></td>
+            </tr>
+            <tr>
+              <td><b>BIC</b></td>
+              <td><%= @user.bic %></td>
+            </tr>
+          </div>
+        </table>
+      </div>
+      <% if @user.organization.present? %>
+          <div class="col-md-6">
+            <h4>Organization information</h4>
+            <table>
+              <div class="col-md-12">
+                <tr>
+                  <td><b>Name</b></td>
+                  <td><%= @user.organization.name %></td>
+                </tr>
+                <tr>
+                  <td><b>Address</b></td>
+                  <td><%= @user.organization.address %></td>
+                </tr>
+                <tr>
+                  <td><b>Country</b></td>
+                  <td><%= @user.organization.country %></td>
+                </tr>
+                <tr>
+                  <td><b>City</b></td>
+                  <td><%= @user.organization.city %></td>
+                </tr>
+                <tr>
+                  <td><b>Postal Code</b></td>
+                  <td><%= @user.organization.zip %></td>
+                </tr>
+                <tr>
+                  <td><b>Phone</b></td>
+                  <td><%= @user.organization.phone %></td>
+                </tr>
+              </div>
+            </table>
+          </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Active licenses</h3>
+      <% if @user.license_codes.present? %>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table table-hover">
+                  <thead class="thead-inverse">
+                  <tr>
+                    <th>License Title</th>
+                    <th>License Code</th>
+                    <th>Expiration Date</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <%= render 'users/license_code', collection: @user.license_codes %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+      <% else %>
+          <p class="text-center">
+            Sorry, you do not own any license. Please <%= link_to "go back", licenses_path %> and add a license to
+            your cart.
+          </p>
+      <% end %>
+    </div>
+  </div>
+</div>

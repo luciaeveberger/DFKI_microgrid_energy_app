@@ -1,0 +1,139 @@
+<div class="container">
+  <div class="row">
+    <h2>Edit profile</h2>
+    <div class="col-md-6 offset-md-3">
+      <%= form_for(@user) do |f| %>
+
+          <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#user" role="tab">User information</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#organization" role="tab">Organization</a>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane active" id="user" role="tabpanel">
+              <br>
+              <div class="form-group row">
+                <%= f.label :email, class: 'col-md-3 col-form-label' %>
+                <div class="col-md-9">
+                  <%= f.email_field :email, class: 'form-control', disabled: true %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <%= f.label :first_name, class: 'col-md-3 col-form-label' %>
+                <div class="col-md-9">
+                  <%= f.text_field :first_name, class: 'form-control' %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <%= f.label :last_name, class: 'col-md-3 col-form-label' %>
+                <div class="col-md-9">
+                  <%= f.text_field :last_name, class: 'form-control' %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <%= f.label :address, class: 'col-md-3 col-form-label' %>
+                <div class="col-md-9">
+                  <%= f.text_field :address, class: 'form-control' %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <%= f.label :country, class: 'col-md-3 col-form-label' %>
+                <div class="col-md-9">
+                  <%= f.text_field :country, class: 'form-control' %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <%= f.label :city, class: 'col-md-3 col-form-label' %>
+                <div class="col-md-9">
+                  <%= f.text_field :city, class: 'form-control' %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <%= f.label :zip, class: 'col-md-3 col-form-label' %>
+                <div class="col-md-9">
+                  <%= f.text_field :zip, class: 'form-control' %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <%= f.label :phone, class: 'col-md-3 col-form-label' %>
+                <div class="col-md-9">
+                  <%= f.text_field :phone, class: 'form-control' %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <%= f.label :depositor, class: 'col-md-3 col-form-label' %>
+                <div class="col-md-9">
+                  <%= f.text_field :depositor, class: 'form-control' %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <%= f.label :iban, class: 'col-md-3 col-form-label' %>
+                <div class="col-md-9">
+                  <%= f.text_field :iban, class: 'form-control' %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <%= f.label :bic, class: 'col-md-3 col-form-label' %>
+                <div class="col-md-9">
+                  <%= f.text_field :bic, class: 'form-control' %>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="organization" role="tabpanel">
+              <br>
+              <%= f.fields_for :organization do |organization_f| %>
+                  <div class="form-group row">
+                    <%= organization_f.label :name, class: 'col-md-3 col-form-label' %>
+                    <div class="col-md-9">
+                      <%= organization_f.text_field :name, class: 'form-control' %>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <%= organization_f.label :address, class: 'col-md-3 col-form-label' %>
+                    <div class="col-md-9">
+                      <%= organization_f.text_field :address, class: 'form-control' %>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <%= organization_f.label :country, class: 'col-md-3 col-form-label' %>
+                    <div class="col-md-9">
+                      <%= organization_f.text_field :country, class: 'form-control' %>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <%= organization_f.label :city, class: 'col-md-3 col-form-label' %>
+                    <div class="col-md-9">
+                      <%= organization_f.text_field :city, class: 'form-control' %>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <%= organization_f.label :zip, class: 'col-md-3 col-form-label' %>
+                    <div class="col-md-9">
+                      <%= organization_f.text_field :zip, class: 'form-control' %>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <%= organization_f.label :phone, class: 'col-md-3 col-form-label' %>
+                    <div class="col-md-9">
+                      <%= organization_f.text_field :phone, class: 'form-control' %>
+                    </div>
+                  </div>
+              <% end %>
+
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <%= f.submit "Update", class: 'btn btn-primary' %>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

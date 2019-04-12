@@ -1,0 +1,16 @@
+{
+  "name": "dsl-generated-dependencies",
+  "dependencies": {
+    "angular": "latest",
+    "angular-route": "latest",
+    "angular-bootstrap": "latest",
+    "angular-resource": "latest",
+    "ngmap": "latest",
+    "angular-animate": "latest",
+    "angular-file-saver": "latest",
+    "angular-nvd3": "latest",
+    "angular-material": "latest",
+    "elasticsearch":"lastest",
+    "bootstrap-sass-official": "latest"
+  }
+}

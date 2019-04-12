@@ -1,0 +1,78 @@
+<!-- Sidebar -->
+<div class="sidebar" style="border-right:1px lightgray solid;">
+    <div class="container-fluid">
+        <div class="row">
+            <div ng-controller="RapidSelectionCtrl" ng-cloak>
+                <h4>Rapid Selection</h4>
+                <md-button ng-repeat="p in userProjects track by $index" ng-click="openProject(p.id)" >{{p.title}}</md-button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page Content -->
+<div class="page-wrapper">
+   <div class="container-fluid">
+      <md-content class="md-padding tab-background"" layout-xs="column" layout="row">
+         <div flex="100" layout="column">
+            <md-card style="height: 300px;">
+               <md-toolbar md-scroll-shrink class="md-tabs-fill">
+                  <div class="md-toolbar-tools">
+                     My Project 
+                     <!--      <md-truncate style="position: absolute; left: 10px; right: 170px; top: 13px; bottom: 13px;">Projects</md-truncate> -->
+                     <span flex></span>
+                     <md-button class="md-raised"  ng-click="newProject()">
+                        new
+                     </md-button>
+                     <label class="md-button md-raised" >
+                     Open <input type="file"
+                        file-select="text"
+                        file-loaded="importProjectSuccess($file)"
+                        file-error="importProjectError($error)"
+                        file-progress="importProjectProgress($total, $loaded)"
+                        style="display: none;">
+                     </label>
+                     <!--   <md-button class="md-raised">
+                        Open
+                        </md-button> -->
+                  </div>
+               </md-toolbar>
+               <md-card-content style="height: 200px; overflow-y: auto">
+                  <div layout="row" ng-controller="RapidSelectionCtrl"  ng-cloak>
+                     <div flex>
+                        <md-list-item class="md-3-line" ng-repeat="p in userProjects track by $index" style="border-bottom: 1px solid #ddd !important;">
+                           <div class="md-list-item-text" style="margin-top: 20px !important;">
+                              <h3 style="margin-top: 0px !important;font-weight:800;font-size:11px; margin-bottom: 0px !important;">{{p.title}} </h3>
+                              <h4 style="margin-top: 0px !important;margin-bottom: 0px !important;font-size:11px;">{{p.description}} / {{p.coordinates}} / {{p.author}}
+                              <md-button ng-click="openProject(p.id)" style="margin-bottom: 0px !important;">select</md-button> </h4>
+                           </div>
+                        </md-list-item>
+                     </div>
+                  </div>
+               </md-card-content>
+            </md-card>
+         </div>
+          <div flex="100" layout="column">
+              <md-card>
+                  <ng-map id="custom" center="{{project.coordinates}}" zoom="1">
+                      <div ng-repeat="p in userProjects track by $index">
+                        <marker position="{{p.coordinates}}" draggable="true"></marker>
+                      </div>
+                  </ng-map>
+              </md-card>
+          </div>
+      </md-content>
+       <!--<md-content class="md-padding" layout-xs="column" layout="row" style=" background-color:white;">-->
+          <!--<div flex="33" ng-repeat="element in galleryDict">-->
+              <!--<md-card>-->
+                  <!--<img src="{{element.image_path}}"/>-->
+                   <!--<div class="dialog-demo-content" layout="row" class="background-content">-->
+                       <!--<md-button class="md-raised full-width" ng-click="showAlert($event, element.element_id)"   >-->
+                        <!--{{element.button_text}}-->
+                       <!--</md-button>-->
+                   <!--</div>-->
+              <!--</md-card>-->
+          <!--</div>-->
+       <!--</md-content>-->
+   </div>
+</div>

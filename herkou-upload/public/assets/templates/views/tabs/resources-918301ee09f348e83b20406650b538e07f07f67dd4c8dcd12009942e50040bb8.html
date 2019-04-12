@@ -1,0 +1,748 @@
+<!-- Sidebar -->
+<div class="sidebar project-sidebar" ng-init="primarySidebar=true" >
+
+    <div ng-show="primarySidebar" class="primary-sidebar">
+        <div class="sidebar-content container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Resources</h3>
+                    <p> Add resource configuations </p>
+
+                    <div class="top-20">
+
+                        <div ng-repeat="r in resoucesTabs" class="sidebar-menu">
+
+                            <button class="btn btn-block"
+                                    ng-click="sidebarTabToggle(r)"
+                                    ng-style="{'background-color': r.color}">
+                                {{r.label}}
+                                <span class="pull-left">
+                                    <span ng-show="!r.showCategories" class="glyphicon glyphicon-triangle-top"></span>
+                                    <span ng-show="r.showCategories" class="glyphicon glyphicon-triangle-bottom"></span>
+                                </span>
+                            </button>
+
+                            <div ng-show="r.showCategories" class="sidebar-submenu-area">
+
+                                <div ng-repeat="c in r.categories" class="sidebar-submenu">
+
+                                    <button class="btn btn-block"
+                                            ng-click="sidebarComponentToggle(c)"
+                                            ng-style="{'background-color': c.color}">
+                                        {{c.label}}
+                                        <span class="pull-left">
+                                            <span ng-show="!c.showItems" class="glyphicon glyphicon-triangle-top"></span>
+                                            <span ng-show="c.showItems" class="glyphicon glyphicon-triangle-bottom"></span>
+                                        </span>
+                                    </button>
+
+                                    <div ng-show="c.showItems" class="sidebar-items">
+                                        <ul>
+                                            <li ng-repeat="i in c.items"
+                                                ng-class="{selected:isItemSelected(i)}"
+                                                class="{{i.cssClass}}">
+
+                                                <a href
+                                                   ng-click="selectItem(i)"
+                                                   ng-show="i.enabled">
+                                                    <div ng-include="i.icon"
+                                                         class="component-type-icon"></div>
+                                                    {{i.label}}
+                                                </a>
+                                                <s ng-hide="i.enabled">{{i.label}}</s>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+            <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+        </div>
+    </div>
+
+    <div ng-hide="primarySidebar" class="secondary-sidebar">
+
+        <div hidden-sidebar></div>
+
+        <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+            <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+        </div>
+    </div>
+
+</div>
+
+<!-- Page -->
+<div class="page-wrapper">
+    <div class="container-fluid">
+        <div imode-project-tab></div>
+
+        <div class="project-container top-10">
+
+            <!-- Solar, Temperature, Wind -->
+            <div ng-if="selectedItem.id ==='solar'  || selectedItem.id ==='temperature' || selectedItem.id ==='wind'">
+
+                <div class="row">
+                    <!-- LEFT PAGE -->
+                    <div class="col-md-3">
+                        <label>
+                            Options:
+                        </label>
+
+                        <div>
+                            <label class="top-5">(1) Load .epw file</label>
+                            <label class="btn btn-default btn-file btn-block">
+                                Import <input type="file"
+                                              file-select="text"
+                                              file-loaded="onLoad($file)"
+                                              file-error="onError($error)"
+                                              file-progress="onProgress($total, $loaded)"
+                                              style="display: none;">
+                            </label>
+                            <md-button class="md-raised md-primary" ng-click="submitProject(project)"> Next</md-button>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT PAGE -->
+                    <div class="col-md-8">
+
+                        <!-- NAME AND DESCRIPTION -->
+                        <div class="row">
+                            <form class="col-md-6">
+
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text"
+                                           class="form-control input-sm"
+                                           ng-model="selectedResources.name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Description / notes</label>
+                                    <textarea class="form-control"
+                                              rows="2"
+                                              ng-model="selectedResources.description">
+                                    </textarea>
+                                </div>
+
+                            </form>
+                        </div>
+
+                        <!-- CHART -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Resource curve</label>
+                                <nvd3 api="rc.api" options="chartOptions" data="chartData"></nvd3>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- gridBoundResource -->
+            <div ng-if="selectedItem.id ==='gridBoundResource'">
+                <div class="row">
+
+                    <!-- LEFT PAGE -->
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>Select type</label>
+                            <select ng-model="selectedGridBound"
+                                    ng-options="x.label for x in gridBoundOptions"
+                                    class="form-control input-sm">
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT PAGE -->
+                    <div class="col-md-10">
+
+                        <!-- NAME AND DESCRIPTION -->
+                        <div class="row">
+                            <form class="col-md-6">
+
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text"
+                                           class="form-control input-sm"
+                                           ng-model="selectedGridBound.name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Description / notes</label>
+                                    <textarea class="form-control"
+                                              rows="3"
+                                              ng-model="selectedGridBound.description">
+                                    </textarea>
+                                </div>
+
+                            </form>
+                        </div>
+
+                        <!-- NAV TAB -->
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <ul class="nav nav-tabs">
+                                    <li ng-repeat="t in gridBoundTabs"
+                                        ng-class="{active:showGridBoundTab(t.id)}">
+                                        <a href ng-click="selectGridBoundTab(t)">
+                                            {{t.label}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- TAB CONTENT -->
+                        <div class="row top-20">
+                            <div class="tab-content col-md-12">
+
+                                <!-- TAB COST -->
+                                <div role="tabpanel"
+                                     ng-class="{active:showGridBoundTab('cost')}"
+                                     class="tab-pane">
+
+                                    <!-- Electricity case-->
+                                    <div ng-if="selectedGridBound.id == 'electricity'">
+                                        <!-- Provision Fee -->
+                                        <form class="form-horizontal">
+                                            <h4>Provision Fee</h4>
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">Specific</label>
+                                                <div class="col-md-3">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedGridBound.cost.provisionFee.specific.value">
+                                                </div>
+                                                <span class="help-block">{{selectedGridBound.cost.provisionFee.specific.um}}</span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">Offset</label>
+                                                <div class="col-md-3">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedGridBound.cost.provisionFee.offset.value">
+                                                </div>
+                                                <span class="help-block">{{selectedGridBound.cost.provisionFee.offset.um}}</span>
+                                            </div>
+                                        </form>
+
+                                        <!-- Energy cost -->
+                                        <form class="form-horizontal">
+                                            <h4>Energy cost</h4>
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">Tariff</label>
+                                                <div class="col-md-2"
+                                                     ng-repeat="i in [0,1,2]">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedGridBound.cost.energyCost.tariff.value[i]">
+                                                </div>
+                                                <span class="help-block">{{selectedGridBound.cost.energyCost.tariff.um}}</span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">From</label>
+                                                <div class="col-md-2"
+                                                     ng-repeat="i in [0,1,2]">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedGridBound.cost.energyCost.from.value[i]">
+                                                </div>
+                                                <span class="help-block">{{selectedGridBound.cost.energyCost.from.um}}</span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">To</label>
+                                                <div class="col-md-2"
+                                                     ng-repeat="i in [0,1,2]">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedGridBound.cost.energyCost.to.value[i]">
+                                                </div>
+                                                <span class="help-block">{{selectedGridBound.cost.energyCost.to.um}}</span>
+                                            </div>
+
+                                        </form>
+                                    </div>
+
+                                    <!-- Natural gas case-->
+                                    <div ng-if="selectedGridBound.id == 'naturalGas'">
+                                        <!-- Provision Fee -->
+                                        <form class="form-horizontal">
+                                            <h4>Provision Fee</h4>
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">Specific</label>
+                                                <div class="col-md-3">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedGridBound.cost.provisionFee.specific.value">
+                                                </div>
+                                                <span class="help-block">{{selectedGridBound.cost.provisionFee.specific.um}}</span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">Offset</label>
+                                                <div class="col-md-3">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedGridBound.cost.provisionFee.offset.value">
+                                                </div>
+                                                <span class="help-block">{{selectedGridBound.cost.provisionFee.offset.um}}</span>
+                                            </div>
+                                        </form>
+
+                                        <!-- Energy cost -->
+                                        <form class="form-horizontal">
+                                            <h4>Energy cost</h4>
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">Tariff</label>
+                                                <div class="col-md-3">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedGridBound.cost.energyCost.tariff.value">
+                                                </div>
+                                                <span class="help-block">{{selectedGridBound.cost.energyCost.tariff.um}}</span>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+
+                                <!-- CAPACITY LIMITS -->
+                                <div role="tabpanel"
+                                     ng-class="{active:showGridBoundTab('capacityLimits')}"
+                                     class="tab-pane">
+
+                                    <div ng-if="selectedGridBound.id == 'electricity' || selectedGridBound.id == 'naturalGas'">
+                                        <!-- Power -->
+                                        <form class="form-horizontal">
+                                            <h4>Power</h4>
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">Minumum</label>
+                                                <div class="col-md-3">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedGridBound.capacityLimits.power.min.value">
+                                                </div>
+                                                <span class="help-block">{{selectedGridBound.capacityLimits.power.min.um}}</span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">Maximum</label>
+                                                <div class="col-md-3">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedGridBound.capacityLimits.power.max.value">
+                                                </div>
+                                                <span class="help-block">{{selectedGridBound.capacityLimits.power.max.um}}</span>
+                                            </div>
+                                        </form>
+
+                                        <!-- Energy -->
+                                        <form class="form-horizontal">
+                                            <h4>Energy</h4>
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">Minumum</label>
+                                                <div class="col-md-3">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedGridBound.capacityLimits.energy.min.value">
+                                                </div>
+                                                <span class="help-block">{{selectedGridBound.capacityLimits.energy.min.um}}</span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">Maximum</label>
+                                                <div class="col-md-3">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedGridBound.capacityLimits.energy.max.value">
+                                                </div>
+                                                <span class="help-block">{{selectedGridBound.capacityLimits.energy.max.um}}</span>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- nonGridTransport -->
+            <div ng-if="selectedItem.id ==='nonGridTransport'">
+                <div class="row">
+
+                    <!-- LEFT PAGE -->
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>Select type</label>
+                            <select ng-model="selectedNonGrid"
+                                    ng-options="x.label for x in nonGridOptions"
+                                    class="form-control input-sm">
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT PAGE -->
+                    <div class="col-md-10">
+
+                        <!-- NAME AND DESCRIPTION -->
+                        <div class="row">
+                            <form class="col-md-6">
+
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text"
+                                           class="form-control input-sm"
+                                           ng-model="selectedNonGrid.name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Description / notes</label>
+                                    <textarea class="form-control"
+                                              rows="3"
+                                              ng-model="selectedNonGrid.description">
+                                    </textarea>
+                                </div>
+
+                            </form>
+                        </div>
+
+                        <!-- NAV TAB -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="nav nav-tabs">
+                                    <li ng-repeat="t in nonGridTabs"
+                                        ng-class="{active:showNonGridTab(t.id)}">
+                                        <a href ng-click="selectNonGridTab(t)">
+                                            {{t.label}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- TAB CONTENT -->
+                        <div class="row top-20">
+                            <div class="tab-content col-md-12">
+
+                                <!-- TAB COST -->
+                                <div role="tabpanel"
+                                     ng-class="{active:showNonGridTab('cost')}"
+                                     class="tab-pane">
+
+                                    <!-- Electricity case-->
+                                    <div ng-if="selectedNonGrid.id == 'fuelOilDiesel'">
+                                        <!-- Provision Fee -->
+                                        <form class="form-horizontal">
+                                            <h4>Provision Fee</h4>
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">Specific</label>
+                                                <div class="col-md-3">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedNonGrid.cost.provisionFee.specific.value">
+                                                </div>
+                                                <span class="help-block">{{selectedNonGrid.cost.provisionFee.specific.um}}</span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">Offset</label>
+                                                <div class="col-md-3">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedNonGrid.cost.provisionFee.offset.value">
+                                                </div>
+                                                <span class="help-block">{{selectedNonGrid.cost.provisionFee.offset.um}}</span>
+                                            </div>
+                                        </form>
+
+                                        <!-- Energy cost -->
+                                        <form class="form-horizontal">
+                                            <h4>Energy cost</h4>
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">Tariff</label>
+                                                <div class="col-md-2">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedNonGrid.cost.energyCost.tariff.value">
+                                                </div>
+                                                <span class="help-block">{{selectedNonGrid.cost.energyCost.tariff.um}}</span>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- electricityGeneration -->
+            <div ng-if="selectedItem.id ==='electricityGeneration'">
+                <div class="row">
+                    <!-- LEFT PAGE -->
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>Select type</label>
+                            <select ng-model="selectedElectricityGeneration"
+                                    ng-options="x.label for x in electricityGenerationOptions"
+                                    class="form-control input-sm">
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT PAGE -->
+                    <div class="col-md-10">
+
+                        <!-- NAME AND DESCRIPTION -->
+                        <div class="row">
+                            <form class="col-md-6">
+
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text"
+                                           class="form-control input-sm"
+                                           ng-model="selectedElectricityGeneration.name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Description / notes</label>
+                                    <textarea class="form-control"
+                                              rows="3"
+                                              ng-model="selectedElectricityGeneration.description">
+                                    </textarea>
+                                </div>
+
+                            </form>
+                        </div>
+
+                        <!-- NAV TAB -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="nav nav-tabs">
+                                    <li ng-repeat="t in electricityGenerationTabs"
+                                        ng-class="{active:showElectricityGenerationTab(t.id)}">
+                                        <a href ng-click="selectElectricityGenerationTab(t)">
+                                            {{t.label}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- TAB CONTENT -->
+                        <div class="row top-20">
+                            <div class="tab-content col-md-12">
+
+                                <!-- INCOME -->
+                                <div role="tabpanel"
+                                     ng-class="{active:showElectricityGenerationTab('income')}"
+                                     class="tab-pane">
+
+                                    <!-- General case-->
+                                    <div ng-if="selectedElectricityGeneration.id == 'general'">
+
+                                        <!-- Feed-in -->
+                                        <form class="form-horizontal">
+                                            <h4>Feed-in</h4>
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">Tariff</label>
+                                                <div class="col-md-2"
+                                                     ng-repeat="i in [0,1,2]">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedElectricityGeneration.income.feedIn.tariff.value[i]">
+                                                </div>
+                                                <span class="help-block">{{selectedElectricityGeneration.income.feedIn.tariff.um}}</span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">From</label>
+                                                <div class="col-md-2"
+                                                     ng-repeat="i in [0,1,2]">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedElectricityGeneration.income.feedIn.from.value[i]">
+                                                </div>
+                                                <span class="help-block">{{selectedElectricityGeneration.income.feedIn.from.um}}</span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">To</label>
+                                                <div class="col-md-2"
+                                                     ng-repeat="i in [0,1,2]">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedElectricityGeneration.income.feedIn.to.value[i]">
+                                                </div>
+                                                <span class="help-block">{{selectedElectricityGeneration.income.feedIn.to.um}}</span>
+                                            </div>
+
+                                        </form>
+                                    </div>
+
+                                    <!-- Solar, wind, chp-->
+                                    <div ng-if="selectedElectricityGeneration.id == 'solarPV' || selectedElectricityGeneration.id == 'windEnergy' || selectedElectricityGeneration.id == 'chp'">
+                                        <!-- Feed-in -->
+                                        <form class="form-horizontal">
+                                            <h4>Feed-in</h4>
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">Tariff</label>
+                                                <div class="col-md-2"
+                                                     ng-repeat="i in [0,1,2]">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedElectricityGeneration.income.feedIn.tariff.value[i]">
+                                                </div>
+                                                <span class="help-block">{{selectedElectricityGeneration.income.feedIn.tariff.um}}</span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">From</label>
+                                                <div class="col-md-2"
+                                                     ng-repeat="i in [0,1,2]">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedElectricityGeneration.income.feedIn.from.value[i]">
+                                                </div>
+                                                <span class="help-block">{{selectedElectricityGeneration.income.feedIn.from.um}}</span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">To</label>
+                                                <div class="col-md-2"
+                                                     ng-repeat="i in [0,1,2]">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedElectricityGeneration.income.feedIn.to.value[i]">
+                                                </div>
+                                                <span class="help-block">{{selectedElectricityGeneration.income.feedIn.to.um}}</span>
+                                            </div>
+
+                                        </form>
+
+                                        <!-- Self-consumption -->
+                                        <form class="form-horizontal">
+                                            <h4>Self-consumption</h4>
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">Tariff</label>
+                                                <div class="col-md-2"
+                                                     ng-repeat="i in [0,1,2]">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedElectricityGeneration.income.selfConsumption.tariff.value[i]">
+                                                </div>
+                                                <span class="help-block">{{selectedElectricityGeneration.income.selfConsumption.tariff.um}}</span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">From</label>
+                                                <div class="col-md-2"
+                                                     ng-repeat="i in [0,1,2]">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedElectricityGeneration.income.selfConsumption.from.value[i]">
+                                                </div>
+                                                <span class="help-block">{{selectedElectricityGeneration.income.selfConsumption.from.um}}</span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-1 control-label">To</label>
+                                                <div class="col-md-2"
+                                                     ng-repeat="i in [0,1,2]">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           ng-model="selectedElectricityGeneration.income.selfConsumption.to.value[i]">
+                                                </div>
+                                                <span class="help-block">{{selectedElectricityGeneration.income.selfConsumption.to.um}}</span>
+                                            </div>
+
+                                        </form>
+                                    </div>
+
+                                </div>
+
+                                <!-- CAPACITY LIMITS -->
+                                <div role="tabpanel"
+                                     ng-class="{active:showElectricityGenerationTab('capacityLimits')}"
+                                     class="tab-pane">
+
+                                    <!-- Power -->
+                                    <form class="form-horizontal">
+                                        <h4>Power</h4>
+                                        <div class="form-group">
+                                            <label class="col-md-1 control-label">Minumum</label>
+                                            <div class="col-md-3">
+                                                <input type="text"
+                                                       class="form-control"
+                                                       ng-model="selectedElectricityGeneration.capacityLimits.power.min.value">
+                                            </div>
+                                            <span class="help-block">{{selectedElectricityGeneration.capacityLimits.power.min.um}}</span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-1 control-label">Maximum</label>
+                                            <div class="col-md-3">
+                                                <input type="text"
+                                                       class="form-control"
+                                                       ng-model="selectedElectricityGeneration.capacityLimits.power.max.value">
+                                            </div>
+                                            <span class="help-block">{{selectedElectricityGeneration.capacityLimits.power.max.um}}</span>
+                                        </div>
+                                    </form>
+
+                                    <!-- Energy -->
+                                    <form class="form-horizontal">
+                                        <h4>Energy</h4>
+                                        <div class="form-group">
+                                            <label class="col-md-1 control-label">Minumum</label>
+                                            <div class="col-md-3">
+                                                <input type="text"
+                                                       class="form-control"
+                                                       ng-model="selectedElectricityGeneration.capacityLimits.energy.min.value">
+                                            </div>
+                                            <span class="help-block">{{selectedElectricityGeneration.capacityLimits.energy.min.um}}</span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-md-1 control-label">Maximum</label>
+                                            <div class="col-md-3">
+                                                <input type="text"
+                                                       class="form-control"
+                                                       ng-model="selectedElectricityGeneration.capacityLimits.energy.max.value">
+                                            </div>
+                                            <span class="help-block">{{selectedElectricityGeneration.capacityLimits.energy.max.um}}</span>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<br>
+<br>

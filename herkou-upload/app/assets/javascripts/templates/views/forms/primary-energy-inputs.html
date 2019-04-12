@@ -1,0 +1,108 @@
+<md-content class="md-padding" layout-xs="column" layout="row" style="min-height:800px;" >
+    <div flex="30" layout="column">
+        <div class="row" style="margin-right:10px;margin-left:10px;">
+            <md-card>
+                <md-toolbar class="md-tabs-fill">
+                    <div class="md-toolbar-tools">
+                        <div> {{selectedItem.label}} </div>
+                        <span flex></span>
+                    </div>
+                </md-toolbar>
+                <md-card-content>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>select input type</label>
+                        <md-select ng-model="dummy" ng-change="">
+                            <div ng-repeat="val in selectionOptions">
+                                <div ng-repeat="little in val">
+                                    <div ng-repeat="other in little" ng-if="other.label == selectedItem.label">
+                                        <md-option ng-repeat="o in other.items" value="{{o.id}}" ng-selected="true"> {{o.item}}</md-option>
+                                    </div>
+                                </div>
+                            </div>
+                        </md-select>
+                    </md-input-container>
+                    <div flex-gt-sm>
+                        <p> Select weather resource </p>
+                        <div layout-gt-sm="row" style="padding:10px;">
+                            <md-radio-group  ng-model="project.resources.physical.primary.weather_selection.type_selected" class="md-primary">
+                                <md-radio-button value="weatherApi" class="green"> Weather API</md-radio-button>
+                                <md-radio-button value="upload"  class="green"> Upload </md-radio-button>
+                                <md-radio-button value="manualDef"  class="green">Define Manually</md-radio-button>
+                            </md-radio-group>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="column">
+                        <div class="row">
+                        <md-button  style="" class="md-raised" ng-click="" >Save</md-button>
+                        <md-button  class="md-raised delete-button" ng-click="" >delete</md-button>
+                        </div>
+                    </div>
+                </md-card-content>
+            </md-card>
+        </div>
+    </div>
+    <div flex="80" layout="column">
+        <div class="row" style="margin-right:20px;margin-left:20px;">
+            <md-card>
+                <md-card-content>
+                <div ng-if="project.resources.physical.primary.weather_selection.type_selected == 'weatherApi'">
+                    <h6>Primary > {{selectedItem.label}}  > weather api > {{dummy}} > {{project.coordinates}} > distance : {{distance_from_site}} </h6>
+                    <md-button class="md-raised upload" ng-click="renderWeatherData()"> get weather data </md-button>
+                    <div layout-gt-sm="row" ng-if="loadingFinished">
+                        <md-input-container class="sm-block" flex-gt-sm>
+                            <label>Name</label>
+                            <input ng-model="name">
+                        </md-input-container>
+                        <md-input-container class="sm-block" flex-gt-sm>
+                            <label>Description/Notes</label>
+                            <input ng-model="description">
+                        </md-input-container>
+                    </div>
+                    <div layout-gt-sm="row">
+                    </div>
+                        <div layout-gt-sm="row" flex ng-if="loadingFinished">
+                        <div class="myCell"> <md-button class="md-raised" ng-click="changePrimaryChartView('solar')"> solar </md-button></div>
+                        <div class="myCell"><md-button  class="md-raised" ng-click="changePrimaryChartView('wind')"> wind </md-button></div>
+                        <div class="myCell"><md-button  class="md-raised" ng-click="changePrimaryChartView('temperature')"> temperature </md-button> </div>
+                        <md-button  class="md-raised delete-button" ng-click="deleteEPWFile()">delete file</md-button>
+                    </div>
+                    <div class="row" ng-if="loadingFinished">
+                        <div class="col-md-12">
+                            <nvd3  options="chartOptions" data="chartData"></nvd3>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="project.resources.physical.primary.weather_selection.type_selected == 'upload'">
+                    <h6>Primary > {{selectedItem.label}}  > weather api > {{dummy}} > {{project.coordinates}} > distance : {{distance_from_site}} </h6>
+                    <div layout-gt-sm="row"  ng-if="!uploadEPWSuccessful">
+                        <label class="md-button" style="background: #aec7e8;" class="md-raised">
+                                Upload a .epw file <input type="file"
+                                              file-select="text"
+                                              file-loaded="onLoad($file)"
+                                              file-error="onError($error)"
+                                              file-progress="onProgress($total, $loaded)"
+                                              style="display: none;"></label>
+                    </div>
+                    <div layout-gt-sm="row" flex ng-if="uploadEPWSuccessful">
+                            <div class="myCell"> <md-button class="md-raised" ng-click="changePrimaryChartView('solar')"> solar </md-button></div>
+                            <div class="myCell"><md-button  class="md-raised" ng-click="changePrimaryChartView('wind')"> wind </md-button></div>
+                            <div class="myCell"><md-button  class="md-raised" ng-click="changePrimaryChartView('temperature')"> temperature </md-button> </div>
+                            <md-button  class="md-raised delete-button" ng-click="deleteEPWFile()">delete file</md-button>
+                    </div>
+                    <div class="row" ng-if="uploadEPWSuccessful">
+                        <div class="col-md-12">
+                            <nvd3  options="chartOptions" data="chartData"></nvd3>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="project.resources.physical.primary.weather_selection.type_selected == 'manualDef'">
+                    <h6>Primary > {{selectedItem.label}}  > weather api > {{dummy}} </h6>
+
+                    <div date-picker> </div>
+                </div>
+                </md-card-content>
+            </md-card>
+        </div>
+    </div>
+</md-content>

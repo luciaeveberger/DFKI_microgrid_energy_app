@@ -1,0 +1,142 @@
+<div class="sidebar project-sidebar" ng-init="primarySidebar=true" >
+    <div ng-show="primarySidebar" class="primary-sidebar">
+        <div class="sidebar-content container-fluid">
+            <div class="row">
+                <div ng-repeat="t in loadsTabs">
+                    <div ng-repeat="values in t.categories">
+                        <span class="pull-left">
+                            <md-button
+                                    ng-click="sidebarTabToggle(t)"
+                                    ng-style="" style="width:100%;">
+                                {{values.label}}
+                            </md-button>
+                        </span>
+                        <span class="pull-left">
+                            <div flex="100">
+                                <ul style="list-style: none; width:100%;">
+                                    <li ng-repeat="i in values.items"
+                                        ng-class="{selected:isItemSelected(i)}">
+                                        <a href
+                                           ng-click="selectItem(i)"
+                                           ng-show="i.enabled">
+                                            <div ng-include="i.icon"
+                                                 class="component-type-icon"></div>
+                                            {{i.label}}
+                                        </a>
+                                        <s ng-hide="i.enabled">{{i.label}}</s>
+                                    </li>
+                                </ul>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                <!--<md-button ng-click="primarySidebar=!primarySidebar"> See Project Canvas</md-button>-->
+            </div>
+        </div>
+        <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+            <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+        </div>
+    </div>
+    <div ng-hide="primarySidebar" class="secondary-sidebar">
+        <div hidden-sidebar></div>
+        <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+            <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+        </div>
+    </div>
+</div>
+<div class="page-wrapper">
+    <div imode-project-tab></div>
+    <md-content class="md-padding" layout-xs="column" layout="row">
+        <div flex="20" layout="column">
+            <div class="row" style="margin-right:10px;margin-left:10px;">
+                <md-card>
+                    <md-toolbar class="md-tabs-fill">
+                        <div class="md-toolbar-tools">
+                            <div> {{selectedItem.label}} </div>
+                            <span flex></span>
+                        </div>
+                    </md-toolbar>
+                    <md-card-content>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>select input type</label>
+                            <md-select ng-model="selected_parameter">
+                                <md-option ng-repeat="val in loadsSelections" value="{{val.id}}" ng-selected="true"> {{val.label}}</md-option>
+                            </md-select>
+                        </md-input-container>
+                        <div flex-gt-sm>
+                            <p> Select data source </p>
+                            <div layout-gt-sm="row" style="padding:10px;">
+                                <md-radio-group  ng-model="project.loads[selectedItem.id][selected_parameter].type_selected" class="md-primary">
+                                    <md-radio-button value="upload" class="green"> Upload </md-radio-button>
+                                    <md-radio-button value="define"  class="green"> Define load time-series data manually </md-radio-button>
+                                    <md-radio-button value="define_power"  class="green"> Define power inputs </md-radio-button>
+                                </md-radio-group>
+                            </div>
+                        </div>
+                    </md-card-content>
+                </md-card>
+            </div>
+        </div>
+        <div flex="80">
+            <div layout-gt-sm="row" ng-if="project.loads[selectedItem.id][selected_parameter].type_selected == 'upload'">
+                <div flex="20">
+                    <label class="md-button" style="background: #aec7e8;" class="md-raised">
+                        Upload a loads file <input type="file"
+                                                   file-select="text"
+                                                   file-loaded="onLoad($file, selectedItem.id, selected_parameter)"
+                                                   file-error="onError($error)"
+                                                   file-progress="onProgress($total, $loaded)"
+                                                   style="display: none;"></label>
+                    <md-button ng-disabled="true" ng-if="showChart" class="md-primary">Successful upload</md-button>
+
+                </div>
+                <div flex="40">
+                    <md-card>
+                        <md-card-content>
+                            <h3> Global Tariff Types: </h3>
+                            <div layout-gt-sm="row">
+                                <md-input-container>
+                                    <label>tariff types</label>
+                                    <md-select ng-model="project.resources.physical.secondary.tariff_type[0].tariff_type">
+                                        <md-option ng-repeat="val in tariffTypeOptions" value="{{val.name}}">{{val.name}}</md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+                            <div layout-gt-sm="row">
+                                <md-input-container class="sm-block" flex-gt-sm>
+                                    <label>upper peak boundary ({{project.resources.physical.secondary.tariff_type[1].upper_peak_power_boundary.uom}})</label>
+                                    <input ng-model="project.resources.physical.secondary.tariff_type[0].upper_peak_power_boundary.val">
+                                </md-input-container>
+                                <md-input-container class="sm-block" flex-gt-sm>
+                                    <label>upper boundary cumulated energy ({{project.resources.physical.secondary.tariff_type[1].upper_boundary_cummulated_energy.uom}})</label>
+                                    <input ng-model="project.resources.physical.secondary.tariff_type[1].upper_boundary_cummulated_energy.val">
+                                </md-input-container>
+                            </div>
+                            <div layout-gt-sm="row">
+                                <md-input-container class="sm-block" flex-gt-sm>
+                                    <label>Base cost ({{project.resources.physical.secondary.tariff_type[1].base_cost.uom}})</label>
+                                    <input ng-model="project.resources.physical.secondary.tariff_type[1].base_income.val">
+                                </md-input-container>
+                                <md-input-container class="sm-block" flex-gt-sm>
+                                    <label>Operational cost ({{project.resources.physical.secondary.tariff_type[1].operational_cost.uom}})</label>
+                                    <input ng-model="project.resources.physical.secondary.tariff_type[1].operation_income.val">
+                                </md-input-container>
+                            </div>
+                        </md-card-content>
+                    </md-card>
+                    <!--<nvd3 data="manualDefData" options="manualchartOptions" style="width:100%;" ng-if="showChart"></nvd3>-->
+                </div>
+            </div>
+            <div layout-gt-sm="row" ng-if="project.loads[selectedItem.id][selected_parameter].type_selected == 'define'">
+                <div flex="80">
+                    <div loads-manual> </div>
+                </div>
+            </div>
+            <div layout-gt-sm="row" ng-if="project.loads[selectedItem.id][selected_parameter].type_selected == 'define_power'">
+                <div flex="80">
+                    <div power-inputs> </div>
+                </div>
+            </div>
+        </div>
+        </md-content>
+</div>

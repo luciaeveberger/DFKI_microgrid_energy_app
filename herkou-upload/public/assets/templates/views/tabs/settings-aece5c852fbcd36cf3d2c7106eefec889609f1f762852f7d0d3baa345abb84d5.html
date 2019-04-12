@@ -1,0 +1,349 @@
+<div id="settings-tab">
+    <!-- Sidebar -->
+    <div class="sidebar project-sidebar" ng-init="primarySidebar=true" >
+
+        <div ng-show="primarySidebar" class="primary-sidebar">
+
+            <div class="sidebar-content container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Settings</h3>
+
+                        <div class="top-20">
+                            <div ng-repeat="t in settingsTabs" class="sidebar-menu">
+
+                                <button class="btn btn-block"
+                                        ng-click="sidebarTabToggle(t)"
+                                        ng-style="{'background-color': t.color}">
+                                    {{t.label}}
+                                    <span class="pull-left">
+                                    <span ng-show="!t.showItems" class="glyphicon glyphicon-triangle-top"></span>
+                                    <span ng-show="t.showItems" class="glyphicon glyphicon-triangle-bottom"></span>
+                                </span>
+                                </button>
+
+                                <div ng-show="t.showItems" class="sidebar-items">
+                                    <ul>
+                                        <li ng-repeat="i in t.items"
+                                            ng-class="{selected:isItemSelected(i)}"
+                                            class="{{i.cssClass}}">
+
+                                            <a href
+                                               ng-click="selectItem(i)"
+                                               ng-show="i.enabled">
+                                                <div ng-include="i.icon"
+                                                     class="component-type-icon"></div>
+                                                {{i.label}}
+                                            </a>
+                                            <s ng-hide="i.enabled">{{i.label}}</s>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+                <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+            </div>
+
+        </div>
+
+        <div ng-hide="primarySidebar" class="secondary-sidebar">
+
+            <div hidden-sidebar></div>
+
+            <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+                <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Page -->
+    <div class="page-wrapper">
+        <div class="container-fluid">
+            <div imode-project-tab></div>
+
+            <div class="project-container top-10">
+                <!-- calculation type -->
+                <div ng-if="selectedItem.id == 'calculationType'" class="row">
+                    <!-- LEFT PAGE -->
+                    <div class="col-md-2">
+
+                        <!-- Type -->
+                        <div>
+                            <label>
+                                Select calculation type
+                            </label>
+
+                            <label>
+                                <input type="radio" ng-model="project.settings.calculationType" value="directOptimization">
+                                Direct optimization
+                            </label><br/>
+
+                            <label>
+                                <input type="radio" ng-model="project.settings.calculationType" value="totalSimulation">
+                                Total simulation
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT PAGE -->
+                    <div class="col-md-10">
+                        <div ng-if="project.settings.calculationType == 'directOptimization'" class="well">
+                            <h3>Overview of features</h3>
+                            <ul>
+                                <li> Simultaneous optimization of installed technologies, sizes and system operation </li>
+                                <li> Applied system is a result of the simulation, the user does not need to provide a strategy</li>
+                                <li> Inter-temporal optimization of operation, considering the entire simulation period </li>
+                                <li> Required calculation time relatively high (depending on kind and number of technology options) </li>
+                                <li> Results available for one or a few optimal configurations </li>
+                            </ul>
+                        </div>
+
+                        <div ng-if="project.settings.calculationType == 'totalSimulation'" class="well">
+                            <h3>Overview of features</h3>
+                            <ul>
+                                <li> Sequential calculation of all possible combinations of system configurations </li>
+                                <li> Applied system operation is based on user-provided strategy (required input) </li>
+                                <li> No inter-temporal optimization of operation (beyond time-stamp) possible </li>
+                                <li> Required calculation time relatively small (depending on the number of possible system configurations) </li>
+                                <li> Results for all possible system combination available </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- optimization objective -->
+                <div ng-if="selectedItem.id ==='optimizationObjective'">
+                    <div class="row">
+
+                        <!-- LEFT PAGE -->
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Select type</label>
+                                <select ng-model="selectedOptimizationObject"
+                                        ng-options="x.label for x in optimizationObjectOptions"
+                                        class="form-control input-sm">
+                                </select>
+                            </div>
+
+                            <div class="form-group top-50">
+                                <label>Multiple objective</label>
+                                <p>Set share</p>
+                                <div class="input-group">
+                                    <input type="text"
+                                           class="form-control input-sm"
+                                           ng-model="selectedOptimizationObject.multipleObjective.share">
+                                    <div class="input-group-addon">%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- RIGHT PAGE -->
+
+                        <!-- Economic -->
+                        <div class="col-md-10"
+                             ng-if="selectedOptimizationObject.id ==='economic'">
+
+                            <!-- NAME AND DESCRIPTION -->
+                            <div class="row">
+                                <form class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text"
+                                               class="form-control input-sm"
+                                               ng-model="selectedOptimizationObject.name">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Description / notes</label>
+                                        <textarea class="form-control"
+                                                  rows="3"
+                                                  ng-model="selectedOptimizationObject.description">
+                                        </textarea>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                            <!-- NAV TAB -->
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <ul class="nav nav-tabs">
+                                        <li ng-repeat="t in optObjEconomicTabs"
+                                            ng-class="{active:showOptObjEconomicTab(t.id)}">
+                                            <a href ng-click="selectOptObjEconomicTab(t)">
+                                                {{t.label}}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- TAB CONTENT -->
+                            <div class="row top-20">
+                                <div class="tab-content col-md-12">
+
+                                    <!-- TAB CAPEX -->
+                                    <div role="tabpanel"
+                                         ng-class="{active:showOptObjEconomicTab('capex')}"
+                                         class="tab-pane">
+
+                                        <div class="form-group">
+                                            <label>
+                                                <input type="checkbox"
+                                                       ng-model="selectedOptimizationObject.capex.considerInGeneral">
+                                                consider in general
+                                            </label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Deselect components</label>
+                                            <div ng-repeat="c in project.components">
+                                                <input  type="checkbox"
+                                                        ng-checked="componentDeselected(c, selectedOptimizationObject.capex.componentDeselected)"
+                                                        ng-click="deselectComponent(c, selectedOptimizationObject.capex.componentDeselected)">
+                                                {{c.label}}
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- TAB OPEX -->
+                                    <div role="tabpanel"
+                                         ng-class="{active:showOptObjEconomicTab('opex')}"
+                                         class="tab-pane">
+
+                                        <div class="form-group">
+                                            <label>
+                                                <input type="checkbox"
+                                                       ng-model="selectedOptimizationObject.opex.considerInGeneral">
+                                                consider in general
+                                            </label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Deselect components</label>
+                                            <div ng-repeat="c in project.components">
+                                                <input  type="checkbox"
+                                                        ng-checked="componentDeselected(c, selectedOptimizationObject.opex.componentDeselected)"
+                                                        ng-click="deselectComponent(c, selectedOptimizationObject.opex.componentDeselected)">
+                                                {{c.label}}
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Environmental -->
+                        <div class="col-md-10"
+                             ng-if="selectedOptimizationObject.id ==='environmental'">
+
+                            <!-- NAME AND DESCRIPTION -->
+                            <div class="row">
+                                <form class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text"
+                                               class="form-control input-sm"
+                                               ng-model="selectedOptimizationObject.name">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Description / notes</label>
+                                        <textarea class="form-control"
+                                                  rows="3"
+                                                  ng-model="selectedOptimizationObject.description">
+                                        </textarea>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                            <!-- NAV TAB -->
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <ul class="nav nav-tabs">
+                                        <li ng-repeat="t in optObjEnvironmentalTabs"
+                                            ng-class="{active:showOptObjEnvironmentalTab(t.id)}">
+                                            <a href ng-click="selectOptObjEnvironmentalTab(t)">
+                                                {{t.label}}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- TAB CONTENT -->
+                            <div class="row top-20">
+                                <div class="tab-content col-md-12">
+
+                                    <!-- TAB Co2 emission -->
+                                    <div role="tabpanel"
+                                         ng-class="{active:showOptObjEnvironmentalTab('co2emissions')}"
+                                         class="tab-pane">
+
+                                        <div class="form-group">
+                                            <label>
+                                                <input type="checkbox"
+                                                       ng-model="selectedOptimizationObject.co2Emission.considerInGeneral">
+                                                consider in general
+                                            </label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Deselect components</label>
+                                            <div ng-repeat="c in project.components">
+                                                <input  type="checkbox"
+                                                        ng-checked="componentDeselected(c, selectedOptimizationObject.co2Emission.componentDeselected)"
+                                                        ng-click="deselectComponent(c, selectedOptimizationObject.co2Emission.componentDeselected)">
+                                                {{c.label}}
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- TAB primary energy -->
+                                    <div role="tabpanel"
+                                         ng-class="{active:showOptObjEnvironmentalTab('primaryEnergy')}"
+                                         class="tab-pane">
+
+                                        <div class="form-group">
+                                            <label>
+                                                <input type="checkbox"
+                                                       ng-model="selectedOptimizationObject.primaryEnergy.considerInGeneral">
+                                                consider in general
+                                            </label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Deselect components</label>
+                                            <div ng-repeat="c in project.components">
+                                                <input  type="checkbox"
+                                                        ng-checked="componentDeselected(c, selectedOptimizationObject.primaryEnergy.componentDeselected)"
+                                                        ng-click="deselectComponent(c, selectedOptimizationObject.primaryEnergy.componentDeselected)">
+                                                {{c.label}}
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

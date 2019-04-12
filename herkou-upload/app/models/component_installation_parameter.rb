@@ -1,0 +1,2 @@
+class ComponentInstallationParameter < ApplicationRecord
+end

@@ -1,0 +1,80 @@
+<md-content class="md-padding" layout-xs="column" layout="row" style="min-height:800px;background-color:white !important;" >
+    <div flex="30" layout="column">
+        <div class="row" style="margin-right:10px;margin-left:10px;">
+            <md-card>
+                <md-toolbar style="background-color: #2b2e39 !important;">
+                    <div class="md-toolbar-tools">
+                        <md-button  style="background: #aec7e8; width:100%;" class="md-raised" ng-click="" >New</md-button>
+                    </div>
+                </md-toolbar>
+                <md-card-content>
+
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>select input type</label>
+                        <md-select ng-model="dummyTemp">
+                            <div ng-repeat="val in selectionOptions">
+                                <div ng-repeat="little in val">
+                                    <div ng-repeat="other in little" ng-if="other.label == 'temperature'">
+                                        <md-option ng-repeat="o in other.items" value="{{o.item}}" ng-selected="true"> {{o.item}}</md-option>
+                                    </div>
+                                </div>
+                            </div>
+                        </md-select>
+                    </md-input-container>
+                    <div flex-gt-sm>
+                        <p> Select weather resource </p>
+                        <div layout-gt-sm="row" style="padding:10px;">
+                            <md-radio-group  ng-model="project.resources.physical.primary.weather_selection.type_selected" class="md-primary">
+                                <md-radio-button value="weatherApi" class="green"> Weather API</md-radio-button>
+                                <md-radio-button value="upload"  class="green"> Upload </md-radio-button>
+                                <md-radio-button value="manualDef"  class="green">Define Manually</md-radio-button>
+                            </md-radio-group>
+                        </div>
+                    </div>
+                    <hr />
+                    <md-button  style="width:100%;" class="md-raised" ng-click="" >Save</md-button>
+                    <md-button  style="background: darkred;width:100%" class="md-raised" ng-click="" >delete</md-button>
+                </md-card-content>
+            </md-card>
+        </div>
+    </div>
+    <div flex="70" layout="column">
+        <div class="row" style="margin-right:20px;margin-left:20px;">
+            <md-card>
+                <md-card-content>
+                    <div ng-if="project.resources.physical.primary.weather_selection.type_selected == 'weatherApi'">
+                        <h5>Primary > {{selectedItem.label}}  > weather api > {{dummyTemp}} </h5>
+                        <div layout-gt-sm="row">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Name</label>
+                                <input ng-model="name">
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Description/Notes</label>
+                                <input ng-model="description">
+                            </md-input-container>
+                        </div>
+                        <div layout="column" flex>
+                            <div layout="row" flex>
+                                <div class="myCell" flex> row one </div>
+                                <div class="myCell" flex>row two</div>
+                                <div class="myCell" flex>row three</div>
+                            </div>
+                            <div layout="row" flex>
+                                <div class="myCell" flex>A LONGER CELL</div>
+                                <div class="myCell" flex>ROW 2, CELL 2</div>
+                                <div class="myCell" flex>ROW 2, CELL 3</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="project.resources.physical.primary.weather_selection.type_selected == 'upload'">
+                        upload screen
+                    </div>
+                    <div ng-if="project.resources.physical.primary.weather_selection.type_selected == 'manualDef'">
+                        upload screen
+                    </div>
+                </md-card-content>
+            </md-card>
+        </div>
+    </div>
+</md-content>

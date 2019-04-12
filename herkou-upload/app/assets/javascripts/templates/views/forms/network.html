@@ -1,0 +1,130 @@
+<md-card>
+    <md-toolbar style="background-color: #2b2e39 !important;">
+        <div class="md-toolbar-tools">
+            <div ng-if="!toggleForms.createNewNetwork"> Modify  Network  Nodes </div>
+            <div ng-if="toggleForms.createNewNetwork" > Add New  Network </div>
+            <span flex></span>
+            <md-button  class="md-raised"  ng-click="saveDetails()">
+                save
+            </md-button>
+            <md-button  ng-if="!toggleForms.createNewNetwork" style="background: #aec7e8;" class="md-raised" ng-click="toggleNewDomain(3)" > add new network</md-button>
+            <md-button  ng-if="toggleForms.createNewNetwork"  style="background: #aec7e8;" class="md-raised" ng-click="saveNewDomain(3)"> add new network</md-button>
+            <md-button  ng-if="toggleForms.createNewNetwork"  class="md-raised" ng-click="hideNewDomain(3)()" > hide</md-button>
+            <md-button  ng-if="!toggleForms.createNewNetwork && subVarNTDict.myIndex >= 1" style="background: darkred;" class="md-raised" ng-click="deleteElement(itemHolder, 3)" > delete </md-button>
+        </div>
+    </md-toolbar>
+    <md-card-content>
+        <div ng-if="!toggleForms.createNewNetwork">
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>select network</label>
+                    <md-select ng-model="subVarNTDict.myIndex" ng-change="changedInput(subVarNTDict.myIndex)">
+                        <md-option ng-repeat="subVarNet in project.system.networkNodes.networks" value="{{subVarNet.id}}"> network {{subVarNet.id + 1}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>select node</label>
+                    <md-select ng-model="project.system.networkNodes.networks[subVarNTDict.myIndex].selected_node_id" ng-change="">
+                        <md-option ng-repeat="val in project.system.energyDomain" value="{{val.id}}"> {{val.id + 1}} : {{val.domain.type_name}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label> network name</label>
+                    <input ng-model="project.system.networkNodes.networks[subVarNTDict.myIndex].name">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label> network description</label>
+                    <input ng-model="project.system.networkNodes.networks[subVarNTDict.myIndex].description">
+                </md-input-container>
+            </div >
+            <md-content class="md-padding">
+                <div layout-gt-sm="row">
+                    <fieldset class="standard">
+                        <legend>select available busses</legend>
+                        <div layout-wrap layout-gt-sm="row" >
+                            <div flex-gt-sm="100">
+                                <md-checkbox ng-model="project.system.networkNodes.networks[subVarNTDict.myIndex].buses.electric" aria-label="Checkbox 1"  class="green">
+                                    Electric Bus
+                                </md-checkbox>
+                                <md-checkbox ng-model="project.system.networkNodes.networks[subVarNTDict.myIndex].buses.heat" aria-label="Checkbox 1"  class="green">
+                                    Heating Bus
+                                </md-checkbox>
+                                <md-checkbox ng-model="project.system.networkNodes.networks[subVarNTDict.myIndex].buses.cooling" aria-label="Checkbox 1"  class="green">
+                                    Cooling bus
+                                </md-checkbox>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </md-content>
+            <md-content class="md-padding">
+                <!--<p> Connection </p>-->
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                            <label> Select start bus </label>
+                            <md-select ng-model="project.system.networkNodes.networks[subVarNTDict.myIndex].buses.start_bus">
+                                <md-option ng-repeat="value in nodesAttachmentOptions track by $index" ng-value="value"> {{value}}</md-option>
+                            </md-select>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label> Select end bus </label>
+                        <md-select ng-model="project.system.networkNodes.networks[subVarNTDict.myIndex].buses.end_bus">
+                            <md-option ng-repeat="value in nodesAttachmentOptions track by $index" ng-value="value"> {{value}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </md-content>
+        </div>
+        <div ng-if="toggleForms.createNewNetwork">
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label> Network Name</label>
+                    <input ng-model="emptyNetwork.name">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label> Network description</label>
+                    <input ng-model="emptyNetwork.description">
+                </md-input-container>
+            </div >
+            <md-content class="md-padding">
+                <div layout-gt-sm="row">
+                    <fieldset class="standard">
+                        <legend>Select available busses</legend>
+                        <div layout-wrap layout-gt-sm="row" >
+                            <div flex-gt-sm="100">
+                                <md-checkbox ng-model="emptyNetwork.buses.electric" aria-label="Checkbox 1"  class="green">
+                                    Electric Bus
+                                </md-checkbox>
+                                <md-checkbox ng-model="emptyNetwork.buses.heat" aria-label="Checkbox 1"  class="green">
+                                    Heating Bus
+                                </md-checkbox>
+                                <md-checkbox ng-model="emptyNetwork.buses.cooling" aria-label="Checkbox 1"  class="green">
+                                    Cooling bus
+                                </md-checkbox>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </md-content>
+            <md-content class="md-padding">
+                <p> Connection </p>
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label> Select start bus </label>
+                        <md-select ng-model="emptyNetwork.buses.start_bus">
+                            <md-option ng-repeat="value in nodesAttachmentOptions track by $index" ng-value="value"> {{value}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label> Select end bus </label>
+                        <md-select ng-model="emptyNetwork.buses.end_bus">
+                            <md-option ng-repeat="value in nodesAttachmentOptions track by $index" ng-value="value"> {{value}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </md-content>
+        </div>
+    </md-card-content>
+</md-card>
+
+

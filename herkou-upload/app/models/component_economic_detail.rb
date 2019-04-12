@@ -1,0 +1,2 @@
+class ComponentEconomicDetail < ApplicationRecord
+end

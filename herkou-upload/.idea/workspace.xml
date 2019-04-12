@@ -1,0 +1,972 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="56053310-e990-4317-ba86-b81412326ebc" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/factories/esFactory.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.json" afterPath="$PROJECT_DIR$/app.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/controllers/home.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/controllers/home.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/loads.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/loads.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/overview.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/overview.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/settings.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/settings.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/date-picker-inputs.html" afterPath="$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/date-picker-inputs.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/loads-manual-upload.html" afterPath="$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/loads-manual-upload.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/templates/views/tabs/components.html" afterPath="$PROJECT_DIR$/app/assets/javascripts/templates/views/tabs/components.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/templates/views/tabs/loads.html" afterPath="$PROJECT_DIR$/app/assets/javascripts/templates/views/tabs/loads.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/templates/views/tabs/settings.html" afterPath="$PROJECT_DIR$/app/assets/javascripts/templates/views/tabs/settings.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/api/resources_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/api/resources_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/component_type.rb" afterPath="$PROJECT_DIR$/app/controllers/component_type.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.ru" afterPath="$PROJECT_DIR$/config.ru" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20140707111715_create_widgets.rb" afterPath="$PROJECT_DIR$/db/migrate/20140707111715_create_widgets.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/controllers/widgets_controller_test.rb" afterPath="$PROJECT_DIR$/test/controllers/widgets_controller_test.rb" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="herkou-upload" />
+  </component>
+  <component name="FileColors">
+    <fileColor scope="Non-Project Files (Material Default)" color="2E3C43" />
+    <fileColor scope="Non-Project Files (Material Darker)" color="323232" />
+    <fileColor scope="Non-Project Files (Material Lighter)" color="eae8e8" />
+    <fileColor scope="Non-Project Files (Material Palenight)" color="2f2e43" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="simulation_parser_controller.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/api/simulation_parser_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="276">
+              <caret line="12" column="67" lean-forward="false" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="simulationParserResource.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/factories/simulationParserResource.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="10" column="22" lean-forward="false" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.ru" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.ru">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="69">
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/routes.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="18" column="32" lean-forward="false" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="projects_controller.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/api/projects_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-521">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/settings.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="14" column="48" lean-forward="false" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="overview.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/overview.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/controllers/home.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="50" column="23" lean-forward="true" selection-start-line="46" selection-start-column="15" selection-end-line="50" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="simulationResource.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/factories/simulationResource.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="37" lean-forward="true" selection-start-line="0" selection-start-column="37" selection-end-line="0" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>manualD</find>
+      <find>capex</find>
+      <find>manualC</find>
+      <find>drag</find>
+      <find>patient</find>
+      <find>men</find>
+      <find>women</find>
+      <find>settings</find>
+      <find>watch</find>
+      <find>initDat</find>
+      <find>watcher</find>
+      <find>adminF</find>
+      <find>saveD</find>
+      <find>save</find>
+      <find>$scope.project</find>
+      <find>saveDetails</find>
+      <find>graph</find>
+      <find>graph.archived</find>
+      <find>chart</find>
+      <find>highC</find>
+      <find>color</find>
+      <find>container</find>
+      <find>en</find>
+      <find>es</find>
+      <find>esFac</find>
+      <find>projectResource</find>
+      <find>simyl</find>
+      <find>overview</find>
+      <find>simulationResource</find>
+      <find>simulation</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/economic-inputs.html" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/templates/views/loads-heat-inputs.html" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/loads-heat-inputs.html" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/loads-cooling-inputs.html" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/templates/views/tabs/resources.html" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/loads-electricity-inputs.html" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/secondaryresources.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/secondary-energy-inputs.html" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/power-manual-upload.html" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/templates/views/tabs/overview.html" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/primary-energy-inputs.html" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/templates/views/index.html" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/components/draganddrop.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/components/dragDrop.js" />
+        <option value="$PROJECT_DIR$/vendor/dragDrop.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/app.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/resources.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/components/projectTab/projectTab.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/templates/views/tabs/system.html" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/components/savedProjects.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/system.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/components.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/component-administrative.html" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/components/project.js" />
+        <option value="$PROJECT_DIR$/app/controllers/component_type.rb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/component-technical.html" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/component-economic.html" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/component-environmental.html" />
+        <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/db/schema.rb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/templates/views/tabs/components.html" />
+        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/templates/views/tabs/loads.html" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/loads.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/date-picker-inputs.html" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/loads-manual-upload.html" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/manualDef.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/overview.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/controllers/home.js" />
+        <option value="$PROJECT_DIR$/app/controllers/api/resources_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/api/simulator_parser_controller.rb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+        <option value="$PROJECT_DIR$/app/models/simulation_parser.rb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/templates/views/tabs/settings.html" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/config.ru" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/settings.js" />
+        <option value="$PROJECT_DIR$/app/controllers/api/simulations_controller.rb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/factories/simulationParserResource.js" />
+        <option value="$PROJECT_DIR$/app/controllers/api/simulation_parser_controller.rb" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBowerSettings">
+    <node-interpreter value="project" />
+    <exe-path>/usr/local/bin/bower</exe-path>
+    <config-path>$PROJECT_DIR$/bower.json</config-path>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsFlowSettings">
+    <service-enabled>false</service-enabled>
+    <exe-path />
+    <annotation-enable>false</annotation-enable>
+    <other-services-enabled>false</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/vendor/assets/bower_components/angular-file-saver/package.json" />
+    <dismissed value="$PROJECT_DIR$/vendor/assets/bower_components/angular-nvd3/package.json" />
+    <dismissed value="$PROJECT_DIR$/vendor/assets/bower_components/angular-openweathermap-api-factory/package.json" />
+    <dismissed value="$PROJECT_DIR$/vendor/assets/bower_components/angular-ui-sortable/package.json" />
+    <dismissed value="$PROJECT_DIR$/vendor/assets/bower_components/bootstrap-sass-official/package.json" />
+    <dismissed value="$PROJECT_DIR$/vendor/assets/bower_components/ngmap/package.json" />
+    <dismissed value="$PROJECT_DIR$/vendor/assets/bower_components/webcomponentsjs/package.json" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="42" />
+    <option name="y" value="23" />
+    <option name="width" value="1329" />
+    <option name="height" value="963" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="herkou-upload" type="b2602c69:ProjectViewProjectNode" />
+              <item name="herkou-upload" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="herkou-upload" type="b2602c69:ProjectViewProjectNode" />
+              <item name="herkou-upload" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="herkou-upload" type="b2602c69:ProjectViewProjectNode" />
+              <item name="herkou-upload" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="herkou-upload" type="b2602c69:ProjectViewProjectNode" />
+              <item name="herkou-upload" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="javascripts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="herkou-upload" type="b2602c69:ProjectViewProjectNode" />
+              <item name="herkou-upload" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="javascripts" type="462c0819:PsiDirectoryNode" />
+              <item name="factories" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="herkou-upload" type="b2602c69:ProjectViewProjectNode" />
+              <item name="herkou-upload" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="herkou-upload" type="b2602c69:ProjectViewProjectNode" />
+              <item name="herkou-upload" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="herkou-upload" type="b2602c69:ProjectViewProjectNode" />
+              <item name="herkou-upload" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="herkou-upload" type="b2602c69:ProjectViewProjectNode" />
+              <item name="herkou-upload" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
+    <property name="SearchEverywhereHistoryKey" value="simulation&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/controllers/api/simulation_parser_controller.rb&#10;home.js&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/controllers/home.js&#10;home.&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/controllers/home.js&#10;overv&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/controllers/project/tabs/overview.js&#10;simulationPar&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/factories/simulationParserResource.js&#10;simulati&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/controllers/api/simulation_parser_controller.rb&#10;settings&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/controllers/project/tabs/settings.js&#10;routes.&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/config/routes.rb&#10;config.&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/config.ru&#10;simulation_&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/controllers/api/simulation_parser_controller.rb&#10;settings.js&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/controllers/project/tabs/settings.js&#10;settings.&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/templates/views/tabs/settings.html&#10;routes&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/config/routes.rb&#10;app&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/application.js&#10;Simulat&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/factories/simulationResource.js&#10;tabs&#9;null&#9;null&#10;application.&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/application.js&#10;loads.js&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/controllers/project/tabs/loads.js&#10;resources&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/controllers/project/tabs/resources.js&#10;simulation_cont&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/controllers/api/simulations_controller.rb&#10;componentRes&#9;null&#9;null&#10;over&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/controllers/project/tabs/overview.js&#10;manual&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/controllers/project/tabs/manualDef.js&#10;loads-m&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/templates/views/forms/loads-manual-upload.html&#10;date-&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/templates/views/forms/date-picker-inputs.html&#10;reso&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/controllers/project/tabs/resources.js&#10;loads&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/templates/views/forms/loads-manual-upload.html&#10;loads.h&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/templates/views/tabs/loads.html&#10;applica&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/views/layouts/application.html.erb&#10;schema.r&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/db/schema.rb&#10;envi&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/templates/views/forms/component-environmental.html&#10;envir&#9;null&#9;null&#10;econom&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/templates/views/forms/component-economic.html&#10;techn&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/templates/views/forms/component-technical.html&#10;appli&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/stylesheets/application.scss&#10;admin&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/templates/views/forms/component-administrative.html&#10;energy-&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/templates/views/forms/energy-domain.html&#10;energy&#9;null&#9;null&#10;system&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/templates/views/tabs/system.html&#10;technic&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/templates/views/forms/component-technical.html&#10;component.ht&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/templates/views/tabs/components.html&#10;components&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/controllers/project/tabs/components.js&#10;component.r&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/controllers/component_type.rb&#10;project.&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/components/project.js&#10;economic&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/templates/views/forms/component-economic.html&#10;compone&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/templates/views/tabs/components.html&#10;project&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/components/project.js&#10;economc&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/controllers/api/components_economic_detail_controller.rb&#10;save&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/components/savedProjects.js&#10;system.js&#9;FILE&#9;file:///Users/luciaeve/dev/RoR-Material/ROR-DFKI/herkou-upload/app/assets/javascripts/controllers/project/tabs/system.js" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/controllers/api" />
+      <recent name="$PROJECT_DIR$/vendor/assets/bower_components" />
+      <recent name="$PROJECT_DIR$/app/assets/javascripts/templates/views/forms" />
+      <recent name="$PROJECT_DIR$/db/migrate" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/assets/javascripts/templates/views/forms" />
+      <recent name="$PROJECT_DIR$/app/assets/images/components/gallery" />
+      <recent name="$PROJECT_DIR$/app/assets/images/components/schematics/general" />
+      <recent name="$PROJECT_DIR$/app/assets/images/components" />
+      <recent name="$PROJECT_DIR$/app/assets/images/gallery" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="56053310-e990-4317-ba86-b81412326ebc" name="Default" comment="" />
+      <created>1502714343056</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1502714343056</updated>
+      <workItem from="1502714345941" duration="102000" />
+      <workItem from="1502715693570" duration="378000" />
+      <workItem from="1502716180439" duration="315000" />
+      <workItem from="1502723701884" duration="505000" />
+      <workItem from="1502794608643" duration="4481000" />
+      <workItem from="1502874224546" duration="1073000" />
+      <workItem from="1503655042890" duration="6771000" />
+      <workItem from="1503775318672" duration="5708000" />
+      <workItem from="1503926228672" duration="5804000" />
+      <workItem from="1503951943038" duration="4109000" />
+      <workItem from="1504006467786" duration="3995000" />
+      <workItem from="1504016479577" duration="6351000" />
+      <workItem from="1504080206782" duration="11011000" />
+      <workItem from="1504113130004" duration="17827000" />
+      <workItem from="1504341096901" duration="2652000" />
+      <workItem from="1504517227976" duration="15082000" />
+      <workItem from="1504610532477" duration="5273000" />
+      <workItem from="1504636365903" duration="219000" />
+      <workItem from="1504636683286" duration="57000" />
+      <workItem from="1504636897576" duration="5596000" />
+      <workItem from="1504781998336" duration="3771000" />
+      <workItem from="1504801797682" duration="154000" />
+      <workItem from="1504809819324" duration="1628000" />
+      <workItem from="1505827955181" duration="12201000" />
+      <workItem from="1506010387783" duration="81000" />
+      <workItem from="1506088708106" duration="20460000" />
+      <workItem from="1506202010754" duration="501000" />
+      <workItem from="1506507479331" duration="1451000" />
+      <workItem from="1506953271748" duration="977000" />
+      <workItem from="1506962723634" duration="1301000" />
+      <workItem from="1507281629029" duration="2516000" />
+      <workItem from="1507310142055" duration="12962000" />
+      <workItem from="1507470479336" duration="3254000" />
+      <workItem from="1507483648176" duration="1230000" />
+      <workItem from="1507577395427" duration="3213000" />
+      <workItem from="1507656178419" duration="4530000" />
+      <workItem from="1507709168901" duration="366000" />
+      <workItem from="1507713252844" duration="6887000" />
+      <workItem from="1507726218733" duration="26000" />
+      <workItem from="1507745863301" duration="962000" />
+      <workItem from="1507759815278" duration="4057000" />
+      <workItem from="1507832850307" duration="295000" />
+      <workItem from="1507839771699" duration="4956000" />
+      <workItem from="1507994069494" duration="10088000" />
+      <workItem from="1508021697282" duration="939000" />
+      <workItem from="1508080440171" duration="13178000" />
+      <workItem from="1508310761592" duration="1178000" />
+      <workItem from="1508324318206" duration="489000" />
+      <workItem from="1508353037393" duration="1066000" />
+      <workItem from="1508700420508" duration="9030000" />
+      <workItem from="1508750497182" duration="712000" />
+      <workItem from="1508772873628" duration="3000" />
+      <workItem from="1508775674737" duration="1609000" />
+      <workItem from="1508828881232" duration="1796000" />
+      <workItem from="1508918931567" duration="3674000" />
+      <workItem from="1508930613277" duration="2105000" />
+      <workItem from="1509042533632" duration="274000" />
+      <workItem from="1509401101948" duration="1488000" />
+      <workItem from="1509461341004" duration="1077000" />
+      <workItem from="1509472325138" duration="1621000" />
+      <workItem from="1509529474531" duration="12000" />
+      <workItem from="1509530614638" duration="3865000" />
+      <workItem from="1509534905856" duration="430000" />
+      <workItem from="1509539945513" duration="3466000" />
+      <workItem from="1509544187159" duration="3748000" />
+      <workItem from="1509657749538" duration="8442000" />
+      <workItem from="1509699139116" duration="1161000" />
+      <workItem from="1509982015474" duration="653000" />
+      <workItem from="1509982848830" duration="3399000" />
+      <workItem from="1510077730443" duration="5092000" />
+      <workItem from="1510576624016" duration="1348000" />
+      <workItem from="1510593284291" duration="1478000" />
+      <workItem from="1510604566259" duration="6687000" />
+      <workItem from="1510677011637" duration="3568000" />
+      <workItem from="1510740520628" duration="991000" />
+      <workItem from="1510772840042" duration="2362000" />
+      <workItem from="1510844468422" duration="8000" />
+      <workItem from="1511271370204" duration="14745000" />
+      <workItem from="1511339666101" duration="1116000" />
+      <workItem from="1511360063201" duration="985000" />
+      <workItem from="1511363958870" duration="4744000" />
+      <workItem from="1511372747208" duration="6000" />
+      <workItem from="1511382272336" duration="2652000" />
+      <workItem from="1511433842864" duration="167000" />
+      <workItem from="1511457207556" duration="3144000" />
+      <workItem from="1511460463762" duration="2831000" />
+      <workItem from="1511693994343" duration="7190000" />
+      <workItem from="1511818856679" duration="1907000" />
+      <workItem from="1511899241772" duration="246000" />
+      <workItem from="1511902068629" duration="3561000" />
+      <workItem from="1511905704845" duration="9277000" />
+      <workItem from="1512069065722" duration="1763000" />
+      <workItem from="1512491836180" duration="1952000" />
+      <workItem from="1512566293770" duration="3890000" />
+      <workItem from="1512664797585" duration="4365000" />
+      <workItem from="1512679875162" duration="2062000" />
+      <workItem from="1512726352234" duration="2157000" />
+      <workItem from="1512989785763" duration="713000" />
+      <workItem from="1513081402553" duration="1724000" />
+      <workItem from="1513165117775" duration="18141000" />
+      <workItem from="1513357728965" duration="292000" />
+      <workItem from="1513360795487" duration="280000" />
+      <workItem from="1513712584772" duration="3894000" />
+      <workItem from="1513897779092" duration="850000" />
+      <workItem from="1514658877761" duration="2230000" />
+      <workItem from="1515331633740" duration="2796000" />
+      <workItem from="1515424826470" duration="2000" />
+      <workItem from="1515497179222" duration="334000" />
+      <workItem from="1515516632221" duration="488000" />
+      <workItem from="1515517378299" duration="2549000" />
+      <workItem from="1515523801148" duration="4281000" />
+      <workItem from="1515543699021" duration="1378000" />
+      <workItem from="1515588362065" duration="1093000" />
+      <workItem from="1516039637212" duration="6550000" />
+      <workItem from="1516881719049" duration="4470000" />
+      <workItem from="1517235782183" duration="2479000" />
+      <workItem from="1517306073989" duration="1546000" />
+      <workItem from="1517576086873" duration="2406000" />
+      <workItem from="1517580101946" duration="2238000" />
+      <workItem from="1518080965182" duration="2965000" />
+      <workItem from="1518103245950" duration="913000" />
+      <workItem from="1519727822801" duration="141000" />
+      <workItem from="1519978194150" duration="1705000" />
+      <workItem from="1520009847100" duration="5136000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="425531000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="42" y="23" width="1329" height="963" extended-state="0" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23776758" sideWeight="0.48412699" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43963253" sideWeight="0.29855072" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32939634" sideWeight="0.49710146" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6532258" sideWeight="0.7014493" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24486804" sideWeight="0.515873" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32939634" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43963253" sideWeight="0.29855072" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32939634" sideWeight="0.49710146" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43963253" sideWeight="0.7014493" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2347826" sideWeight="0.48412699" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32939634" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24486804" sideWeight="0.515873" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.rb" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="44" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/system.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14">
+          <caret line="1" column="12" lean-forward="true" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/components/projectComponents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/components/readFile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="42" lean-forward="false" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/components/projectTab/projectTab.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="966">
+          <caret line="42" column="46" lean-forward="false" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/components/savedProjects.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="25" lean-forward="true" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/api/components_economic_detail_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/components/project.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="310" column="33" lean-forward="true" selection-start-line="310" selection-start-column="33" selection-end-line="310" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/api/components_detail_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/energy-domain.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/system.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="3" column="15" lean-forward="false" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/templates/views/tabs/system.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="69" column="39" lean-forward="false" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="7592" column="1" lean-forward="true" selection-start-line="7592" selection-start-column="1" selection-end-line="7592" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/component-administrative.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="24" lean-forward="true" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/components.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="10" lean-forward="false" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/component-technical.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="15" column="81" lean-forward="false" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/component-economic.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="943">
+          <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/schema.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8027">
+          <caret line="349" column="95" lean-forward="false" selection-start-line="349" selection-start-column="95" selection-end-line="349" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/templates/views/tabs/loads.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2093">
+          <caret line="136" column="31" lean-forward="false" selection-start-line="136" selection-start-column="31" selection-end-line="136" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/component-environmental.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="62" column="20" lean-forward="false" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/date-picker-inputs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="125" column="23" lean-forward="false" selection-start-line="120" selection-start-column="17" selection-end-line="125" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/templates/views/tabs/components.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="851">
+          <caret line="82" column="29" lean-forward="false" selection-start-line="82" selection-start-column="29" selection-end-line="82" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/templates/views/forms/loads-manual-upload.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1334">
+          <caret line="58" column="61" lean-forward="false" selection-start-line="58" selection-start-column="61" selection-end-line="58" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/manualDef.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/resources.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-108">
+          <caret line="164" column="20" lean-forward="true" selection-start-line="164" selection-start-column="20" selection-end-line="164" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/assets/bower_components/angular-material/modules/closure/tabs/tabs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9267">
+          <caret line="1399" column="0" lean-forward="false" selection-start-line="1399" selection-start-column="0" selection-end-line="1399" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/loads.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5842">
+          <caret line="254" column="26" lean-forward="false" selection-start-line="254" selection-start-column="26" selection-end-line="254" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/factories/componentResource.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/component_type.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/carts_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/component_detail.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1564">
+          <caret line="68" column="3" lean-forward="false" selection-start-line="68" selection-start-column="3" selection-end-line="68" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/factories/loadResource.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="40" column="32" lean-forward="true" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/api/base_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/api/components_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/simulation_parser.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="15" lean-forward="false" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/templates/views/tabs/settings.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="100" column="61" lean-forward="false" selection-start-line="100" selection-start-column="61" selection-end-line="100" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/factories/componentInstallationResource.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/simulation.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/factories/simulationResource.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="37" lean-forward="true" selection-start-line="0" selection-start-column="37" selection-end-line="0" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.ru">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/api/projects_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-521">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/api/resources_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="10" lean-forward="true" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/controllers/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="50" column="23" lean-forward="true" selection-start-line="46" selection-start-column="15" selection-end-line="50" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/overview.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/controllers/project/tabs/settings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="14" column="48" lean-forward="false" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/api/simulations_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="18" column="32" lean-forward="false" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/factories/simulationParserResource.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="22" lean-forward="false" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/api/simulation_parser_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" column="67" lean-forward="false" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

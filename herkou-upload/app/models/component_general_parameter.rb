@@ -1,0 +1,3 @@
+class ComponentGeneralParameter < ApplicationRecord
+
+end

@@ -1,0 +1,497 @@
+
+var empty = {	
+				overview: {
+					author: ""
+					coordinates:'',
+	                description:"",
+	                lastModified: "",
+	                project_id:"",
+	                title: ""},
+                resources:{
+                    physical:{
+                        primary:{
+                            file:null,
+                            solar:{
+                                label: 'Solar',
+                                name: '',
+                                description: '',
+                                chartColor: "#F2784B",
+                                measureUnit: "Wh/m2",
+                                data: []
+                            },
+                            temperature:{
+                                label: 'Temperature',
+                                name: '',
+                                description: '',
+                                chartColor: "#6596AA",
+                                measureUnit: "C",
+                                data: []
+                            },
+                            wind:{
+                                label: 'Wind',
+                                name: '',
+                                description: '',
+                                chartColor: "#3A919B",
+                                measureUnit: "m/s",
+                                data: []
+                            }
+
+                        },
+                        secondary: {
+                            gridBoundResource: [
+                                {
+                                    id: 'electricity',
+                                    label: 'Electricity',
+                                    name: '',
+                                    description: '',
+                                    cost: {
+                                        provisionFee: {
+                                            specific: {
+                                                value: '',
+                                                um: '€/KW'
+                                            },
+                                            offset: {
+                                                value: '',
+                                                um: '€'
+                                            }
+                                        },
+                                        energyCost: {
+                                            tariff: {
+                                                value: [],
+                                                um: '€/KWh'
+                                            },
+                                            from: {
+                                                value: [],
+                                                um: 'h'
+                                            },
+                                            to: {
+                                                value: [],
+                                                um: 'h'
+                                            }
+                                        }
+                                    },
+                                    capacityLimits: {
+                                        power: {
+                                            min: {
+                                                value: '',
+                                                um: 'KW'
+                                            },
+                                            max: {
+                                                value: '',
+                                                um: 'KW'
+                                            }
+                                        },
+                                        energy: {
+                                            min: {
+                                                value: '',
+                                                um: 'MWh/a'
+                                            },
+                                            max: {
+                                                value: '',
+                                                um: 'MWh/a'
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    id: 'naturalGas',
+                                    label: 'Natural Gas',
+                                    name: '',
+                                    description: '',
+                                    cost: {
+                                        provisionFee: {
+                                            specific: {
+                                                value: '',
+                                                um: '€/KW'
+                                            },
+                                            offset: {
+                                                value: '',
+                                                um: '€'
+                                            }
+                                        },
+                                        energyCost: {
+                                            tariff: {
+                                                value: '',
+                                                um: '€/KWh'
+                                            }
+                                        }
+                                    },
+                                    capacityLimits: {
+                                        power: {
+                                            min: {
+                                                value: '',
+                                                um: 'KW'
+                                            },
+                                            max: {
+                                                value: '',
+                                                um: 'KW'
+                                            }
+                                        },
+                                        energy: {
+                                            min: {
+                                                value: '',
+                                                um: 'MWh/a'
+                                            },
+                                            max: {
+                                                value: '',
+                                                um: 'MWh/a'
+                                            }
+                                        }
+                                    }
+                                }
+                            ],
+                            nonGridTransport: [
+                                {
+                                    id: 'fuelOilDiesel',
+                                    label: 'Fuel oil/Diesel',
+                                    name: '',
+                                    description: '',
+                                    cost:{
+                                        provisionFee: {
+                                            specific: {
+                                                value: '',
+                                                um: '€/KW'
+                                            },
+                                            offset:{
+                                                value: '',
+                                                um: '€'
+                                            }
+                                        },
+                                        energyCost:{
+                                            tariff:{
+                                                value: '',
+                                                um: '€/KWh'
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    economic:{
+                        income: {
+                            electricityGeneration:[
+                                {
+                                    id: 'general',
+                                    label: 'General',
+                                    name: '',
+                                    description: '',
+                                    income: {
+                                        feedIn: {
+                                            tariff: {
+                                                value: [],
+                                                um: '€/kWh'
+                                            },
+                                            from: {
+                                                value: [],
+                                                um: 'h'
+                                            },
+                                            to: {
+                                                value: [],
+                                                um: 'h'
+                                            }
+                                        }
+                                    },
+                                    capacityLimits: {
+                                        power: {
+                                            min: {
+                                                value: '',
+                                                um: 'KW'
+                                            },
+                                            max: {
+                                                value: '',
+                                                um: 'KW'
+                                            }
+                                        },
+                                        energy: {
+                                            min: {
+                                                value: '',
+                                                um: 'MWh/a'
+                                            },
+                                            max: {
+                                                value: '',
+                                                um: 'MWh/a'
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    id: 'solarPV',
+                                    label: 'Solar PV',
+                                    name: '',
+                                    description: '',
+                                    income: {
+                                        feedIn: {
+                                            tariff: {
+                                                value: [],
+                                                um: '€/KWh'
+                                            },
+                                            from: {
+                                                value: [],
+                                                um: 'h'
+                                            },
+                                            to: {
+                                                value: [],
+                                                um: 'h'
+                                            }
+                                        },
+                                        selfConsumption: {
+                                            tariff: {
+                                                value: [],
+                                                um: '€/KWh'
+                                            },
+                                            from: {
+                                                value: [],
+                                                um: 'h'
+                                            },
+                                            to: {
+                                                value: [],
+                                                um: 'h'
+                                            }
+                                        }
+                                    },
+                                    capacityLimits: {
+                                        power: {
+                                            min: {
+                                                value: '',
+                                                um: 'KW'
+                                            },
+                                            max: {
+                                                value: '',
+                                                um: 'KW'
+                                            }
+                                        },
+                                        energy: {
+                                            min: {
+                                                value: '',
+                                                um: 'MWh/a'
+                                            },
+                                            max: {
+                                                value: '',
+                                                um: 'MWh/a'
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    id: 'windEnergy',
+                                    label: 'Wind energy',
+                                    name: '',
+                                    description: '',
+                                    income: {
+                                        feedIn: {
+                                            tariff: {
+                                                value: [],
+                                                um: '€/KWh'
+                                            },
+                                            from: {
+                                                value: [],
+                                                um: 'h'
+                                            },
+                                            to: {
+                                                value: [],
+                                                um: 'h'
+                                            }
+                                        },
+                                        selfConsumption: {
+                                            tariff: {
+                                                value: [],
+                                                um: '€/KWh'
+                                            },
+                                            from: {
+                                                value: [],
+                                                um: 'h'
+                                            },
+                                            to: {
+                                                value: [],
+                                                um: 'h'
+                                            }
+                                        }
+                                    },
+                                    capacityLimits: {
+                                        power: {
+                                            min: {
+                                                value: '',
+                                                um: 'KW'
+                                            },
+                                            max: {
+                                                value: '',
+                                                um: 'KW'
+                                            }
+                                        },
+                                        energy: {
+                                            min: {
+                                                value: '',
+                                                um: 'MWh/a'
+                                            },
+                                            max: {
+                                                value: '',
+                                                um: 'MWh/a'
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    id: 'chp',
+                                    label: 'CHP',
+                                    name: '',
+                                    description: '',
+                                    income: {
+                                        feedIn: {
+                                            tariff: {
+                                                value: [],
+                                                um: '€/KWh'
+                                            },
+                                            from: {
+                                                value: [],
+                                                um: 'h'
+                                            },
+                                            to: {
+                                                value: [],
+                                                um: 'h'
+                                            }
+                                        },
+                                        selfConsumption: {
+                                            tariff: {
+                                                value: [],
+                                                um: '€/KWh'
+                                            },
+                                            from: {
+                                                value: [],
+                                                um: 'h'
+                                            },
+                                            to: {
+                                                value: [],
+                                                um: 'h'
+                                            }
+                                        }
+                                    },
+                                    capacityLimits: {
+                                        power: {
+                                            min: {
+                                                value: '',
+                                                um: 'KW'
+                                            },
+                                            max: {
+                                                value: '',
+                                                um: 'KW'
+                                            }
+                                        },
+                                        energy: {
+                                            min: {
+                                                value: '',
+                                                um: 'MWh/a'
+                                            },
+                                            max: {
+                                                value: '',
+                                                um: 'MWh/a'
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        debtFinancing: {}
+
+                    }
+                },
+                loads: {
+                    staticLoad: {
+                        domain: 'electricity',
+                        name: '',
+                        description: '',
+                        chartColor: '#522b65',
+                        chartLabel: 'Static load',
+                        data: []
+                    },
+                    shiftableLoad: null,
+                    buildingHeatingLoad: {
+                        domain: 'heat',
+                        name: '',
+                        description: '',
+                        chartColor: '#ca1e53',
+                        chartLabel: 'Building heating load',
+                        data: []
+                    },
+                    hotWaterLoad: {
+                        domain: 'heat',
+                        name: '',
+                        description: '',
+                        chartColor: '#ca1e53',
+                        chartLabel: 'Hot water load',
+                        data: []
+                    },
+                    buildingCoolingLoad: {
+                        domain: 'cooling',
+                        name: '',
+                        description: '',
+                        chartColor: '#0bb4b2',
+                        chartLabel: 'Building cooling load',
+                        data: []
+
+                    }
+                },
+                system:{
+                    nodeId: 1,
+                    nodes:[
+                        {
+                            id: 1,
+                            name: 'N1 (Default)',
+                            description: 'System-internal node components can be installed at.',
+                            defaultNode: true,
+                            position: {
+                                distanceToDefault: {
+                                    eastWest: 0,
+                                    northSouth: 0
+                                },
+                                lengthOfConnections: {}
+                            },
+                            buses: {
+                                electric: true,
+                                heat: true,
+                                cooling: true
+                            }
+                        }
+                    ]
+                },
+                components:{},
+                settings:{
+                    calculationType: 'directOptimization',
+                    optimizationObject:[
+                        {
+                            id: 'economic',
+                            label: 'Economic',
+                            name: '',
+                            description: '',
+                            multipleObjective:{
+                                share: ''
+                            },
+                            capex: {
+                                considerInGeneral: false,
+                                componentDeselected: []
+                            },
+                            opex: {
+                                considerInGeneral: false,
+                                componentDeselected: []
+                            }
+                        },
+                        {
+                            id: 'environmental',
+                            label: 'Environmental',
+                            name: '',
+                            description: '',
+                            multipleObjective:{
+                                share: ''
+                            },
+                            co2Emission:{
+                                considerInGeneral: false,
+                                componentDeselected: []
+                            },
+                            primaryEnergy:{
+                                considerInGeneral: false,
+                                componentDeselected: []
+                            }
+                        }
+                    ]
+                }
+               };

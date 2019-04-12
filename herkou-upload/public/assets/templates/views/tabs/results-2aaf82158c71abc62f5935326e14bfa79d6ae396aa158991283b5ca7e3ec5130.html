@@ -1,0 +1,170 @@
+<div id="results-tab">
+    <!-- Sidebar -->
+    <div class="sidebar project-sidebar" ng-init="primarySidebar=true" >
+
+        <div ng-show="primarySidebar" class="primary-sidebar">
+
+            <div class="sidebar-content container-fluid">
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <h3>Results</h3>
+
+                        <div class="top-20">
+                            <button ng-repeat="t in resultTabs"
+                                    ng-class="{active:isTabSelected(t)}"
+                                    ng-click="selectTab(t)"
+                                    class="btn btn-primary btn-block">
+                                {{t.label}}
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+                <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+            </div>
+
+        </div>
+
+        <div ng-hide="primarySidebar" class="secondary-sidebar">
+
+            <div hidden-sidebar></div>
+
+            <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+                <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page -->
+    <div class="page-wrapper">
+        <div class="container-fluid">
+
+            <div imode-project-tab></div>
+
+            <div class="project-container">
+
+                <!-- No simulation yet -->
+                <div ng-if="showEmptyResults()" class="row top-30">
+
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="jumbotron text-center">
+                            <div ng-if="unsavedProject">
+                                <button class="btn btn-primary btn-lgtop-30"
+                                        ng-click="startSimulation()">
+                                    Simulate
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Components view -->
+                <div ng-if="showComponentsResults()" class="row top-30">
+                    <div class="col-md-2">
+                        <div ng-repeat="c in results.components">
+                            <button class="btn btn-default btn-block top-5"
+                                    ng-class="{active:isComponentSelected(c)}"
+                                    ng-click="selectComponent(c)">
+                                {{c.label}}
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-md-10">
+                        <nvd3 api="rcComponents.api" options="componentsChartOptions" data="componentsChartData"></nvd3>
+                    </div>
+
+                    <div ng-if="componentsChartData2"
+                         class="col-md-10 col-md-offset-2 top-30">
+                        <nvd3 api="rcComponents2.api" options="componentsChartOptions2" data="componentsChartData2"></nvd3>
+                    </div>
+
+                </div>
+
+                <!-- Domains view -->
+                <div ng-if="showDomainsResults()">
+
+                    <div class="row top-20">
+                        <div class="col-md-12">
+                            <ul class="nav nav-tabs">
+                                <li ng-repeat="d in domainsWithData()"
+                                    ng-class="{active:isDomainSelected(d)}">
+                                    <a href ng-click="selectDomain(d)">{{d.label}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row top-10">
+                        <div class="col-md-12">
+                            <nvd3 api="rcDomain.api" options="domainsChartOptions" data="domainChartData"></nvd3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary view -->
+                <div ng-if="showSummaryResults()" class="summary-view">
+
+                    <div ng-if="showSummaryOverview()">
+                        <div class="row">
+                            <div ng-repeat="c in results.summary" class="col-md-6 text-center top-10">
+                                <h4 ng-click="selectSummaryBigChart($index)" class="chart-title">{{c.title}}</h4>
+                                <nvd3 options="summaryCharts[c.id]" data="c.data"></nvd3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-if="!showSummaryOverview()">
+
+                        <div class="row top-30">
+                            <button type="button"
+                                    class="btn btn-default"
+                                    ng-click="selectSummaryOverview()">
+                                &lsaquo; Summary Overview
+                            </button>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-1 summary-arrow">
+                                <button type="button" class="btn btn-default" ng-click="summaryPrevChart()">
+                                    <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                                </button>
+                            </div>
+
+                            <div class="col-md-10 text-center">
+                                <h4>{{summaryBigItem.title}}</h4>
+                                <nvd3 options="summaryBigCharts[summaryBigItem.id]" data="summaryBigItem.data">
+                            </div>
+
+                            <div class="col-md-1 summary-arrow">
+                                <button type="button" class="btn btn-default" ng-click="summaryNextChart()">
+                                    <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- sinks and cources view -->
+                <div ng-if="showSinksAndCourcessResults()">
+                    <div class="row">
+                        <div ng-repeat="x in results.sinksSource"
+                             class="col-md-4 text-center">
+                            <h3>{{x.label}}</h3>
+                            <nvd3 options="sinksSourceChartOptions" data="x.data"></nvd3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>

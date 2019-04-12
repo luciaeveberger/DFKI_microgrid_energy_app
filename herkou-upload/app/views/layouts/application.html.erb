@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>IMode</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'https://rawgit.com/angular/bower-material/master/angular-material.css' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag  'https://fonts.googleapis.com/css?family=Roboto' %>
+    <%= javascript_include_tag "https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js" %>
+    <%= javascript_include_tag "https://maps.google.com/maps/api/js?key=AIzaSyCk8jjr71w8rfdCb6k_7DuVy8_dlewKIHA&libraries=places" %>
+    <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js" %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag  'https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.6.2/js/ngDialog.min.js' %>
+    <%= javascript_include_tag 'https://code.highcharts.com/highcharts.js'  %>
+    <%= javascript_include_tag 'https://rawgithub.com/highcharts/draggable-points/master/draggable-points.js' %>
+
+    
+  </head>
+
+  <body>
+
+  <%= render 'layouts/header' %>
+  <%= render 'layouts/flash_messages' %>
+
+
+  <br>
+
+  <%= yield %>
+  </body>
+</html>

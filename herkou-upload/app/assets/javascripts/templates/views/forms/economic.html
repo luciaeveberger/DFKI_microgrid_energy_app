@@ -1,0 +1,60 @@
+<md-content class="md-padding">
+    <div layout-gt-sm="row">
+        <h3>Modify Economic Parameters</h3> <span flex></span>
+        <md-button  class="md-raised" style="background: #aec7e8;"  ng-click="saveDetails()">
+            save
+        </md-button>
+    </div>
+    <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>project lifetime [{{project.system.generalEconomicFigures.project_lifetime.uom}}]</label>
+            <input ng-model="project.system.generalEconomicFigures.project_lifetime.val">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>  Inflation rate [%] </label>
+            <input ng-model="project.system.generalEconomicFigures.rates.inflation_rate.val">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+                <md-checkbox ng-model="project.system.generalEconomicFigures.rates.inflation_rate_applied" aria-label=" 1" class="green">
+                    Inflation rate applied/price change
+                </md-checkbox>
+        </md-input-container>
+    </div>
+    <p> Discount rate</p>
+    <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label> Price change rate [%] </label>
+            <input ng-model="project.system.generalEconomicFigures.rates.inflation_rate.val">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label> Discount rate base fraction [{{project.system.generalEconomicFigures.rates.discount_rate.base_fraction.uom}}] </label>
+            <input ng-model="project.system.generalEconomicFigures.rates.discount_rate.base_fraction.val">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label> Discount rate risk fraction [{{project.system.generalEconomicFigures.rates.discount_rate.risk_fraction.uom}}] </label>
+            <input ng-model="project.system.generalEconomicFigures.rates.discount_rate.risk_fraction.val">
+        </md-input-container>
+    </div>
+    <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <md-checkbox ng-model="project.system.generalEconomicFigures.rates.discount_rate.reduced_by_inflation.val" aria-label=" 1" class="green">
+                Discount rate reduced by inflation?
+            </md-checkbox>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Discount rate, total</label>
+            <input ng-model="totalSum">
+        </md-input-container>
+    </div>
+    <!--<p>Debt financing</p>-->
+    <!--<div layout-gt-sm="row">-->
+        <!--<md-input-container class="md-block" flex-gt-sm>-->
+            <!--<label> Equity share [%] </label>-->
+            <!--<input ng-model="project.system.generalEconomicFigures.debt_financing.equity_share.value">-->
+        <!--</md-input-container>-->
+        <!--<md-input-container class="md-block" flex-gt-sm>-->
+            <!--<label> Nominal debt rate [%] </label>-->
+            <!--<input ng-model="project.system.generalEconomicFigures.debt_financing.nominal_debt_rate.value">-->
+        <!--</md-input-container>-->
+    <!--</div>-->
+</md-content>

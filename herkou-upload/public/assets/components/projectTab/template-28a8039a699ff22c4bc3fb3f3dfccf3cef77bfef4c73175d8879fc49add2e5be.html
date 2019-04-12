@@ -1,0 +1,8 @@
+<div class="row">
+    <ul class="nav nav-pills nav-justified">
+        <li ng-repeat="tab in tabs" ng-class="{active:isActive(getUrl(projectId, tab)),disabled:!tab.enabled}">
+            <a ng-if="tab.enabled" href="{{'#!'+getUrl(projectId, tab)}}">{{tab.title}}</a>
+            <a ng-if="!tab.enabled" href>{{tab.title}}</a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,2 @@
+class ComponentDetail < ApplicationRecord
+end

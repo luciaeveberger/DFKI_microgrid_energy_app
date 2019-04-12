@@ -1,0 +1,112 @@
+<div id="system-tab">
+<!-- Sidebar -->
+<div class="sidebar project-sidebar" ng-init="primarySidebar=true" >
+   <div ng-show="primarySidebar" class="primary-sidebar">
+      <div class="sidebar-content container-fluid">
+         <div class="row">
+             <div ng-repeat="t in systemTabs">
+                   <span class="pull-left">
+                     <md-button
+                             ng-click="sidebarTabToggle(t)"
+                             ng-style="{'background-color': t.color}" style="width:100%;">
+                         {{t.label}}
+                     <span class="pull-right">
+                         <!--{{t.number}}-->
+                     <!--<span ng-show="t.showItems" class="glyphicon glyphicon-triangle-left">-->
+
+                     </span>
+                     <!--<span ng-show="!t.showItems" class="glyphicon glyphicon-triangle-top"></span>-->
+                     </span>
+                 </md-button>
+
+                 <span class="pull-left" ng-show="t.showItems">
+                     <div flex="100">
+                        <ul style="list-style: none; width:100%;">
+                           <li ng-repeat="i in t.items"
+                              ng-class="{selected:isItemSelected(i)}">
+                              <a href
+                                 ng-click="selectItem(i)"
+                                 ng-show="i.enabled">
+                                 <div ng-include="i.icon"
+                                    class="component-type-icon"></div>
+                                 {{i.label}}
+                              </a>
+                              <s ng-hide="i.enabled">{{i.label}}</s>
+                           </li>
+                             </ul>
+                         </div>
+                        </span>
+                  </div>
+               <!--<md-button ng-click="primarySidebar=!primarySidebar"> See Project Canvas</md-button>-->
+            </div>
+      </div>
+      <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+         <span class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+      </div>
+   </div>
+   <div ng-hide="primarySidebar" class="secondary-sidebar">
+      <div hidden-sidebar></div>
+      <div class="sidebar-toggle-button" ng-click="primarySidebar=!primarySidebar">
+         <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+      </div>
+   </div>
+</div>
+<!-- Page -->
+<div class="page-wrapper">
+    <div imode-project-tab></div>
+   <md-content class="md-padding" layout-xs="column" layout="row" style="min-height:800px;background-color:white !important;">
+        <!-- @changes with tabs -->
+         <div flex="80" layout="column">
+            <div class="row" style="padding-right:10px; padding-left:10px;">
+                    <div ng-if="selectedItem.id =='energy'">
+                        <div energy-inputs> </div>
+                    </div>
+                    <div ng-if="selectedItem.id =='system'">
+                        <div system-inputs> </div>
+                    </div>
+                    <div ng-if="selectedItem.id =='network'">
+                        <div network-input> </div>
+                    </div>
+                    <div ng-if="selectedItem.id =='economics'">
+                        <div economic-inputs></div>
+                    </div>
+          </div>
+       </div>
+        <!--<div flex="25" layout="column">-->
+            <!--<div class="row" style="margin-right:20px;margin-left:20px;">-->
+                <!--<md-card>-->
+                    <!--<h4 style="text-align: center; text-transform: uppercase;"> my settings </h4>-->
+                    <!--&lt;!&ndash;<md-list class="md-dense" flex>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<md-subheader class="md-no-sticky">energy domain</md-subheader>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<md-list-item class="md-3-line">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="md-list-item-text" layout="column">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<a ng-repeat="n in project.system.energyDomain">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<md-button ng-click="selectItemFromNav(n,1)">{{n.id + 1}} {{n.domain.type_name}}</md-button>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</md-list-item>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<md-divider ></md-divider>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<md-subheader class="md-no-sticky">system nodes</md-subheader>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<md-list-item class="md-3-line">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="md-list-item-text" layout="column">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<a ng-repeat="n in project.system.systemNodes.nodes">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<md-button ng-click="selectItemFromNav(n,2)">{{n.name}}</md-button>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</md-list-item>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<md-divider ></md-divider>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<md-subheader class="md-no-sticky">network </md-subheader>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<md-list-item class="md-3-line">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="md-list-item-text" layout="column">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<a ng-repeat="n in project.system.networkNodes.networks">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<md-button ng-click="selectItemFromNav(n,3)">{{n.name}}</md-button>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</md-list-item>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</md-list>&ndash;&gt;-->
+                <!--</md-card>-->
+                <!--</div>-->
+            <!--</div>-->
+        </md-content>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="well">
+    <div class="row">
+      <h1>My orders</h1>
+      <% if @orders.empty? %>
+          <p>Nothing ordered yet!</p>
+      <% end %>
+      <%= render @orders %>
+    </div>
+  </div>
+</div>
